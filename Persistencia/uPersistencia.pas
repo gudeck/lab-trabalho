@@ -18,6 +18,12 @@ type
     qDisciplinaMEDIA: TIntegerField;
     qDisciplinaOPCIONAL: TBooleanField;
     qDisciplinaDATA_CRIACAO: TDateTimeField;
+    dsDisciplinaID: TLargeintField;
+    dsDisciplinaNOME: TStringField;
+    dsDisciplinaDESCRICAO: TMemoField;
+    dsDisciplinaMEDIA: TIntegerField;
+    dsDisciplinaOPCIONAL: TBooleanField;
+    dsDisciplinaDATA_CRIACAO: TDateTimeField;
     procedure dsDisciplinaAfterPost(DataSet: TDataSet);
     procedure dsDisciplinaAfterDelete(DataSet: TDataSet);
     procedure dsDisciplinaAfterCancel(DataSet: TDataSet);

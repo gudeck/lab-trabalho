@@ -20,7 +20,7 @@ object Persistencia: TPersistencia
     CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (
-      'SELECT * FROM LAB.DISCIPLINA')
+      'SELECT * FROM SEMESTRE_SETE.LAB.DISCIPLINA')
     Left = 104
     Top = 160
     object qDisciplinaID: TLargeintField
@@ -70,6 +70,42 @@ object Persistencia: TPersistencia
     AfterDelete = dsDisciplinaAfterDelete
     Left = 328
     Top = 160
+    object dsDisciplinaID: TLargeintField
+      DisplayLabel = 'C'#243'digo'
+      FieldName = 'ID'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      ReadOnly = True
+    end
+    object dsDisciplinaNOME: TStringField
+      DisplayLabel = 'Nome'
+      FieldName = 'NOME'
+      ProviderFlags = [pfInUpdate]
+      Size = 80
+    end
+    object dsDisciplinaDESCRICAO: TMemoField
+      DisplayLabel = 'Descri'#231#227'o'
+      FieldName = 'DESCRICAO'
+      ProviderFlags = [pfInUpdate]
+      BlobType = ftMemo
+    end
+    object dsDisciplinaMEDIA: TIntegerField
+      DisplayLabel = 'M'#233'dia'
+      FieldName = 'MEDIA'
+      ProviderFlags = [pfInUpdate]
+      MaxValue = 100
+      MinValue = 50
+    end
+    object dsDisciplinaOPCIONAL: TBooleanField
+      DisplayLabel = 'Opcional'
+      FieldName = 'OPCIONAL'
+      ProviderFlags = [pfInUpdate]
+    end
+    object dsDisciplinaDATA_CRIACAO: TDateTimeField
+      DisplayLabel = 'Criado em'
+      FieldName = 'DATA_CRIACAO'
+      ProviderFlags = [pfInUpdate]
+      EditMask = '!99/99/00;1;_'
+    end
   end
   object pDisciplina: TDataSetProvider
     DataSet = qDisciplina
