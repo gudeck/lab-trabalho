@@ -1,7 +1,7 @@
 object Persistencia: TPersistencia
   OldCreateOrder = False
-  Height = 386
-  Width = 488
+  Height = 333
+  Width = 426
   object Connection: TADOConnection
     Connected = True
     ConnectionString = 
@@ -12,17 +12,17 @@ object Persistencia: TPersistencia
       'lation when possible=False'
     LoginPrompt = False
     Provider = 'SQLOLEDB.1'
-    Left = 80
-    Top = 56
+    Left = 32
+    Top = 8
   end
   object qDisciplina: TADOQuery
     Connection = Connection
     CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (
-      'SELECT * FROM SEMESTRE_SETE.LAB.DISCIPLINA')
-    Left = 104
-    Top = 160
+      'SELECT * FROM LAB.DISCIPLINA')
+    Left = 32
+    Top = 112
     object qDisciplinaID: TLargeintField
       DisplayLabel = 'C'#243'digo'
       FieldName = 'ID'
@@ -67,9 +67,11 @@ object Persistencia: TPersistencia
     AfterInsert = dsDisciplinaAfterInsert
     AfterPost = dsDisciplinaAfterPost
     AfterCancel = dsDisciplinaAfterCancel
+    BeforeDelete = dsDisciplinaBeforeDelete
     AfterDelete = dsDisciplinaAfterDelete
-    Left = 328
-    Top = 160
+    AfterScroll = dsDisciplinaAfterScroll
+    Left = 256
+    Top = 112
     object dsDisciplinaID: TLargeintField
       DisplayLabel = 'C'#243'digo'
       FieldName = 'ID'
@@ -109,7 +111,98 @@ object Persistencia: TPersistencia
   end
   object pDisciplina: TDataSetProvider
     DataSet = qDisciplina
-    Left = 216
-    Top = 160
+    Left = 144
+    Top = 112
+  end
+  object qDocente: TADOQuery
+    Connection = Connection
+    CursorType = ctStatic
+    Parameters = <>
+    SQL.Strings = (
+      'SELECT * FROM LAB.DOCENTE')
+    Left = 32
+    Top = 176
+  end
+  object qAula: TADOQuery
+    Connection = Connection
+    CursorType = ctStatic
+    BeforeOpen = qAulaBeforeOpen
+    Parameters = <
+      item
+        Name = 'idDisciplina'
+        Attributes = [paSigned, paNullable]
+        DataType = ftLargeint
+        Precision = 19
+        Size = 8
+        Value = Null
+      end>
+    SQL.Strings = (
+      'SELECT * FROM LAB.AULA WHERE ID_DISCIPLINA=:idDisciplina')
+    Left = 32
+    Top = 240
+  end
+  object pDocente: TDataSetProvider
+    DataSet = qDocente
+    Left = 144
+    Top = 176
+  end
+  object pAula: TDataSetProvider
+    DataSet = qAula
+    Left = 144
+    Top = 240
+  end
+  object dsDocente: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    ProviderName = 'pDocente'
+    Left = 256
+    Top = 176
+    object dsDocenteID: TLargeintField
+      DisplayLabel = 'C'#243'digo'
+      FieldName = 'ID'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      ReadOnly = True
+    end
+    object dsDocenteNOME: TStringField
+      DisplayLabel = 'Nome'
+      FieldName = 'NOME'
+      ProviderFlags = [pfInUpdate]
+      Size = 80
+    end
+  end
+  object dsAula: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    ProviderName = 'pAula'
+    AfterPost = dsAulaAfterPost
+    AfterCancel = dsAulaAfterCancel
+    AfterDelete = dsAulaAfterDelete
+    Left = 256
+    Top = 240
+    object dsAulaID: TLargeintField
+      DisplayLabel = 'C'#243'digo'
+      FieldName = 'ID'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+    end
+    object dsAulaNOME_TURMA: TStringField
+      DisplayLabel = 'Turma'
+      FieldName = 'NOME_TURMA'
+      ProviderFlags = [pfInUpdate]
+      Size = 80
+    end
+    object dsAulaID_DISCIPLINA: TLargeintField
+      DisplayLabel = 'Disciplina'
+      FieldName = 'ID_DISCIPLINA'
+    end
+  end
+  object dsoDocente: TDataSource
+    DataSet = dsDocente
+    Left = 360
+    Top = 176
+  end
+  object dsoAula: TDataSource
+    DataSet = dsAula
+    Left = 360
+    Top = 240
   end
 end

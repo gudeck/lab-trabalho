@@ -24,10 +24,29 @@ type
     dsDisciplinaMEDIA: TIntegerField;
     dsDisciplinaOPCIONAL: TBooleanField;
     dsDisciplinaDATA_CRIACAO: TDateTimeField;
+    qDocente: TADOQuery;
+    qAula: TADOQuery;
+    pDocente: TDataSetProvider;
+    pAula: TDataSetProvider;
+    dsDocente: TClientDataSet;
+    dsAula: TClientDataSet;
+    dsoDocente: TDataSource;
+    dsoAula: TDataSource;
+    dsAulaID: TLargeintField;
+    dsAulaNOME_TURMA: TStringField;
+    dsAulaID_DISCIPLINA: TLargeintField;
+    dsDocenteID: TLargeintField;
+    dsDocenteNOME: TStringField;
     procedure dsDisciplinaAfterPost(DataSet: TDataSet);
     procedure dsDisciplinaAfterDelete(DataSet: TDataSet);
     procedure dsDisciplinaAfterCancel(DataSet: TDataSet);
     procedure dsDisciplinaAfterInsert(DataSet: TDataSet);
+    procedure dsAulaAfterPost(DataSet: TDataSet);
+    procedure dsAulaAfterDelete(DataSet: TDataSet);
+    procedure dsAulaAfterCancel(DataSet: TDataSet);
+    procedure qAulaBeforeOpen(DataSet: TDataSet);
+    procedure dsDisciplinaAfterScroll(DataSet: TDataSet);
+    procedure dsDisciplinaBeforeDelete(DataSet: TDataSet);
   private
     { Private declarations }
   public
@@ -41,6 +60,21 @@ implementation
 
 {%CLASSGROUP 'System.Classes.TPersistent'}
 {$R *.dfm}
+
+procedure TPersistencia.dsAulaAfterCancel(DataSet: TDataSet);
+begin
+  dsAula.CancelUpdates;
+end;
+
+procedure TPersistencia.dsAulaAfterDelete(DataSet: TDataSet);
+begin
+  dsAula.ApplyUpdates(-1);
+end;
+
+procedure TPersistencia.dsAulaAfterPost(DataSet: TDataSet);
+begin
+  dsAula.ApplyUpdates(-1);
+end;
 
 procedure TPersistencia.dsDisciplinaAfterCancel(DataSet: TDataSet);
 begin
@@ -62,6 +96,28 @@ end;
 procedure TPersistencia.dsDisciplinaAfterPost(DataSet: TDataSet);
 begin
   dsDisciplina.ApplyUpdates(-1);
+end;
+
+procedure TPersistencia.dsDisciplinaAfterScroll(DataSet: TDataSet);
+begin
+  dsAula.Close;
+  qAula.Close;
+
+  qAula.Open;
+  dsAula.Open;
+end;
+
+procedure TPersistencia.dsDisciplinaBeforeDelete(DataSet: TDataSet);
+begin
+  dsAula.First;
+  while not dsAula.Eof do
+    dsAula.Delete;
+end;
+
+procedure TPersistencia.qAulaBeforeOpen(DataSet: TDataSet);
+begin
+  qAula.Parameters.ParamByName('idDisciplina').Value :=
+    dsDisciplinaID.AsInteger;
 end;
 
 end.
