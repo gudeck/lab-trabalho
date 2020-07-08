@@ -32,7 +32,6 @@ type
     Label7: TLabel;
     procedure FormShow(Sender: TObject);
     procedure sbtNovoClick(Sender: TObject);
-    procedure sbtExcluirClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -51,14 +50,6 @@ begin
   inherited;
   Persistencia.dsAula.Open;
   Persistencia.dsDocente.Open;
-end;
-
-procedure TfCrudDisciplina.sbtExcluirClick(Sender: TObject);
-begin
-  inherited;
-  if Application.MessageBox('Deseja realmente excluir o registro atual?',
-    'Excluir', MB_YESNO + MB_ICONQUESTION) = ID_YES then
-    Persistencia.dsAula.Delete;
 end;
 
 procedure TfCrudDisciplina.sbtNovoClick(Sender: TObject);

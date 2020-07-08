@@ -3,12 +3,16 @@ unit uInicial;
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, uCrud;
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
+  System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, uCrud, Vcl.ExtCtrls,
+  uMenu;
 
 type
   TfTelaInicial = class(TForm)
     btEntrar: TButton;
+    LabeledEdit1: TLabeledEdit;
+    LabeledEdit2: TLabeledEdit;
     procedure btEntrarClick(Sender: TObject);
   private
     { Private declarations }
@@ -25,7 +29,7 @@ implementation
 
 procedure TfTelaInicial.btEntrarClick(Sender: TObject);
 begin
- fCrudDisciplina.Show;
+  fMenu.Show;
 end;
 
 end.

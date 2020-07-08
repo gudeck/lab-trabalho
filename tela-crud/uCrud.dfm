@@ -64,6 +64,8 @@ inherited fCrudDisciplina: TfCrudDisciplina
     ExplicitWidth = 394
     ExplicitHeight = 375
     inherited tabInformacoes: TTabSheet
+      ExplicitLeft = 4
+      ExplicitTop = 24
       ExplicitWidth = 386
       ExplicitHeight = 347
       inherited gbInformacoes: TGroupBox
@@ -139,6 +141,7 @@ inherited fCrudDisciplina: TfCrudDisciplina
           Height = 21
           DataField = 'DATA_CRIACAO'
           DataSource = DataSource
+          MaxLength = 8
           TabOrder = 1
         end
         object cmbDocente: TDBLookupComboBox
@@ -148,7 +151,9 @@ inherited fCrudDisciplina: TfCrudDisciplina
           Height = 21
           Anchors = [akLeft, akTop, akRight]
           DataField = 'ID'
-          DataSource = Persistencia.dsoDocente
+          DataSource = DataSource
+          ListField = 'NOME'
+          ListSource = Persistencia.dsoDocente
           TabOrder = 4
         end
       end
@@ -287,7 +292,6 @@ inherited fCrudDisciplina: TfCrudDisciplina
             FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
             FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
             00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
-          OnClick = sbtExcluirClick
         end
         object Label7: TLabel
           Left = 14
@@ -331,6 +335,8 @@ inherited fCrudDisciplina: TfCrudDisciplina
       end
     end
     inherited tabFiltros: TTabSheet
+      ExplicitLeft = 4
+      ExplicitTop = 24
       ExplicitWidth = 386
       ExplicitHeight = 347
       inherited gbFiltros: TGroupBox

@@ -22,7 +22,7 @@ object Persistencia: TPersistencia
     SQL.Strings = (
       'SELECT * FROM LAB.DISCIPLINA')
     Left = 32
-    Top = 112
+    Top = 184
     object qDisciplinaID: TLargeintField
       DisplayLabel = 'C'#243'digo'
       FieldName = 'ID'
@@ -71,7 +71,7 @@ object Persistencia: TPersistencia
     AfterDelete = dsDisciplinaAfterDelete
     AfterScroll = dsDisciplinaAfterScroll
     Left = 256
-    Top = 112
+    Top = 184
     object dsDisciplinaID: TLargeintField
       DisplayLabel = 'C'#243'digo'
       FieldName = 'ID'
@@ -112,7 +112,7 @@ object Persistencia: TPersistencia
   object pDisciplina: TDataSetProvider
     DataSet = qDisciplina
     Left = 144
-    Top = 112
+    Top = 184
   end
   object qDocente: TADOQuery
     Connection = Connection
@@ -121,7 +121,7 @@ object Persistencia: TPersistencia
     SQL.Strings = (
       'SELECT * FROM LAB.DOCENTE')
     Left = 32
-    Top = 176
+    Top = 128
   end
   object qAula: TADOQuery
     Connection = Connection
@@ -144,7 +144,7 @@ object Persistencia: TPersistencia
   object pDocente: TDataSetProvider
     DataSet = qDocente
     Left = 144
-    Top = 176
+    Top = 128
   end
   object pAula: TDataSetProvider
     DataSet = qAula
@@ -156,7 +156,7 @@ object Persistencia: TPersistencia
     Params = <>
     ProviderName = 'pDocente'
     Left = 256
-    Top = 176
+    Top = 128
     object dsDocenteID: TLargeintField
       DisplayLabel = 'C'#243'digo'
       FieldName = 'ID'
@@ -198,7 +198,7 @@ object Persistencia: TPersistencia
   object dsoDocente: TDataSource
     DataSet = dsDocente
     Left = 360
-    Top = 176
+    Top = 128
   end
   object dsoAula: TDataSource
     DataSet = dsAula
