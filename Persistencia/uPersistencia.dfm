@@ -1,6 +1,6 @@
 object Persistencia: TPersistencia
   OldCreateOrder = False
-  Height = 333
+  Height = 528
   Width = 426
   object Connection: TADOConnection
     Connected = True
@@ -204,5 +204,98 @@ object Persistencia: TPersistencia
     DataSet = dsAula
     Left = 360
     Top = 240
+  end
+  object qUsuario: TADOQuery
+    Connection = Connection
+    CursorType = ctStatic
+    Parameters = <>
+    SQL.Strings = (
+      'SELECT * FROM LAB.USUARIO')
+    Left = 32
+    Top = 328
+  end
+  object qTela: TADOQuery
+    Connection = Connection
+    CursorType = ctStatic
+    Parameters = <
+      item
+        Name = 'idUsuario'#11
+        Attributes = [paSigned]
+        DataType = ftLargeint
+        Precision = 19
+        Size = 8
+        Value = Null
+      end>
+    SQL.Strings = (
+      'SELECT LAB.TELA.* '
+      'FROM LAB.USUARIO_TELA '
+      'JOIN LAB.TELA '
+      'ON (USUARIO_TELA.ID_TELA = TELA.ID) '
+      'WHERE LAB.USUARIO_TELA.ID_USUARIO=:idUsuario'#11
+      '')
+    Left = 32
+    Top = 376
+  end
+  object pUsuario: TDataSetProvider
+    DataSet = qUsuario
+    Left = 144
+    Top = 328
+  end
+  object pTela: TDataSetProvider
+    DataSet = qTela
+    Left = 144
+    Top = 376
+  end
+  object dsUsuario: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    ProviderName = 'pUsuario'
+    AfterPost = dsUsuarioAfterPost
+    AfterCancel = dsUsuarioAfterCancel
+    AfterDelete = dsUsuarioAfterDelete
+    Left = 256
+    Top = 328
+    object dsUsuarioID: TLargeintField
+      FieldName = 'ID'
+      ProviderFlags = [pfInUpdate, pfInKey]
+      ReadOnly = True
+    end
+    object dsUsuarioNOME: TStringField
+      FieldName = 'NOME'
+      Size = 14
+    end
+    object dsUsuarioSENHA: TStringField
+      FieldName = 'SENHA'
+    end
+  end
+  object dsTela: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    ProviderName = 'pTela'
+    AfterPost = dsTelaAfterPost
+    AfterCancel = dsTelaAfterCancel
+    AfterDelete = dsTelaAfterDelete
+    Left = 256
+    Top = 376
+    object dsTelaID: TLargeintField
+      FieldName = 'ID'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      ReadOnly = True
+    end
+    object dsTelaNOME: TStringField
+      FieldName = 'NOME'
+      ProviderFlags = [pfInUpdate]
+      Size = 14
+    end
+  end
+  object dsoUsuario: TDataSource
+    DataSet = dsUsuario
+    Left = 360
+    Top = 328
+  end
+  object dsoTela: TDataSource
+    DataSet = dsTela
+    Left = 360
+    Top = 376
   end
 end

@@ -37,6 +37,19 @@ type
     dsAulaID_DISCIPLINA: TLargeintField;
     dsDocenteID: TLargeintField;
     dsDocenteNOME: TStringField;
+    qUsuario: TADOQuery;
+    qTela: TADOQuery;
+    pUsuario: TDataSetProvider;
+    pTela: TDataSetProvider;
+    dsUsuario: TClientDataSet;
+    dsTela: TClientDataSet;
+    dsoUsuario: TDataSource;
+    dsoTela: TDataSource;
+    dsUsuarioID: TLargeintField;
+    dsUsuarioNOME: TStringField;
+    dsUsuarioSENHA: TStringField;
+    dsTelaID: TLargeintField;
+    dsTelaNOME: TStringField;
     procedure dsDisciplinaAfterPost(DataSet: TDataSet);
     procedure dsDisciplinaAfterDelete(DataSet: TDataSet);
     procedure dsDisciplinaAfterCancel(DataSet: TDataSet);
@@ -47,6 +60,12 @@ type
     procedure qAulaBeforeOpen(DataSet: TDataSet);
     procedure dsDisciplinaAfterScroll(DataSet: TDataSet);
     procedure dsDisciplinaBeforeDelete(DataSet: TDataSet);
+    procedure dsUsuarioAfterCancel(DataSet: TDataSet);
+    procedure dsUsuarioAfterDelete(DataSet: TDataSet);
+    procedure dsUsuarioAfterPost(DataSet: TDataSet);
+    procedure dsTelaAfterCancel(DataSet: TDataSet);
+    procedure dsTelaAfterDelete(DataSet: TDataSet);
+    procedure dsTelaAfterPost(DataSet: TDataSet);
   private
     { Private declarations }
   public
@@ -112,6 +131,36 @@ begin
   dsAula.First;
   while not dsAula.Eof do
     dsAula.Delete;
+end;
+
+procedure TPersistencia.dsTelaAfterCancel(DataSet: TDataSet);
+begin
+  dsTela.CancelUpdates;
+end;
+
+procedure TPersistencia.dsTelaAfterDelete(DataSet: TDataSet);
+begin
+  dsTela.ApplyUpdates(-1);
+end;
+
+procedure TPersistencia.dsTelaAfterPost(DataSet: TDataSet);
+begin
+  dsTela.ApplyUpdates(-1);
+end;
+
+procedure TPersistencia.dsUsuarioAfterCancel(DataSet: TDataSet);
+begin
+  dsUsuario.CancelUpdates;
+end;
+
+procedure TPersistencia.dsUsuarioAfterDelete(DataSet: TDataSet);
+begin
+  dsUsuario.ApplyUpdates(-1);
+end;
+
+procedure TPersistencia.dsUsuarioAfterPost(DataSet: TDataSet);
+begin
+  dsUsuario.ApplyUpdates(-1);
 end;
 
 procedure TPersistencia.qAulaBeforeOpen(DataSet: TDataSet);
