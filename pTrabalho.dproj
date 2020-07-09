@@ -145,6 +145,14 @@
             <Form>fMenu</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="tela-crud-usuario\uCrudUsuario.pas">
+            <Form>fCrudUsuario</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="tela-telas\uAssociacaoTelas.pas">
+            <Form>fAssociacaoTelas</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

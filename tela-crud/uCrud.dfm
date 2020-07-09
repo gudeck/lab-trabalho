@@ -64,8 +64,6 @@ inherited fCrudDisciplina: TfCrudDisciplina
     ExplicitWidth = 394
     ExplicitHeight = 375
     inherited tabInformacoes: TTabSheet
-      ExplicitLeft = 4
-      ExplicitTop = 24
       ExplicitWidth = 386
       ExplicitHeight = 347
       inherited gbInformacoes: TGroupBox
@@ -330,13 +328,12 @@ inherited fCrudDisciplina: TfCrudDisciplina
           item
             Expanded = False
             FieldName = 'NOME_TURMA'
+            Width = 64
             Visible = True
           end>
       end
     end
     inherited tabFiltros: TTabSheet
-      ExplicitLeft = 4
-      ExplicitTop = 24
       ExplicitWidth = 386
       ExplicitHeight = 347
       inherited gbFiltros: TGroupBox

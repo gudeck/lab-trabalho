@@ -217,9 +217,10 @@ object Persistencia: TPersistencia
   object qTela: TADOQuery
     Connection = Connection
     CursorType = ctStatic
+    BeforeOpen = qTelaBeforeOpen
     Parameters = <
       item
-        Name = 'idUsuario'#11
+        Name = 'idUsuario'
         Attributes = [paSigned]
         DataType = ftLargeint
         Precision = 19
@@ -228,11 +229,10 @@ object Persistencia: TPersistencia
       end>
     SQL.Strings = (
       'SELECT LAB.TELA.* '
-      'FROM LAB.USUARIO_TELA '
-      'JOIN LAB.TELA '
-      'ON (USUARIO_TELA.ID_TELA = TELA.ID) '
-      'WHERE LAB.USUARIO_TELA.ID_USUARIO=:idUsuario'#11
-      '')
+      'FROM LAB.USUARIO_TELA'
+      'JOIN LAB.TELA   '
+      'ON (USUARIO_TELA.ID_TELA = TELA.ID)  '
+      'WHERE LAB.USUARIO_TELA.ID_USUARIO=:idUsuario')
     Left = 32
     Top = 376
   end
@@ -243,6 +243,7 @@ object Persistencia: TPersistencia
   end
   object pTela: TDataSetProvider
     DataSet = qTela
+    Options = [poAllowCommandText, poUseQuoteChar]
     Left = 144
     Top = 376
   end
@@ -257,7 +258,7 @@ object Persistencia: TPersistencia
     Top = 328
     object dsUsuarioID: TLargeintField
       FieldName = 'ID'
-      ProviderFlags = [pfInUpdate, pfInKey]
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       ReadOnly = True
     end
     object dsUsuarioNOME: TStringField
@@ -297,5 +298,46 @@ object Persistencia: TPersistencia
     DataSet = dsTela
     Left = 360
     Top = 376
+  end
+  object qTelaAll: TADOQuery
+    Connection = Connection
+    CursorType = ctStatic
+    BeforeOpen = qTelaBeforeOpen
+    Parameters = <>
+    SQL.Strings = (
+      'select * from LAB.TELA')
+    Left = 32
+    Top = 424
+  end
+  object pTelaAll: TDataSetProvider
+    DataSet = qTelaAll
+    Options = [poAllowCommandText, poUseQuoteChar]
+    Left = 144
+    Top = 424
+  end
+  object dsTelaAll: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    ProviderName = 'pTelaAll'
+    AfterPost = dsTelaAfterPost
+    AfterCancel = dsTelaAfterCancel
+    AfterDelete = dsTelaAfterDelete
+    Left = 256
+    Top = 424
+    object dsTelaAllID: TLargeintField
+      FieldName = 'ID'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      ReadOnly = True
+    end
+    object dsTelaAllNOME: TStringField
+      FieldName = 'NOME'
+      ProviderFlags = [pfInUpdate]
+      Size = 80
+    end
+  end
+  object dsoTelaAll: TDataSource
+    DataSet = dsTelaAll
+    Left = 360
+    Top = 424
   end
 end

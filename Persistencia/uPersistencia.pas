@@ -50,6 +50,12 @@ type
     dsUsuarioSENHA: TStringField;
     dsTelaID: TLargeintField;
     dsTelaNOME: TStringField;
+    qTelaAll: TADOQuery;
+    pTelaAll: TDataSetProvider;
+    dsTelaAll: TClientDataSet;
+    dsoTelaAll: TDataSource;
+    dsTelaAllID: TLargeintField;
+    dsTelaAllNOME: TStringField;
     procedure dsDisciplinaAfterPost(DataSet: TDataSet);
     procedure dsDisciplinaAfterDelete(DataSet: TDataSet);
     procedure dsDisciplinaAfterCancel(DataSet: TDataSet);
@@ -66,6 +72,7 @@ type
     procedure dsTelaAfterCancel(DataSet: TDataSet);
     procedure dsTelaAfterDelete(DataSet: TDataSet);
     procedure dsTelaAfterPost(DataSet: TDataSet);
+    procedure qTelaBeforeOpen(DataSet: TDataSet);
   private
     { Private declarations }
   public
@@ -167,6 +174,12 @@ procedure TPersistencia.qAulaBeforeOpen(DataSet: TDataSet);
 begin
   qAula.Parameters.ParamByName('idDisciplina').Value :=
     dsDisciplinaID.AsInteger;
+end;
+
+procedure TPersistencia.qTelaBeforeOpen(DataSet: TDataSet);
+begin
+  qTela.Parameters.ParamByName('idUsuario').Value :=
+    Persistencia.dsUsuarioID.AsInteger;
 end;
 
 end.

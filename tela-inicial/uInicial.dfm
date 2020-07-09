@@ -11,6 +11,7 @@ object fTelaInicial: TfTelaInicial
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object btEntrar: TButton
@@ -22,7 +23,7 @@ object fTelaInicial: TfTelaInicial
     TabOrder = 0
     OnClick = btEntrarClick
   end
-  object LabeledEdit1: TLabeledEdit
+  object edNome: TLabeledEdit
     Left = 184
     Top = 64
     Width = 121
@@ -32,7 +33,7 @@ object fTelaInicial: TfTelaInicial
     EditLabel.Caption = 'Usu'#225'rio'
     TabOrder = 1
   end
-  object LabeledEdit2: TLabeledEdit
+  object edSenha: TLabeledEdit
     Left = 184
     Top = 104
     Width = 121

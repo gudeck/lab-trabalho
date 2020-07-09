@@ -1907,17 +1907,15 @@ object fMenu: TfMenu
       018EFE93981DFEF4D854DFE8BA806B536A5DC52DBBBB6DBFA4AA07D03F52A413
       4051FF0065AFFF00891FFFD9}
     Stretch = True
-    ExplicitLeft = 8
-    ExplicitTop = -8
-    ExplicitWidth = 333
-    ExplicitHeight = 340
+    ExplicitWidth = 886
+    ExplicitHeight = 1000
   end
   object btnDisciplinas: TButton
     Left = 196
     Top = 105
     Width = 224
     Height = 40
-    Caption = 'Ger'#234'ncia de Disciplinas'
+    Caption = 'Cadastro Disciplinas'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -11
@@ -1929,21 +1927,13 @@ object fMenu: TfMenu
     OnClick = btnDisciplinasClick
   end
   object btnUsuarios: TButton
-    Left = 164
-    Top = 242
+    Left = 260
+    Top = 386
     Width = 175
     Height = 39
     Caption = 'Cadastro Usu'#225'rios'
     Style = bsCommandLink
     TabOrder = 1
-  end
-  object btnTelas: TButton
-    Left = 261
-    Top = 387
-    Width = 175
-    Height = 38
-    Caption = 'Cadastro Telas'
-    Style = bsCommandLink
-    TabOrder = 2
+    OnClick = btnUsuariosClick
   end
 end
