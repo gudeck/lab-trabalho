@@ -15,8 +15,7 @@ type
     Label1: TLabel;
     edNome: TDBEdit;
     btBuscar: TButton;
-    procedure FormShow(Sender: TObject);
-    procedure btBuscarClick(Sender: TObject);
+    Button1: TButton;
   private
     { Private declarations }
   public
@@ -29,16 +28,5 @@ var
 implementation
 
 {$R *.dfm}
-
-procedure TfAssociacaoTelas.btBuscarClick(Sender: TObject);
-begin
-  Persistencia.dsTela.Close;
-  Persistencia.dsTela.Open;
-end;
-
-procedure TfAssociacaoTelas.FormShow(Sender: TObject);
-begin
-  Persistencia.dsTelaAll.Open;
-end;
 
 end.

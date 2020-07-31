@@ -1,7 +1,8 @@
 object Persistencia: TPersistencia
   OldCreateOrder = False
+  OnCreate = DataModuleCreate
   Height = 528
-  Width = 426
+  Width = 837
   object Connection: TADOConnection
     Connected = True
     ConnectionString = 
@@ -22,7 +23,7 @@ object Persistencia: TPersistencia
     SQL.Strings = (
       'SELECT * FROM LAB.DISCIPLINA')
     Left = 32
-    Top = 184
+    Top = 104
     object qDisciplinaID: TLargeintField
       DisplayLabel = 'C'#243'digo'
       FieldName = 'ID'
@@ -71,7 +72,7 @@ object Persistencia: TPersistencia
     AfterDelete = dsDisciplinaAfterDelete
     AfterScroll = dsDisciplinaAfterScroll
     Left = 256
-    Top = 184
+    Top = 104
     object dsDisciplinaID: TLargeintField
       DisplayLabel = 'C'#243'digo'
       FieldName = 'ID'
@@ -112,7 +113,7 @@ object Persistencia: TPersistencia
   object pDisciplina: TDataSetProvider
     DataSet = qDisciplina
     Left = 144
-    Top = 184
+    Top = 104
   end
   object qDocente: TADOQuery
     Connection = Connection
@@ -121,7 +122,7 @@ object Persistencia: TPersistencia
     SQL.Strings = (
       'SELECT * FROM LAB.DOCENTE')
     Left = 32
-    Top = 128
+    Top = 56
   end
   object qAula: TADOQuery
     Connection = Connection
@@ -139,24 +140,24 @@ object Persistencia: TPersistencia
     SQL.Strings = (
       'SELECT * FROM LAB.AULA WHERE ID_DISCIPLINA=:idDisciplina')
     Left = 32
-    Top = 240
+    Top = 152
   end
   object pDocente: TDataSetProvider
     DataSet = qDocente
     Left = 144
-    Top = 128
+    Top = 56
   end
   object pAula: TDataSetProvider
     DataSet = qAula
     Left = 144
-    Top = 240
+    Top = 152
   end
   object dsDocente: TClientDataSet
     Aggregates = <>
     Params = <>
     ProviderName = 'pDocente'
     Left = 256
-    Top = 128
+    Top = 56
     object dsDocenteID: TLargeintField
       DisplayLabel = 'C'#243'digo'
       FieldName = 'ID'
@@ -178,7 +179,7 @@ object Persistencia: TPersistencia
     AfterCancel = dsAulaAfterCancel
     AfterDelete = dsAulaAfterDelete
     Left = 256
-    Top = 240
+    Top = 152
     object dsAulaID: TLargeintField
       DisplayLabel = 'C'#243'digo'
       FieldName = 'ID'
@@ -198,146 +199,20 @@ object Persistencia: TPersistencia
   object dsoDocente: TDataSource
     DataSet = dsDocente
     Left = 360
-    Top = 128
+    Top = 56
   end
   object dsoAula: TDataSource
     DataSet = dsAula
     Left = 360
-    Top = 240
+    Top = 152
   end
   object qUsuario: TADOQuery
     Connection = Connection
-    CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (
-      'SELECT * FROM LAB.USUARIO')
+      'SELECT *'#11
+      'FROM LAB.USUARIO;'#11)
     Left = 32
-    Top = 328
-  end
-  object qTela: TADOQuery
-    Connection = Connection
-    CursorType = ctStatic
-    BeforeOpen = qTelaBeforeOpen
-    Parameters = <
-      item
-        Name = 'idUsuario'
-        Attributes = [paSigned]
-        DataType = ftLargeint
-        Precision = 19
-        Size = 8
-        Value = Null
-      end>
-    SQL.Strings = (
-      'SELECT LAB.TELA.* '
-      'FROM LAB.USUARIO_TELA'
-      'JOIN LAB.TELA   '
-      'ON (USUARIO_TELA.ID_TELA = TELA.ID)  '
-      'WHERE LAB.USUARIO_TELA.ID_USUARIO=:idUsuario')
-    Left = 32
-    Top = 376
-  end
-  object pUsuario: TDataSetProvider
-    DataSet = qUsuario
-    Left = 144
-    Top = 328
-  end
-  object pTela: TDataSetProvider
-    DataSet = qTela
-    Options = [poAllowCommandText, poUseQuoteChar]
-    Left = 144
-    Top = 376
-  end
-  object dsUsuario: TClientDataSet
-    Aggregates = <>
-    Params = <>
-    ProviderName = 'pUsuario'
-    AfterPost = dsUsuarioAfterPost
-    AfterCancel = dsUsuarioAfterCancel
-    AfterDelete = dsUsuarioAfterDelete
-    Left = 256
-    Top = 328
-    object dsUsuarioID: TLargeintField
-      FieldName = 'ID'
-      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
-      ReadOnly = True
-    end
-    object dsUsuarioNOME: TStringField
-      FieldName = 'NOME'
-      Size = 14
-    end
-    object dsUsuarioSENHA: TStringField
-      FieldName = 'SENHA'
-    end
-  end
-  object dsTela: TClientDataSet
-    Aggregates = <>
-    Params = <>
-    ProviderName = 'pTela'
-    AfterPost = dsTelaAfterPost
-    AfterCancel = dsTelaAfterCancel
-    AfterDelete = dsTelaAfterDelete
-    Left = 256
-    Top = 376
-    object dsTelaID: TLargeintField
-      FieldName = 'ID'
-      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
-      ReadOnly = True
-    end
-    object dsTelaNOME: TStringField
-      FieldName = 'NOME'
-      ProviderFlags = [pfInUpdate]
-      Size = 14
-    end
-  end
-  object dsoUsuario: TDataSource
-    DataSet = dsUsuario
-    Left = 360
-    Top = 328
-  end
-  object dsoTela: TDataSource
-    DataSet = dsTela
-    Left = 360
-    Top = 376
-  end
-  object qTelaAll: TADOQuery
-    Connection = Connection
-    CursorType = ctStatic
-    BeforeOpen = qTelaBeforeOpen
-    Parameters = <>
-    SQL.Strings = (
-      'select * from LAB.TELA')
-    Left = 32
-    Top = 424
-  end
-  object pTelaAll: TDataSetProvider
-    DataSet = qTelaAll
-    Options = [poAllowCommandText, poUseQuoteChar]
-    Left = 144
-    Top = 424
-  end
-  object dsTelaAll: TClientDataSet
-    Aggregates = <>
-    Params = <>
-    ProviderName = 'pTelaAll'
-    AfterPost = dsTelaAfterPost
-    AfterCancel = dsTelaAfterCancel
-    AfterDelete = dsTelaAfterDelete
-    Left = 256
-    Top = 424
-    object dsTelaAllID: TLargeintField
-      FieldName = 'ID'
-      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
-      ReadOnly = True
-    end
-    object dsTelaAllNOME: TStringField
-      FieldName = 'NOME'
-      ProviderFlags = [pfInUpdate]
-      Size = 80
-    end
-  end
-  object dsoTelaAll: TDataSource
-    DataSet = dsTelaAll
-    Left = 360
-    Top = 424
+    Top = 224
   end
 end

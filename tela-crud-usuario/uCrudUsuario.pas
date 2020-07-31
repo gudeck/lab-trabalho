@@ -20,9 +20,6 @@ type
     edSenha: TDBEdit;
     GroupBox1: TGroupBox;
     DBGrid1: TDBGrid;
-    procedure Button1Click(Sender: TObject);
-    procedure FormShow(Sender: TObject);
-    procedure DBGridDblClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -35,33 +32,6 @@ var
 implementation
 
 {$R *.dfm}
-// SELECT LAB.TELA.*
-// FROM LAB.USUARIO_TELA
-// JOIN LAB.TELA
-// ON (USUARIO_TELA.ID_TELA = TELA.ID)
-// WHERE LAB.USUARIO_TELA.ID_USUARIO=:idUsuario
 
-procedure TfCrudUsuario.Button1Click(Sender: TObject);
-begin
-  inherited;
-  fAssociacaoTelas.Show;
-
-end;
-
-procedure TfCrudUsuario.DBGridDblClick(Sender: TObject);
-begin
-  inherited;
-  Persistencia.dsTela.Close;
-  Persistencia.dsTela.Open;
-end;
-
-procedure TfCrudUsuario.FormShow(Sender: TObject);
-begin
-  inherited;
-
-  Persistencia.dsTela.Close;
-  Persistencia.dsTela.Open;
-
-end;
 
 end.

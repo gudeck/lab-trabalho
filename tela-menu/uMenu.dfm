@@ -1936,4 +1936,14 @@ object fMenu: TfMenu
     TabOrder = 1
     OnClick = btnUsuariosClick
   end
+  object btnAssociacaoTelas: TButton
+    Left = 160
+    Top = 248
+    Width = 175
+    Height = 41
+    Caption = 'Associa'#231#227'o de Telas'
+    Style = bsCommandLink
+    TabOrder = 2
+    OnClick = btnAssociacaoTelasClick
+  end
 end

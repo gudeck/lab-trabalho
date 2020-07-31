@@ -38,24 +38,6 @@ type
     dsDocenteID: TLargeintField;
     dsDocenteNOME: TStringField;
     qUsuario: TADOQuery;
-    qTela: TADOQuery;
-    pUsuario: TDataSetProvider;
-    pTela: TDataSetProvider;
-    dsUsuario: TClientDataSet;
-    dsTela: TClientDataSet;
-    dsoUsuario: TDataSource;
-    dsoTela: TDataSource;
-    dsUsuarioID: TLargeintField;
-    dsUsuarioNOME: TStringField;
-    dsUsuarioSENHA: TStringField;
-    dsTelaID: TLargeintField;
-    dsTelaNOME: TStringField;
-    qTelaAll: TADOQuery;
-    pTelaAll: TDataSetProvider;
-    dsTelaAll: TClientDataSet;
-    dsoTelaAll: TDataSource;
-    dsTelaAllID: TLargeintField;
-    dsTelaAllNOME: TStringField;
     procedure dsDisciplinaAfterPost(DataSet: TDataSet);
     procedure dsDisciplinaAfterDelete(DataSet: TDataSet);
     procedure dsDisciplinaAfterCancel(DataSet: TDataSet);
@@ -66,13 +48,8 @@ type
     procedure qAulaBeforeOpen(DataSet: TDataSet);
     procedure dsDisciplinaAfterScroll(DataSet: TDataSet);
     procedure dsDisciplinaBeforeDelete(DataSet: TDataSet);
-    procedure dsUsuarioAfterCancel(DataSet: TDataSet);
-    procedure dsUsuarioAfterDelete(DataSet: TDataSet);
-    procedure dsUsuarioAfterPost(DataSet: TDataSet);
-    procedure dsTelaAfterCancel(DataSet: TDataSet);
-    procedure dsTelaAfterDelete(DataSet: TDataSet);
-    procedure dsTelaAfterPost(DataSet: TDataSet);
-    procedure qTelaBeforeOpen(DataSet: TDataSet);
+    procedure DataModuleCreate(Sender: TObject);
+
   private
     { Private declarations }
   public
@@ -86,6 +63,11 @@ implementation
 
 {%CLASSGROUP 'System.Classes.TPersistent'}
 {$R *.dfm}
+
+procedure TPersistencia.DataModuleCreate(Sender: TObject);
+begin
+  qUsuario.Open;
+end;
 
 procedure TPersistencia.dsAulaAfterCancel(DataSet: TDataSet);
 begin
@@ -140,46 +122,10 @@ begin
     dsAula.Delete;
 end;
 
-procedure TPersistencia.dsTelaAfterCancel(DataSet: TDataSet);
-begin
-  dsTela.CancelUpdates;
-end;
-
-procedure TPersistencia.dsTelaAfterDelete(DataSet: TDataSet);
-begin
-  dsTela.ApplyUpdates(-1);
-end;
-
-procedure TPersistencia.dsTelaAfterPost(DataSet: TDataSet);
-begin
-  dsTela.ApplyUpdates(-1);
-end;
-
-procedure TPersistencia.dsUsuarioAfterCancel(DataSet: TDataSet);
-begin
-  dsUsuario.CancelUpdates;
-end;
-
-procedure TPersistencia.dsUsuarioAfterDelete(DataSet: TDataSet);
-begin
-  dsUsuario.ApplyUpdates(-1);
-end;
-
-procedure TPersistencia.dsUsuarioAfterPost(DataSet: TDataSet);
-begin
-  dsUsuario.ApplyUpdates(-1);
-end;
-
 procedure TPersistencia.qAulaBeforeOpen(DataSet: TDataSet);
 begin
   qAula.Parameters.ParamByName('idDisciplina').Value :=
     dsDisciplinaID.AsInteger;
-end;
-
-procedure TPersistencia.qTelaBeforeOpen(DataSet: TDataSet);
-begin
-  qTela.Parameters.ParamByName('idUsuario').Value :=
-    Persistencia.dsUsuarioID.AsInteger;
 end;
 
 end.

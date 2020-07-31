@@ -28,9 +28,10 @@ inherited fCrudUsuario: TfCrudUsuario
   end
   inherited PageControl: TPageControl
     Height = 286
-    ExplicitHeight = 146
+    ActivePage = tabInformacoes
+    ExplicitHeight = 286
     inherited tabInformacoes: TTabSheet
-      ExplicitHeight = 118
+      ExplicitHeight = 258
       inherited gbInformacoes: TGroupBox
         Height = 121
         Align = alTop
@@ -77,17 +78,12 @@ inherited fCrudUsuario: TfCrudUsuario
         Height = 137
         Align = alClient
         TabOrder = 1
-        ExplicitLeft = 88
-        ExplicitTop = 136
-        ExplicitWidth = 185
-        ExplicitHeight = 105
         object DBGrid1: TDBGrid
           Left = 2
           Top = 2
           Width = 460
           Height = 133
           Align = alBottom
-          DataSource = Persistencia.dsoTela
           TabOrder = 0
           TitleFont.Charset = DEFAULT_CHARSET
           TitleFont.Color = clWindowText
@@ -98,7 +94,7 @@ inherited fCrudUsuario: TfCrudUsuario
       end
     end
     inherited tabFiltros: TTabSheet
-      ExplicitHeight = 293
+      ExplicitHeight = 258
       inherited gbFiltros: TGroupBox
         Align = alNone
         Enabled = False
@@ -107,14 +103,12 @@ inherited fCrudUsuario: TfCrudUsuario
       inherited DBGrid: TDBGrid
         Top = 0
         Height = 239
+        Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
       end
       inherited StatusBar: TStatusBar
         Top = 239
-        ExplicitTop = 274
+        ExplicitTop = 239
       end
     end
-  end
-  inherited DataSource: TDataSource
-    DataSet = Persistencia.dsUsuario
   end
 end

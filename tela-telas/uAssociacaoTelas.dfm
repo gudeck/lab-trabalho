@@ -11,7 +11,6 @@ object fAssociacaoTelas: TfAssociacaoTelas
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
-  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object DBGrid1: TDBGrid
@@ -20,7 +19,6 @@ object fAssociacaoTelas: TfAssociacaoTelas
     Width = 573
     Height = 277
     Align = alClient
-    DataSource = Persistencia.dsoTelaAll
     TabOrder = 0
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText
@@ -53,6 +51,7 @@ object fAssociacaoTelas: TfAssociacaoTelas
       Height = 13
       Caption = 'Nome'
       FocusControl = edNome
+      Visible = False
     end
     object edNome: TDBEdit
       Left = 16
@@ -60,8 +59,8 @@ object fAssociacaoTelas: TfAssociacaoTelas
       Width = 153
       Height = 21
       DataField = 'NOME'
-      DataSource = Persistencia.dsoTela
       TabOrder = 0
+      Visible = False
     end
     object btBuscar: TButton
       Left = 56
@@ -70,7 +69,15 @@ object fAssociacaoTelas: TfAssociacaoTelas
       Height = 25
       Caption = 'Buscar'
       TabOrder = 1
-      OnClick = btBuscarClick
+      Visible = False
+    end
+    object Button1: TButton
+      Left = 56
+      Top = 168
+      Width = 75
+      Height = 25
+      Caption = 'Selecionar'
+      TabOrder = 2
     end
   end
 end
