@@ -13,8 +13,8 @@ object Persistencia: TPersistencia
       'lation when possible=False'
     LoginPrompt = False
     Provider = 'SQLOLEDB.1'
-    Left = 32
-    Top = 8
+    Left = 192
+    Top = 48
   end
   object qDisciplina: TADOQuery
     Connection = Connection
@@ -22,8 +22,8 @@ object Persistencia: TPersistencia
     Parameters = <>
     SQL.Strings = (
       'SELECT * FROM LAB.DISCIPLINA')
-    Left = 32
-    Top = 104
+    Left = 192
+    Top = 144
     object qDisciplinaID: TLargeintField
       DisplayLabel = 'C'#243'digo'
       FieldName = 'ID'
@@ -71,8 +71,8 @@ object Persistencia: TPersistencia
     BeforeDelete = dsDisciplinaBeforeDelete
     AfterDelete = dsDisciplinaAfterDelete
     AfterScroll = dsDisciplinaAfterScroll
-    Left = 256
-    Top = 104
+    Left = 416
+    Top = 144
     object dsDisciplinaID: TLargeintField
       DisplayLabel = 'C'#243'digo'
       FieldName = 'ID'
@@ -112,8 +112,8 @@ object Persistencia: TPersistencia
   end
   object pDisciplina: TDataSetProvider
     DataSet = qDisciplina
-    Left = 144
-    Top = 104
+    Left = 304
+    Top = 144
   end
   object qDocente: TADOQuery
     Connection = Connection
@@ -121,8 +121,8 @@ object Persistencia: TPersistencia
     Parameters = <>
     SQL.Strings = (
       'SELECT * FROM LAB.DOCENTE')
-    Left = 32
-    Top = 56
+    Left = 192
+    Top = 96
   end
   object qAula: TADOQuery
     Connection = Connection
@@ -139,25 +139,25 @@ object Persistencia: TPersistencia
       end>
     SQL.Strings = (
       'SELECT * FROM LAB.AULA WHERE ID_DISCIPLINA=:idDisciplina')
-    Left = 32
-    Top = 152
+    Left = 192
+    Top = 192
   end
   object pDocente: TDataSetProvider
     DataSet = qDocente
-    Left = 144
-    Top = 56
+    Left = 304
+    Top = 96
   end
   object pAula: TDataSetProvider
     DataSet = qAula
-    Left = 144
-    Top = 152
+    Left = 304
+    Top = 192
   end
   object dsDocente: TClientDataSet
     Aggregates = <>
     Params = <>
     ProviderName = 'pDocente'
-    Left = 256
-    Top = 56
+    Left = 416
+    Top = 96
     object dsDocenteID: TLargeintField
       DisplayLabel = 'C'#243'digo'
       FieldName = 'ID'
@@ -178,8 +178,8 @@ object Persistencia: TPersistencia
     AfterPost = dsAulaAfterPost
     AfterCancel = dsAulaAfterCancel
     AfterDelete = dsAulaAfterDelete
-    Left = 256
-    Top = 152
+    Left = 416
+    Top = 192
     object dsAulaID: TLargeintField
       DisplayLabel = 'C'#243'digo'
       FieldName = 'ID'
@@ -198,21 +198,65 @@ object Persistencia: TPersistencia
   end
   object dsoDocente: TDataSource
     DataSet = dsDocente
-    Left = 360
-    Top = 56
+    Left = 520
+    Top = 96
   end
   object dsoAula: TDataSource
     DataSet = dsAula
-    Left = 360
-    Top = 152
+    Left = 520
+    Top = 192
   end
   object qUsuario: TADOQuery
     Connection = Connection
+    CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (
-      'SELECT *'#11
-      'FROM LAB.USUARIO;'#11)
-    Left = 32
-    Top = 224
+      'SELECT *'
+      'FROM LAB.USUARIO;')
+    Left = 192
+    Top = 264
+  end
+  object qTelasUsuarioPossui: TADOQuery
+    Connection = Connection
+    Parameters = <
+      item
+        Name = 'idUsuario'
+        Attributes = [paSigned]
+        DataType = ftLargeint
+        Precision = 19
+        Size = 8
+        Value = Null
+      end>
+    SQL.Strings = (
+      'SELECT LAB.TELA.*'
+      'FROM LAB.USUARIO_TELA'
+      'JOIN LAB.TELA'
+      'ON (USUARIO_TELA.ID_TELA = TELA.ID)'
+      'WHERE LAB.USUARIO_TELA.ID_USUARIO=:idUsuario;')
+    Left = 192
+    Top = 312
+  end
+  object pUsuario: TDataSetProvider
+    DataSet = qUsuario
+    Left = 304
+    Top = 264
+  end
+  object dsUsuario: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    ProviderName = 'pUsuario'
+    Left = 416
+    Top = 264
+    object dsUsuarioID: TLargeintField
+      FieldName = 'ID'
+      ReadOnly = True
+    end
+    object dsUsuarioNOME: TStringField
+      FieldName = 'NOME'
+      Size = 14
+    end
+    object dsUsuarioSENHA: TStringField
+      FieldName = 'SENHA'
+    end
   end
 end

@@ -139,10 +139,6 @@
             <Form>fBase</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="tela-crud\uCrud.pas">
-            <Form>fCrudDisciplina</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
         <DCCReference Include="tela-menu\uMenu.pas">
             <Form>fMenu</Form>
             <FormType>dfm</FormType>
@@ -153,6 +149,10 @@
         </DCCReference>
         <DCCReference Include="tela-telas\uAssociacaoTelas.pas">
             <Form>fAssociacaoTelas</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="tela-crud-disciplina\uCrudDisciplina.pas">
+            <Form>fCrudDisciplina</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Release">

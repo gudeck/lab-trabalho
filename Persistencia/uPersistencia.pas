@@ -38,6 +38,12 @@ type
     dsDocenteID: TLargeintField;
     dsDocenteNOME: TStringField;
     qUsuario: TADOQuery;
+    qTelasUsuarioPossui: TADOQuery;
+    pUsuario: TDataSetProvider;
+    dsUsuario: TClientDataSet;
+    dsUsuarioID: TLargeintField;
+    dsUsuarioNOME: TStringField;
+    dsUsuarioSENHA: TStringField;
     procedure dsDisciplinaAfterPost(DataSet: TDataSet);
     procedure dsDisciplinaAfterDelete(DataSet: TDataSet);
     procedure dsDisciplinaAfterCancel(DataSet: TDataSet);
@@ -67,6 +73,7 @@ implementation
 procedure TPersistencia.DataModuleCreate(Sender: TObject);
 begin
   qUsuario.Open;
+  dsUsuario.Open;
 end;
 
 procedure TPersistencia.dsAulaAfterCancel(DataSet: TDataSet);
