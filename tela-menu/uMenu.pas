@@ -5,8 +5,8 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
   System.Classes, Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs,
-  Vcl.ExtCtrls, Vcl.Imaging.jpeg, Vcl.StdCtrls, uCrudDisciplina, uCrudUsuario,
-  uAssociacaoTelas, Vcl.ComCtrls, uPersistencia;
+  Vcl.ExtCtrls, Vcl.Imaging.jpeg, Vcl.StdCtrls, Vcl.ComCtrls, uPersistencia,
+  uControleTelas;
 
 type
   TfMenu = class(TForm)
@@ -16,6 +16,7 @@ type
     procedure btnDisciplinasClick(Sender: TObject);
     procedure btnUsuariosClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
   private
     { Private declarations }
   public
@@ -31,20 +32,32 @@ implementation
 
 procedure TfMenu.btnDisciplinasClick(Sender: TObject);
 begin
-  fCrudDisciplina.Show;
+  ControleTelas.chamaTela(btnDisciplinas.Hint);
 end;
 
 procedure TfMenu.btnUsuariosClick(Sender: TObject);
 begin
-  fCrudUsuario.Show;
+  ControleTelas.chamaTela(btnUsuarios.Hint);
 end;
 
 procedure TfMenu.FormCreate(Sender: TObject);
 begin
-  btnDisciplinas.Visible := Persistencia.qTelasUsuarioPossui.Locate('NOME',
+  Persistencia.qTelasLoginPossui.Parameters.ParamByName('idUsuario').Value :=
+    Persistencia.qLoginID.AsInteger;
+  Persistencia.qTelasLoginPossui.Open;
+
+  btnDisciplinas.Visible := Persistencia.qTelasLoginPossui.Locate('NOME',
     btnDisciplinas.Hint, []);
-  btnUsuarios.Visible := Persistencia.qTelasUsuarioPossui.Locate('NOME',
+  btnUsuarios.Visible := Persistencia.qTelasLoginPossui.Locate('NOME',
     btnUsuarios.Hint, []);
+end;
+
+procedure TfMenu.FormDestroy(Sender: TObject);
+begin
+  Persistencia.qTelasLoginPossui.Close;
+
+  Persistencia.qLogin.Close;
+  Persistencia.qLogin.Open;
 end;
 
 Initialization

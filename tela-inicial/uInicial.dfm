@@ -11,6 +11,8 @@ object fTelaInicial: TfTelaInicial
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
   PixelsPerInch = 96
   TextHeight = 13
   object Image1: TImage
@@ -3888,6 +3890,7 @@ object fTelaInicial: TfTelaInicial
       AA0D08DD1A0DD7DE5606AADA9B5447562F9C26845CA2CB0902C207B86732111A
       0B03E624B141EE74F54D1882CC3CF098E787CFD491C521A07EEB8CBBDF9EF3FF
       D9}
+    Stretch = True
     ExplicitWidth = 406
     ExplicitHeight = 400
   end

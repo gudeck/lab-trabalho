@@ -7,16 +7,16 @@ uses
   uBase in '..\tela-base\uBase.pas' {fBase},
   uMenu in 'tela-menu\uMenu.pas' {fMenu},
   uCrudUsuario in 'tela-crud-usuario\uCrudUsuario.pas' {fCrudUsuario},
-  uAssociacaoTelas in 'tela-telas\uAssociacaoTelas.pas' {fAssociacaoTelas},
-  uCrudDisciplina in 'tela-crud-disciplina\uCrudDisciplina.pas' {fCrudDisciplina};
+  uCrudDisciplina in 'tela-crud-disciplina\uCrudDisciplina.pas' {fCrudDisciplina},
+  uControleTelas in 'util\uControleTelas.pas',
+  uAssociacaoTelas in 'tela-associacao-telas\uAssociacaoTelas.pas' {fAssociacaoTelas};
 
 {$R *.res}
 
 begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
-  Application.CreateForm(TfTelaInicial, fTelaInicial);
   Application.CreateForm(TPersistencia, Persistencia);
-  Application.CreateForm(TfCrudDisciplina, fCrudDisciplina);
+  Application.CreateForm(TfTelaInicial, fTelaInicial);
   Application.Run;
 end.

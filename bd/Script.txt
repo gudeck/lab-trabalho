@@ -1,0 +1,83 @@
+create table LAB.AULA
+(
+    ID            bigint identity
+        constraint AULA_pk
+            primary key nonclustered,
+    NOME_TURMA    varchar(80),
+    ID_DISCIPLINA bigint
+        constraint AULA_DISCIPLINA_ID_fk
+            references LAB.DISCIPLINA
+)
+go
+
+create table LAB.DISCIPLINA
+(
+    ID           bigint identity
+        constraint DISCIPLINA_pk
+            primary key nonclustered,
+    NOME         varchar(80),
+    DESCRICAO    text,
+    MEDIA        numeric(3),
+    OPCIONAL     bit,
+    DATA_CRIACAO datetime,
+    ID_DOCENTE   bigint
+        constraint DISCIPLINA_DOCENTE_ID_fk
+            references LAB.DOCENTE
+)
+go
+
+create table LAB.DOCENTE
+(
+    ID   bigint identity
+        constraint DOCENTE_pk
+            primary key nonclustered,
+    NOME varchar(80)
+)
+go
+
+create table LAB.TELA
+(
+    ID   bigint identity
+        constraint TELA_pk
+            primary key nonclustered,
+    NOME varchar(80)
+)
+go
+
+INSERT INTO SEMESTRE_SETE.LAB.TELA (ID, NOME) VALUES (1, N'fAssociacaoTelas');
+INSERT INTO SEMESTRE_SETE.LAB.TELA (ID, NOME) VALUES (2, N'fCrudUsuario');
+INSERT INTO SEMESTRE_SETE.LAB.TELA (ID, NOME) VALUES (3, N'fCrudDisciplina');
+
+create table LAB.USUARIO
+(
+    ID    bigint identity
+        constraint USUARIO_pk
+            primary key nonclustered,
+    NOME  varchar(14),
+    SENHA varchar(20)
+)
+go
+
+create unique index USUARIO_NOME_uindex
+    on LAB.USUARIO (NOME)
+go
+
+INSERT INTO SEMESTRE_SETE.LAB.USUARIO (ID, NOME, SENHA) VALUES (1, N'admin', N'admin');
+
+create table LAB.USUARIO_TELA
+(
+    ID_USUARIO bigint not null
+        constraint USUARIO_TELA_USUARIO_ID_fk
+            references LAB.USUARIO,
+    ID_TELA    bigint not null
+        constraint USUARIO_TELA_TELA_ID_fk
+            references LAB.TELA,
+    constraint USUARIO_TELA_pk
+        primary key nonclustered (ID_USUARIO, ID_TELA)
+)
+go
+
+
+INSERT INTO SEMESTRE_SETE.LAB.USUARIO_TELA (ID_USUARIO, ID_TELA) VALUES (1, 1);
+INSERT INTO SEMESTRE_SETE.LAB.USUARIO_TELA (ID_USUARIO, ID_TELA) VALUES (1, 2);
+INSERT INTO SEMESTRE_SETE.LAB.USUARIO_TELA (ID_USUARIO, ID_TELA) VALUES (1, 3);

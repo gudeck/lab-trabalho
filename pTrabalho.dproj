@@ -147,12 +147,13 @@
             <Form>fCrudUsuario</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="tela-telas\uAssociacaoTelas.pas">
-            <Form>fAssociacaoTelas</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
         <DCCReference Include="tela-crud-disciplina\uCrudDisciplina.pas">
             <Form>fCrudDisciplina</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="util\uControleTelas.pas"/>
+        <DCCReference Include="tela-associacao-telas\uAssociacaoTelas.pas">
+            <Form>fAssociacaoTelas</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Release">

@@ -2,6 +2,7 @@ inherited fCrudDisciplina: TfCrudDisciplina
   Caption = 'fCrudDisciplina'
   ClientHeight = 447
   ClientWidth = 394
+  OnDestroy = FormDestroy
   ExplicitWidth = 410
   ExplicitHeight = 486
   PixelsPerInch = 96
@@ -18,7 +19,7 @@ inherited fCrudDisciplina: TfCrudDisciplina
     Width = 394
     ExplicitWidth = 394
     object Label1: TLabel
-      Left = 16
+      Left = 15
       Top = 6
       Width = 33
       Height = 13
@@ -26,41 +27,38 @@ inherited fCrudDisciplina: TfCrudDisciplina
       FocusControl = edId
     end
     object Label2: TLabel
-      Left = 96
-      Top = 6
+      Left = 86
+      Top = 7
       Width = 27
       Height = 13
       Caption = 'Nome'
       FocusControl = edNome
     end
     object edId: TDBEdit
-      Left = 16
+      Left = 15
       Top = 23
       Width = 65
       Height = 21
-      TabStop = False
       Color = 11184381
       DataField = 'ID'
       DataSource = DataSource
       Enabled = False
       ReadOnly = True
-      TabOrder = 1
+      TabOrder = 0
     end
     object edNome: TDBEdit
-      Left = 96
+      Left = 86
       Top = 23
-      Width = 282
+      Width = 295
       Height = 21
-      Anchors = [akLeft, akTop, akRight]
       DataField = 'NOME'
       DataSource = DataSource
-      TabOrder = 0
+      TabOrder = 1
     end
   end
   inherited PageControl: TPageControl
     Width = 394
     Height = 375
-    ActivePage = tabInformacoes
     ExplicitWidth = 394
     ExplicitHeight = 375
     inherited tabInformacoes: TTabSheet
@@ -80,17 +78,9 @@ inherited fCrudDisciplina: TfCrudDisciplina
           Caption = 'Descri'#231#227'o'
           FocusControl = edDescricao
         end
-        object Label4: TLabel
-          Left = 12
-          Top = 12
-          Width = 28
-          Height = 13
-          Caption = 'M'#233'dia'
-          FocusControl = edMedia
-        end
         object Label5: TLabel
           Left = 71
-          Top = 12
+          Top = 9
           Width = 48
           Height = 13
           Caption = 'Criado em'
@@ -98,10 +88,18 @@ inherited fCrudDisciplina: TfCrudDisciplina
         end
         object Label6: TLabel
           Left = 267
-          Top = 12
+          Top = 9
           Width = 40
           Height = 13
           Caption = 'Docente'
+        end
+        object Label4: TLabel
+          Left = 12
+          Top = 9
+          Width = 50
+          Height = 13
+          Caption = 'M'#233'dia (%)'
+          FocusControl = edMedia
         end
         object edDescricao: TDBMemo
           Left = 12
@@ -111,16 +109,7 @@ inherited fCrudDisciplina: TfCrudDisciplina
           Anchors = [akLeft, akTop, akRight, akBottom]
           DataField = 'DESCRICAO'
           DataSource = DataSource
-          TabOrder = 3
-        end
-        object edMedia: TDBEdit
-          Left = 12
-          Top = 25
-          Width = 45
-          Height = 21
-          DataField = 'MEDIA'
-          DataSource = DataSource
-          TabOrder = 0
+          TabOrder = 2
         end
         object cbOpcional: TDBCheckBox
           Left = 190
@@ -130,7 +119,7 @@ inherited fCrudDisciplina: TfCrudDisciplina
           Caption = 'Opcional'
           DataField = 'OPCIONAL'
           DataSource = DataSource
-          TabOrder = 2
+          TabOrder = 1
         end
         object edDataCriacao: TDBEdit
           Left = 71
@@ -140,7 +129,7 @@ inherited fCrudDisciplina: TfCrudDisciplina
           DataField = 'DATA_CRIACAO'
           DataSource = DataSource
           MaxLength = 8
-          TabOrder = 1
+          TabOrder = 0
         end
         object cmbDocente: TDBLookupComboBox
           Left = 267
@@ -149,9 +138,18 @@ inherited fCrudDisciplina: TfCrudDisciplina
           Height = 21
           Anchors = [akLeft, akTop, akRight]
           DataField = 'ID'
-          DataSource = DataSource
+          DataSource = Persistencia.dsoDocente
           ListField = 'NOME'
           ListSource = Persistencia.dsoDocente
+          TabOrder = 3
+        end
+        object edMedia: TDBEdit
+          Left = 12
+          Top = 25
+          Width = 53
+          Height = 21
+          DataField = 'MEDIA'
+          DataSource = DataSource
           TabOrder = 4
         end
       end
@@ -291,18 +289,14 @@ inherited fCrudDisciplina: TfCrudDisciplina
             FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
             00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
         end
-        object Label7: TLabel
-          Left = 14
-          Top = 16
-          Width = 30
-          Height = 13
-          Caption = 'Turma'
-        end
-        object edNomeTurma: TEdit
-          Left = 13
+        object edAula: TLabeledEdit
+          Left = 11
           Top = 31
           Width = 121
           Height = 21
+          EditLabel.Width = 30
+          EditLabel.Height = 13
+          EditLabel.Caption = 'Turma'
           TabOrder = 0
         end
       end
@@ -313,6 +307,7 @@ inherited fCrudDisciplina: TfCrudDisciplina
         Height = 114
         Align = alClient
         DataSource = Persistencia.dsoAula
+        Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
         TabOrder = 2
         TitleFont.Charset = DEFAULT_CHARSET
         TitleFont.Color = clWindowText
@@ -322,12 +317,8 @@ inherited fCrudDisciplina: TfCrudDisciplina
         Columns = <
           item
             Expanded = False
-            FieldName = 'ID'
-            Visible = True
-          end
-          item
-            Expanded = False
             FieldName = 'NOME_TURMA'
+            Width = 285
             Visible = True
           end>
       end
@@ -352,6 +343,6 @@ inherited fCrudDisciplina: TfCrudDisciplina
     end
   end
   inherited DataSource: TDataSource
-    DataSet = Persistencia.dsDisciplina
+    DataSet = Persistencia.qDisciplina
   end
 end

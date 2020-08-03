@@ -4,21 +4,15 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
-  System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, uBase, Data.DB, System.ImageList,
-  Vcl.ImgList, Vcl.ComCtrls, Vcl.Grids, Vcl.DBGrids, Vcl.StdCtrls, Vcl.ToolWin,
-  Vcl.ExtCtrls, uPersistencia, Vcl.DBCtrls, Vcl.Mask, Vcl.Buttons;
+  System.Classes, Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs, uBase,
+  Data.DB, System.ImageList, Vcl.ImgList, Vcl.ComCtrls, Vcl.Grids, Vcl.DBGrids,
+  Vcl.StdCtrls, Vcl.ToolWin, Vcl.ExtCtrls, Vcl.DBCtrls, Vcl.Mask, Vcl.Buttons,
+  uPersistencia;
 
 type
   TfCrudDisciplina = class(TfBase)
-    Label1: TLabel;
-    edId: TDBEdit;
-    Label2: TLabel;
-    edNome: TDBEdit;
     Label3: TLabel;
     edDescricao: TDBMemo;
-    Label4: TLabel;
-    edMedia: TDBEdit;
     cbOpcional: TDBCheckBox;
     Label5: TLabel;
     edDataCriacao: TDBEdit;
@@ -28,10 +22,16 @@ type
     DBGrid1: TDBGrid;
     sbtNovo: TSpeedButton;
     sbtExcluir: TSpeedButton;
-    edNomeTurma: TEdit;
-    Label7: TLabel;
-    procedure FormShow(Sender: TObject);
+    Label1: TLabel;
+    edId: TDBEdit;
+    Label2: TLabel;
+    edNome: TDBEdit;
+    Label4: TLabel;
+    edMedia: TDBEdit;
+    edAula: TLabeledEdit;
     procedure sbtNovoClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
   private
     { Private declarations }
   public
@@ -45,41 +45,46 @@ implementation
 
 {$R *.dfm}
 
-procedure TfCrudDisciplina.FormShow(Sender: TObject);
+procedure TfCrudDisciplina.FormCreate(Sender: TObject);
 begin
   inherited;
-  Persistencia.dsAula.Open;
-  Persistencia.dsDocente.Open;
+  Persistencia.qAula.Open;
+  Persistencia.qDocente.Open;
+end;
+
+procedure TfCrudDisciplina.FormDestroy(Sender: TObject);
+begin
+  inherited;
+  Persistencia.qAula.Close;
+  Persistencia.qDocente.Close;
 end;
 
 procedure TfCrudDisciplina.sbtNovoClick(Sender: TObject);
 begin
   inherited;
-  if (Persistencia.dsDisciplinaID.AsInteger > 0) and
-    (trim(edNomeTurma.Text) <> '') then
+  if (Persistencia.qDisciplinaID.AsInteger > 0) and (Trim(edAula.Text) <> '')
+  then
   begin
-    Persistencia.dsAula.Append;
-    Persistencia.dsAulaID_DISCIPLINA.AsInteger :=
-      Persistencia.dsDisciplinaID.AsInteger;
-    Persistencia.dsAulaNOME_TURMA.AsString := edNomeTurma.Text;
-    Persistencia.dsAula.Post;
+    Persistencia.qAula.Append;
+    Persistencia.qAulaID_DISCIPLINA.AsInteger :=
+      Persistencia.qDisciplinaID.AsInteger;
+    Persistencia.qAulaNOME_TURMA.AsString := edAula.Text;
+    Persistencia.qAula.Post;
 
-    Persistencia.dsAula.Close;
     Persistencia.qAula.Close;
     Persistencia.qAula.Open;
-    Persistencia.dsAula.Open;
 
-    edNomeTurma.Clear;
-    edNomeTurma.SetFocus;
+    edAula.Clear;
+    edAula.SetFocus;
   end;
 end;
 
 Initialization
 
-RegisterClass(TfBase);
+RegisterClass(TfCrudDisciplina);
 
 Finalization
 
-UnRegisterClass(TfBase);
+UnRegisterClass(TfCrudDisciplina);
 
 end.

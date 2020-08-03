@@ -10,51 +10,48 @@ type
   TPersistencia = class(TDataModule)
     Connection: TADOConnection;
     qDisciplina: TADOQuery;
-    dsDisciplina: TClientDataSet;
-    pDisciplina: TDataSetProvider;
     qDisciplinaID: TLargeintField;
     qDisciplinaNOME: TStringField;
     qDisciplinaDESCRICAO: TMemoField;
     qDisciplinaMEDIA: TIntegerField;
     qDisciplinaOPCIONAL: TBooleanField;
     qDisciplinaDATA_CRIACAO: TDateTimeField;
-    dsDisciplinaID: TLargeintField;
-    dsDisciplinaNOME: TStringField;
-    dsDisciplinaDESCRICAO: TMemoField;
-    dsDisciplinaMEDIA: TIntegerField;
-    dsDisciplinaOPCIONAL: TBooleanField;
-    dsDisciplinaDATA_CRIACAO: TDateTimeField;
     qDocente: TADOQuery;
     qAula: TADOQuery;
-    pDocente: TDataSetProvider;
-    pAula: TDataSetProvider;
-    dsDocente: TClientDataSet;
-    dsAula: TClientDataSet;
-    dsoDocente: TDataSource;
-    dsoAula: TDataSource;
-    dsAulaID: TLargeintField;
-    dsAulaNOME_TURMA: TStringField;
-    dsAulaID_DISCIPLINA: TLargeintField;
-    dsDocenteID: TLargeintField;
-    dsDocenteNOME: TStringField;
     qUsuario: TADOQuery;
+    qTelasUsuarioNaoPossui: TADOQuery;
+    qLogin: TADOQuery;
+    dsoTelasUsuarioNaoPossui: TDataSource;
+    qUsuarioTelas: TADOQuery;
+    dsoTelasUsuarioPossui: TDataSource;
+    qTelasLoginPossui: TADOQuery;
+    qLoginID: TLargeintField;
+    qLoginNOME: TStringField;
+    qLoginSENHA: TStringField;
+    qTelasLoginPossuiID: TLargeintField;
+    qTelasLoginPossuiNOME: TStringField;
+    qUsuarioID: TLargeintField;
+    qUsuarioNOME: TStringField;
+    qUsuarioSENHA: TStringField;
+    qAulaID: TLargeintField;
+    qAulaID_DISCIPLINA: TLargeintField;
+    dsoDocente: TDataSource;
+    qDocenteID: TLargeintField;
+    qDocenteNOME: TStringField;
+    qDisciplinaID_DOCENTE: TLargeintField;
+    qTelasUsuarioNaoPossuiID: TLargeintField;
+    qTelasUsuarioNaoPossuiNOME: TStringField;
+    qUsuarioTelasID_USUARIO: TLargeintField;
+    qUsuarioTelasID_TELA: TLargeintField;
+    qAulaNOME_TURMA: TStringField;
+    dsoAula: TDataSource;
     qTelasUsuarioPossui: TADOQuery;
-    pUsuario: TDataSetProvider;
-    dsUsuario: TClientDataSet;
-    dsUsuarioID: TLargeintField;
-    dsUsuarioNOME: TStringField;
-    dsUsuarioSENHA: TStringField;
-    procedure dsDisciplinaAfterPost(DataSet: TDataSet);
-    procedure dsDisciplinaAfterDelete(DataSet: TDataSet);
-    procedure dsDisciplinaAfterCancel(DataSet: TDataSet);
-    procedure dsDisciplinaAfterInsert(DataSet: TDataSet);
-    procedure dsAulaAfterPost(DataSet: TDataSet);
-    procedure dsAulaAfterDelete(DataSet: TDataSet);
-    procedure dsAulaAfterCancel(DataSet: TDataSet);
-    procedure qAulaBeforeOpen(DataSet: TDataSet);
-    procedure dsDisciplinaAfterScroll(DataSet: TDataSet);
-    procedure dsDisciplinaBeforeDelete(DataSet: TDataSet);
-    procedure DataModuleCreate(Sender: TObject);
+    qTelasUsuarioPossuiID: TLargeintField;
+    qTelasUsuarioPossuiNOME: TStringField;
+    procedure qDisciplinaAfterInsert(DataSet: TDataSet);
+    procedure qUsuarioAfterScroll(DataSet: TDataSet);
+    procedure qDisciplinaBeforeDelete(DataSet: TDataSet);
+    procedure qDisciplinaAfterScroll(DataSet: TDataSet);
 
   private
     { Private declarations }
@@ -70,69 +67,33 @@ implementation
 {%CLASSGROUP 'System.Classes.TPersistent'}
 {$R *.dfm}
 
-procedure TPersistencia.DataModuleCreate(Sender: TObject);
+procedure TPersistencia.qDisciplinaAfterInsert(DataSet: TDataSet);
 begin
-  qUsuario.Open;
-  dsUsuario.Open;
+  qDisciplinaDATA_CRIACAO.AsDateTime := Now;
+  qDisciplinaOPCIONAL.AsBoolean := False;
+  qDisciplinaMEDIA.AsInteger := 60;
 end;
 
-procedure TPersistencia.dsAulaAfterCancel(DataSet: TDataSet);
+procedure TPersistencia.qDisciplinaAfterScroll(DataSet: TDataSet);
 begin
-  dsAula.CancelUpdates;
-end;
-
-procedure TPersistencia.dsAulaAfterDelete(DataSet: TDataSet);
-begin
-  dsAula.ApplyUpdates(-1);
-end;
-
-procedure TPersistencia.dsAulaAfterPost(DataSet: TDataSet);
-begin
-  dsAula.ApplyUpdates(-1);
-end;
-
-procedure TPersistencia.dsDisciplinaAfterCancel(DataSet: TDataSet);
-begin
-  dsDisciplina.CancelUpdates;
-end;
-
-procedure TPersistencia.dsDisciplinaAfterDelete(DataSet: TDataSet);
-begin
-  dsDisciplina.ApplyUpdates(-1);
-end;
-
-procedure TPersistencia.dsDisciplinaAfterInsert(DataSet: TDataSet);
-begin
-  dsDisciplinaDATA_CRIACAO.AsDateTime := Now;
-  dsDisciplinaOPCIONAL.AsBoolean := False;
-  dsDisciplinaMEDIA.AsInteger := 60;
-end;
-
-procedure TPersistencia.dsDisciplinaAfterPost(DataSet: TDataSet);
-begin
-  dsDisciplina.ApplyUpdates(-1);
-end;
-
-procedure TPersistencia.dsDisciplinaAfterScroll(DataSet: TDataSet);
-begin
-  dsAula.Close;
   qAula.Close;
-
+  qAula.Parameters.ParamByName('idDisciplina').Value := qDisciplinaID.AsInteger;
   qAula.Open;
-  dsAula.Open;
 end;
 
-procedure TPersistencia.dsDisciplinaBeforeDelete(DataSet: TDataSet);
+procedure TPersistencia.qDisciplinaBeforeDelete(DataSet: TDataSet);
 begin
-  dsAula.First;
-  while not dsAula.Eof do
-    dsAula.Delete;
+  qAula.First;
+  while not qAula.Eof do
+    qAula.Delete;
 end;
 
-procedure TPersistencia.qAulaBeforeOpen(DataSet: TDataSet);
+procedure TPersistencia.qUsuarioAfterScroll(DataSet: TDataSet);
 begin
-  qAula.Parameters.ParamByName('idDisciplina').Value :=
-    dsDisciplinaID.AsInteger;
+  qTelasUsuarioPossui.Close;
+  qTelasUsuarioPossui.Parameters.ParamByName('idUsuario').Value :=
+    qUsuarioID.Value;
+  qTelasUsuarioPossui.Open;
 end;
 
 end.

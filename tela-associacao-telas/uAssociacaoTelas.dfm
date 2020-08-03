@@ -11,6 +11,8 @@ object fAssociacaoTelas: TfAssociacaoTelas
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
   PixelsPerInch = 96
   TextHeight = 13
   object DBGrid1: TDBGrid
@@ -19,6 +21,8 @@ object fAssociacaoTelas: TfAssociacaoTelas
     Width = 573
     Height = 277
     Align = alClient
+    DataSource = Persistencia.dsoTelasUsuarioNaoPossui
+    Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
     TabOrder = 0
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText
@@ -34,6 +38,7 @@ object fAssociacaoTelas: TfAssociacaoTelas
       item
         Expanded = False
         FieldName = 'NOME'
+        Width = 456
         Visible = True
       end>
   end
@@ -44,40 +49,14 @@ object fAssociacaoTelas: TfAssociacaoTelas
     Height = 277
     Align = alLeft
     TabOrder = 1
-    object Label1: TLabel
+    object btnSelecionar: TButton
       Left = 16
-      Top = 64
-      Width = 27
-      Height = 13
-      Caption = 'Nome'
-      FocusControl = edNome
-      Visible = False
-    end
-    object edNome: TDBEdit
-      Left = 16
-      Top = 83
-      Width = 153
-      Height = 21
-      DataField = 'NOME'
-      TabOrder = 0
-      Visible = False
-    end
-    object btBuscar: TButton
-      Left = 56
-      Top = 110
-      Width = 75
-      Height = 25
-      Caption = 'Buscar'
-      TabOrder = 1
-      Visible = False
-    end
-    object Button1: TButton
-      Left = 56
-      Top = 168
+      Top = 16
       Width = 75
       Height = 25
       Caption = 'Selecionar'
-      TabOrder = 2
+      TabOrder = 0
+      OnClick = btnSelecionarClick
     end
   end
 end

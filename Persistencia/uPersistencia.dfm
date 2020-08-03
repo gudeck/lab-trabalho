@@ -1,7 +1,6 @@
 object Persistencia: TPersistencia
   OldCreateOrder = False
-  OnCreate = DataModuleCreate
-  Height = 528
+  Height = 622
   Width = 837
   object Connection: TADOConnection
     Connected = True
@@ -13,16 +12,19 @@ object Persistencia: TPersistencia
       'lation when possible=False'
     LoginPrompt = False
     Provider = 'SQLOLEDB.1'
-    Left = 192
+    Left = 128
     Top = 48
   end
   object qDisciplina: TADOQuery
     Connection = Connection
     CursorType = ctStatic
+    AfterInsert = qDisciplinaAfterInsert
+    BeforeDelete = qDisciplinaBeforeDelete
+    AfterScroll = qDisciplinaAfterScroll
     Parameters = <>
     SQL.Strings = (
       'SELECT * FROM LAB.DISCIPLINA')
-    Left = 192
+    Left = 128
     Top = 144
     object qDisciplinaID: TLargeintField
       DisplayLabel = 'C'#243'digo'
@@ -60,60 +62,10 @@ object Persistencia: TPersistencia
       ProviderFlags = [pfInUpdate]
       EditMask = '!99/99/00;1;_'
     end
-  end
-  object dsDisciplina: TClientDataSet
-    Aggregates = <>
-    Params = <>
-    ProviderName = 'pDisciplina'
-    AfterInsert = dsDisciplinaAfterInsert
-    AfterPost = dsDisciplinaAfterPost
-    AfterCancel = dsDisciplinaAfterCancel
-    BeforeDelete = dsDisciplinaBeforeDelete
-    AfterDelete = dsDisciplinaAfterDelete
-    AfterScroll = dsDisciplinaAfterScroll
-    Left = 416
-    Top = 144
-    object dsDisciplinaID: TLargeintField
-      DisplayLabel = 'C'#243'digo'
-      FieldName = 'ID'
-      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
-      ReadOnly = True
-    end
-    object dsDisciplinaNOME: TStringField
-      DisplayLabel = 'Nome'
-      FieldName = 'NOME'
-      ProviderFlags = [pfInUpdate]
-      Size = 80
-    end
-    object dsDisciplinaDESCRICAO: TMemoField
-      DisplayLabel = 'Descri'#231#227'o'
-      FieldName = 'DESCRICAO'
-      ProviderFlags = [pfInUpdate]
-      BlobType = ftMemo
-    end
-    object dsDisciplinaMEDIA: TIntegerField
-      DisplayLabel = 'M'#233'dia'
-      FieldName = 'MEDIA'
-      ProviderFlags = [pfInUpdate]
-      MaxValue = 100
-      MinValue = 50
-    end
-    object dsDisciplinaOPCIONAL: TBooleanField
-      DisplayLabel = 'Opcional'
-      FieldName = 'OPCIONAL'
+    object qDisciplinaID_DOCENTE: TLargeintField
+      FieldName = 'ID_DOCENTE'
       ProviderFlags = [pfInUpdate]
     end
-    object dsDisciplinaDATA_CRIACAO: TDateTimeField
-      DisplayLabel = 'Criado em'
-      FieldName = 'DATA_CRIACAO'
-      ProviderFlags = [pfInUpdate]
-      EditMask = '!99/99/00;1;_'
-    end
-  end
-  object pDisciplina: TDataSetProvider
-    DataSet = qDisciplina
-    Left = 304
-    Top = 144
   end
   object qDocente: TADOQuery
     Connection = Connection
@@ -121,13 +73,20 @@ object Persistencia: TPersistencia
     Parameters = <>
     SQL.Strings = (
       'SELECT * FROM LAB.DOCENTE')
-    Left = 192
+    Left = 128
     Top = 96
+    object qDocenteID: TLargeintField
+      FieldName = 'ID'
+      ReadOnly = True
+    end
+    object qDocenteNOME: TStringField
+      FieldName = 'NOME'
+      Size = 80
+    end
   end
   object qAula: TADOQuery
     Connection = Connection
     CursorType = ctStatic
-    BeforeOpen = qAulaBeforeOpen
     Parameters = <
       item
         Name = 'idDisciplina'
@@ -139,85 +98,45 @@ object Persistencia: TPersistencia
       end>
     SQL.Strings = (
       'SELECT * FROM LAB.AULA WHERE ID_DISCIPLINA=:idDisciplina')
-    Left = 192
+    Left = 128
     Top = 192
-  end
-  object pDocente: TDataSetProvider
-    DataSet = qDocente
-    Left = 304
-    Top = 96
-  end
-  object pAula: TDataSetProvider
-    DataSet = qAula
-    Left = 304
-    Top = 192
-  end
-  object dsDocente: TClientDataSet
-    Aggregates = <>
-    Params = <>
-    ProviderName = 'pDocente'
-    Left = 416
-    Top = 96
-    object dsDocenteID: TLargeintField
-      DisplayLabel = 'C'#243'digo'
+    object qAulaID: TLargeintField
       FieldName = 'ID'
-      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       ReadOnly = True
     end
-    object dsDocenteNOME: TStringField
-      DisplayLabel = 'Nome'
-      FieldName = 'NOME'
-      ProviderFlags = [pfInUpdate]
-      Size = 80
-    end
-  end
-  object dsAula: TClientDataSet
-    Aggregates = <>
-    Params = <>
-    ProviderName = 'pAula'
-    AfterPost = dsAulaAfterPost
-    AfterCancel = dsAulaAfterCancel
-    AfterDelete = dsAulaAfterDelete
-    Left = 416
-    Top = 192
-    object dsAulaID: TLargeintField
-      DisplayLabel = 'C'#243'digo'
-      FieldName = 'ID'
-      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
-    end
-    object dsAulaNOME_TURMA: TStringField
-      DisplayLabel = 'Turma'
-      FieldName = 'NOME_TURMA'
-      ProviderFlags = [pfInUpdate]
-      Size = 80
-    end
-    object dsAulaID_DISCIPLINA: TLargeintField
-      DisplayLabel = 'Disciplina'
+    object qAulaID_DISCIPLINA: TLargeintField
       FieldName = 'ID_DISCIPLINA'
     end
-  end
-  object dsoDocente: TDataSource
-    DataSet = dsDocente
-    Left = 520
-    Top = 96
-  end
-  object dsoAula: TDataSource
-    DataSet = dsAula
-    Left = 520
-    Top = 192
+    object qAulaNOME_TURMA: TStringField
+      DisplayLabel = 'Turma'
+      FieldName = 'NOME_TURMA'
+      Size = 80
+    end
   end
   object qUsuario: TADOQuery
     Connection = Connection
     CursorType = ctStatic
+    AfterScroll = qUsuarioAfterScroll
     Parameters = <>
     SQL.Strings = (
-      'SELECT *'
-      'FROM LAB.USUARIO;')
-    Left = 192
-    Top = 264
+      'SELECT * FROM LAB.USUARIO;')
+    Left = 128
+    Top = 360
+    object qUsuarioID: TLargeintField
+      FieldName = 'ID'
+      ReadOnly = True
+    end
+    object qUsuarioNOME: TStringField
+      FieldName = 'NOME'
+      Size = 14
+    end
+    object qUsuarioSENHA: TStringField
+      FieldName = 'SENHA'
+    end
   end
-  object qTelasUsuarioPossui: TADOQuery
+  object qTelasUsuarioNaoPossui: TADOQuery
     Connection = Connection
+    CursorType = ctStatic
     Parameters = <
       item
         Name = 'idUsuario'
@@ -228,35 +147,137 @@ object Persistencia: TPersistencia
         Value = Null
       end>
     SQL.Strings = (
-      'SELECT LAB.TELA.*'
-      'FROM LAB.USUARIO_TELA'
-      'JOIN LAB.TELA'
-      'ON (USUARIO_TELA.ID_TELA = TELA.ID)'
-      'WHERE LAB.USUARIO_TELA.ID_USUARIO=:idUsuario;')
-    Left = 192
-    Top = 312
-  end
-  object pUsuario: TDataSetProvider
-    DataSet = qUsuario
-    Left = 304
-    Top = 264
-  end
-  object dsUsuario: TClientDataSet
-    Aggregates = <>
-    Params = <>
-    ProviderName = 'pUsuario'
-    Left = 416
-    Top = 264
-    object dsUsuarioID: TLargeintField
+      'SELECT T.*'
+      'FROM LAB.TELA T'
+      'WHERE ID NOT IN (SELECT ST.ID'
+      'FROM LAB.USUARIO_TELA SUT'
+      'JOIN LAB.TELA ST ON (SUT.ID_TELA = ST.ID)'
+      'WHERE SUT.ID_USUARIO = :idUsuario)')
+    Left = 128
+    Top = 456
+    object qTelasUsuarioNaoPossuiID: TLargeintField
       FieldName = 'ID'
       ReadOnly = True
     end
-    object dsUsuarioNOME: TStringField
+    object qTelasUsuarioNaoPossuiNOME: TStringField
+      FieldName = 'NOME'
+      Size = 80
+    end
+  end
+  object qLogin: TADOQuery
+    Connection = Connection
+    CursorType = ctStatic
+    Parameters = <>
+    SQL.Strings = (
+      'SELECT *'
+      'FROM LAB.USUARIO;')
+    Left = 128
+    Top = 264
+    object qLoginID: TLargeintField
+      FieldName = 'ID'
+      ReadOnly = True
+    end
+    object qLoginNOME: TStringField
       FieldName = 'NOME'
       Size = 14
     end
-    object dsUsuarioSENHA: TStringField
+    object qLoginSENHA: TStringField
       FieldName = 'SENHA'
+    end
+  end
+  object dsoTelasUsuarioNaoPossui: TDataSource
+    DataSet = qTelasUsuarioNaoPossui
+    Left = 280
+    Top = 456
+  end
+  object qUsuarioTelas: TADOQuery
+    Connection = Connection
+    CursorType = ctStatic
+    Parameters = <>
+    SQL.Strings = (
+      'SELECT * FROM LAB.USUARIO_TELA;')
+    Left = 128
+    Top = 504
+    object qUsuarioTelasID_USUARIO: TLargeintField
+      FieldName = 'ID_USUARIO'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object qUsuarioTelasID_TELA: TLargeintField
+      FieldName = 'ID_TELA'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+  end
+  object dsoTelasUsuarioPossui: TDataSource
+    DataSet = qTelasUsuarioPossui
+    Left = 280
+    Top = 408
+  end
+  object qTelasLoginPossui: TADOQuery
+    Connection = Connection
+    CursorType = ctStatic
+    Parameters = <
+      item
+        Name = 'idUsuario'
+        Attributes = [paSigned]
+        DataType = ftLargeint
+        Precision = 19
+        Size = 8
+        Value = Null
+      end>
+    SQL.Strings = (
+      'SELECT T.*'
+      'FROM LAB.USUARIO_TELA UT'
+      'JOIN LAB.TELA T ON (UT.ID_TELA = T.ID)'
+      'WHERE UT.ID_USUARIO = :idUsuario')
+    Left = 128
+    Top = 312
+    object qTelasLoginPossuiID: TLargeintField
+      FieldName = 'ID'
+      ReadOnly = True
+    end
+    object qTelasLoginPossuiNOME: TStringField
+      FieldName = 'NOME'
+      Size = 80
+    end
+  end
+  object dsoDocente: TDataSource
+    DataSet = qDocente
+    Left = 280
+    Top = 96
+  end
+  object dsoAula: TDataSource
+    DataSet = qAula
+    Left = 280
+    Top = 192
+  end
+  object qTelasUsuarioPossui: TADOQuery
+    Connection = Connection
+    CursorType = ctStatic
+    Parameters = <
+      item
+        Name = 'idUsuario'
+        Attributes = [paSigned]
+        DataType = ftLargeint
+        Precision = 19
+        Size = 8
+        Value = Null
+      end>
+    SQL.Strings = (
+      'SELECT T.*'
+      'FROM LAB.USUARIO_TELA UT'
+      'JOIN LAB.TELA T ON (UT.ID_TELA = T.ID)'
+      'WHERE UT.ID_USUARIO = :idUsuario;')
+    Left = 128
+    Top = 408
+    object qTelasUsuarioPossuiID: TLargeintField
+      FieldName = 'ID'
+      ReadOnly = True
+    end
+    object qTelasUsuarioPossuiNOME: TStringField
+      FieldName = 'NOME'
+      Size = 80
     end
   end
 end

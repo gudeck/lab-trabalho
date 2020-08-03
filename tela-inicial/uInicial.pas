@@ -5,8 +5,8 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
   System.Classes, Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs,
-  Vcl.ExtCtrls, Vcl.Imaging.jpeg, Vcl.StdCtrls, uMenu, Vcl.ComCtrls,
-  uPersistencia;
+  Vcl.ExtCtrls, Vcl.Imaging.jpeg, Vcl.StdCtrls, Vcl.ComCtrls,
+  uPersistencia, uControleTelas;
 
 type
   TfTelaInicial = class(TForm)
@@ -15,7 +15,8 @@ type
     edSenha: TLabeledEdit;
     Image1: TImage;
     procedure btEntrarClick(Sender: TObject);
-    procedure chamaTela(nomeForm: string);
+    procedure FormCreate(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
   private
     { Private declarations }
   public
@@ -32,37 +33,24 @@ implementation
 procedure TfTelaInicial.btEntrarClick(Sender: TObject);
 begin
 
-  if not Persistencia.dsUsuario.Locate('NOME;SENHA',
+  if not Persistencia.qLogin.Locate('NOME;SENHA',
     VarArrayOf([edNome.Text, edSenha.Text]), []) then
     ShowMessage('Usuário ou senha inválidos!')
   else
   begin
-    Persistencia.qTelasUsuarioPossui.Close;
-    Persistencia.qTelasUsuarioPossui.Parameters.ParamByName('idUsuario').Value
-      := Persistencia.dsUsuarioID.AsInteger;
-    Persistencia.qTelasUsuarioPossui.Open;
-    chamaTela('fMenu');
+    ControleTelas.chamaTela('fMenu');
   end;
 
 end;
 
-procedure TfTelaInicial.chamaTela(nomeForm: string);
-var
-  persistentClass: TPersistentClass;
+procedure TfTelaInicial.FormCreate(Sender: TObject);
 begin
-  persistentClass := Getclass('T' + trim(nomeForm));
-  if (persistentClass <> nil) then
-  begin
-    with tFormClass(persistentClass).Create(Application) do
-      try
-        Name := nomeForm;
-        ShowModal;
-      finally
-        Free;
-        tFormClass(persistentClass) := nil;
-      end;
-  end;
+  Persistencia.qLogin.Open;
+end;
 
+procedure TfTelaInicial.FormDestroy(Sender: TObject);
+begin
+  Persistencia.qLogin.Close;
 end;
 
 end.
