@@ -38,6 +38,7 @@ inherited fCrudProduto: TfCrudProduto
       Top = 23
       Width = 65
       Height = 21
+      TabStop = False
       Color = 11184381
       DataField = 'idProduto'
       DataSource = dsoDados
@@ -58,7 +59,6 @@ inherited fCrudProduto: TfCrudProduto
   inherited PageControl: TPageControl
     Width = 549
     Height = 267
-    ActivePage = tabFiltros
     ExplicitWidth = 554
     ExplicitHeight = 318
     inherited tabInformacoes: TTabSheet
@@ -89,7 +89,7 @@ inherited fCrudProduto: TfCrudProduto
         end
         object Label3: TLabel
           Left = 12
-          Top = 53
+          Top = 56
           Width = 82
           Height = 13
           Caption = 'C'#243'digo de Barras'
