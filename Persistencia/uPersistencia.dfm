@@ -15,104 +15,6 @@ object Persistencia: TPersistencia
     Left = 128
     Top = 48
   end
-  object qDisciplina: TADOQuery
-    Connection = Connection
-    CursorType = ctStatic
-    AfterInsert = qDisciplinaAfterInsert
-    BeforeDelete = qDisciplinaBeforeDelete
-    AfterScroll = qDisciplinaAfterScroll
-    Parameters = <>
-    SQL.Strings = (
-      'SELECT * FROM LAB.DISCIPLINA')
-    Left = 128
-    Top = 144
-    object qDisciplinaID: TLargeintField
-      DisplayLabel = 'C'#243'digo'
-      FieldName = 'ID'
-      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
-      ReadOnly = True
-    end
-    object qDisciplinaNOME: TStringField
-      DisplayLabel = 'Nome'
-      FieldName = 'NOME'
-      ProviderFlags = [pfInUpdate]
-      Size = 80
-    end
-    object qDisciplinaDESCRICAO: TMemoField
-      DisplayLabel = 'Descri'#231#227'o'
-      FieldName = 'DESCRICAO'
-      ProviderFlags = [pfInUpdate]
-      BlobType = ftMemo
-    end
-    object qDisciplinaMEDIA: TIntegerField
-      DisplayLabel = 'M'#233'dia (%)'
-      FieldName = 'MEDIA'
-      ProviderFlags = [pfInUpdate]
-      MaxValue = 100
-      MinValue = 50
-    end
-    object qDisciplinaOPCIONAL: TBooleanField
-      DisplayLabel = 'Opcional'
-      FieldName = 'OPCIONAL'
-      ProviderFlags = [pfInUpdate]
-    end
-    object qDisciplinaDATA_CRIACAO: TDateTimeField
-      DisplayLabel = 'Criado em'
-      FieldName = 'DATA_CRIACAO'
-      ProviderFlags = [pfInUpdate]
-      EditMask = '!99/99/00;1;_'
-    end
-    object qDisciplinaID_DOCENTE: TLargeintField
-      FieldName = 'ID_DOCENTE'
-      ProviderFlags = [pfInUpdate]
-    end
-  end
-  object qDocente: TADOQuery
-    Connection = Connection
-    CursorType = ctStatic
-    Parameters = <>
-    SQL.Strings = (
-      'SELECT * FROM LAB.DOCENTE')
-    Left = 128
-    Top = 96
-    object qDocenteID: TLargeintField
-      FieldName = 'ID'
-      ReadOnly = True
-    end
-    object qDocenteNOME: TStringField
-      FieldName = 'NOME'
-      Size = 80
-    end
-  end
-  object qAula: TADOQuery
-    Connection = Connection
-    CursorType = ctStatic
-    Parameters = <
-      item
-        Name = 'idDisciplina'
-        Attributes = [paSigned, paNullable]
-        DataType = ftLargeint
-        Precision = 19
-        Size = 8
-        Value = Null
-      end>
-    SQL.Strings = (
-      'SELECT * FROM LAB.AULA WHERE ID_DISCIPLINA=:idDisciplina')
-    Left = 128
-    Top = 192
-    object qAulaID: TLargeintField
-      FieldName = 'ID'
-      ReadOnly = True
-    end
-    object qAulaID_DISCIPLINA: TLargeintField
-      FieldName = 'ID_DISCIPLINA'
-    end
-    object qAulaNOME_TURMA: TStringField
-      DisplayLabel = 'Turma'
-      FieldName = 'NOME_TURMA'
-      Size = 80
-    end
-  end
   object qUsuario: TADOQuery
     Connection = Connection
     CursorType = ctStatic
@@ -121,7 +23,7 @@ object Persistencia: TPersistencia
     SQL.Strings = (
       'SELECT * FROM LAB.USUARIO;')
     Left = 128
-    Top = 360
+    Top = 192
     object qUsuarioID: TLargeintField
       FieldName = 'ID'
       ReadOnly = True
@@ -154,7 +56,7 @@ object Persistencia: TPersistencia
       'JOIN LAB.TELA ST ON (SUT.ID_TELA = ST.ID)'
       'WHERE SUT.ID_USUARIO = :idUsuario)')
     Left = 128
-    Top = 456
+    Top = 288
     object qTelasUsuarioNaoPossuiID: TLargeintField
       FieldName = 'ID'
       ReadOnly = True
@@ -172,7 +74,7 @@ object Persistencia: TPersistencia
       'SELECT *'
       'FROM LAB.USUARIO;')
     Left = 128
-    Top = 264
+    Top = 96
     object qLoginID: TLargeintField
       FieldName = 'ID'
       ReadOnly = True
@@ -188,7 +90,7 @@ object Persistencia: TPersistencia
   object dsoTelasUsuarioNaoPossui: TDataSource
     DataSet = qTelasUsuarioNaoPossui
     Left = 280
-    Top = 456
+    Top = 288
   end
   object qUsuarioTelas: TADOQuery
     Connection = Connection
@@ -197,7 +99,7 @@ object Persistencia: TPersistencia
     SQL.Strings = (
       'SELECT * FROM LAB.USUARIO_TELA;')
     Left = 128
-    Top = 504
+    Top = 336
     object qUsuarioTelasID_USUARIO: TLargeintField
       FieldName = 'ID_USUARIO'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
@@ -232,7 +134,7 @@ object Persistencia: TPersistencia
   object dsoTelasUsuarioPossui: TDataSource
     DataSet = qTelasUsuarioPossui
     Left = 280
-    Top = 408
+    Top = 240
   end
   object qTelasLoginPossui: TADOQuery
     Connection = Connection
@@ -252,7 +154,7 @@ object Persistencia: TPersistencia
       'JOIN LAB.TELA T ON (UT.ID_TELA = T.ID)'
       'WHERE UT.ID_USUARIO = :idUsuario')
     Left = 128
-    Top = 312
+    Top = 144
     object qTelasLoginPossuiID: TLargeintField
       FieldName = 'ID'
       ReadOnly = True
@@ -261,16 +163,6 @@ object Persistencia: TPersistencia
       FieldName = 'NOME'
       Size = 80
     end
-  end
-  object dsoDocente: TDataSource
-    DataSet = qDocente
-    Left = 280
-    Top = 96
-  end
-  object dsoAula: TDataSource
-    DataSet = qAula
-    Left = 280
-    Top = 192
   end
   object qTelasUsuarioPossui: TADOQuery
     Connection = Connection
@@ -290,7 +182,7 @@ object Persistencia: TPersistencia
       'JOIN LAB.TELA T ON (UT.ID_TELA = T.ID)'
       'WHERE UT.ID_USUARIO = :idUsuario;')
     Left = 128
-    Top = 408
+    Top = 240
     object qTelasUsuarioPossuiID: TLargeintField
       FieldName = 'ID'
       ReadOnly = True
@@ -298,6 +190,43 @@ object Persistencia: TPersistencia
     object qTelasUsuarioPossuiNOME: TStringField
       FieldName = 'NOME'
       Size = 80
+    end
+  end
+  object qProduto: TADOQuery
+    Connection = Connection
+    CursorType = ctStatic
+    Parameters = <>
+    SQL.Strings = (
+      'SELECT * FROM LAB.Produtos')
+    Left = 392
+    Top = 96
+    object qProdutoidProduto: TLargeintField
+      FieldName = 'idProduto'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      ReadOnly = True
+    end
+    object qProdutoproduto: TStringField
+      FieldName = 'produto'
+      ProviderFlags = [pfInUpdate]
+      Required = True
+      Size = 80
+    end
+    object qProdutovalor: TBCDField
+      FieldName = 'valor'
+      ProviderFlags = [pfInUpdate]
+      Required = True
+      Precision = 18
+      Size = 0
+    end
+    object qProdutoqtdeEstoque: TIntegerField
+      FieldName = 'qtdeEstoque'
+      ProviderFlags = [pfInUpdate]
+      Required = True
+    end
+    object qProdutocodigobarras: TIntegerField
+      FieldName = 'codigobarras'
+      ProviderFlags = [pfInUpdate]
+      Required = True
     end
   end
 end

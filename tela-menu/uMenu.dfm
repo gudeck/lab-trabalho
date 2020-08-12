@@ -6796,13 +6796,13 @@ object fMenu: TfMenu
     ExplicitWidth = 666
     ExplicitHeight = 888
   end
-  object btnDisciplinas: TButton
+  object btnUsuarios: TButton
     Left = 0
     Top = 0
     Width = 175
     Height = 40
-    Hint = 'fCrudDisciplina'
-    Caption = 'Cadastro Disciplinas'
+    Hint = 'fCrudUsuario'
+    Caption = 'Cadastro Usu'#225'rio'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -11
@@ -6810,16 +6810,32 @@ object fMenu: TfMenu
     Font.Style = []
     ParentFont = False
     TabOrder = 0
-    OnClick = btnDisciplinasClick
+    OnClick = btnUsuariosClick
   end
-  object btnUsuarios: TButton
+  object btnClientes: TButton
     Left = 142
     Top = 46
     Width = 175
     Height = 39
-    Hint = 'fCrudUsuario'
-    Caption = 'Cadastro Usu'#225'rios'
+    Hint = 'fCrudCliente'
+    Caption = 'Cadastro Cliente'
     TabOrder = 1
-    OnClick = btnUsuariosClick
+    OnClick = btnClientesClick
+  end
+  object btnProdutos: TButton
+    Left = 0
+    Top = 91
+    Width = 175
+    Height = 40
+    Hint = 'fCrudProduto'
+    Caption = 'Cadastro Produto'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 2
+    OnClick = btnProdutosClick
   end
 end

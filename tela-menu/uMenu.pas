@@ -10,13 +10,15 @@ uses
 
 type
   TfMenu = class(TForm)
-    btnDisciplinas: TButton;
     btnUsuarios: TButton;
+    btnClientes: TButton;
     Image1: TImage;
-    procedure btnDisciplinasClick(Sender: TObject);
+    btnProdutos: TButton;
     procedure btnUsuariosClick(Sender: TObject);
+    procedure btnClientesClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
+    procedure btnProdutosClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -30,14 +32,19 @@ implementation
 
 {$R *.dfm}
 
-procedure TfMenu.btnDisciplinasClick(Sender: TObject);
+procedure TfMenu.btnProdutosClick(Sender: TObject);
 begin
-  ControleTelas.chamaTela(btnDisciplinas.Hint);
+  ControleTelas.chamaTela(btnProdutos.Hint);
 end;
 
 procedure TfMenu.btnUsuariosClick(Sender: TObject);
 begin
   ControleTelas.chamaTela(btnUsuarios.Hint);
+end;
+
+procedure TfMenu.btnClientesClick(Sender: TObject);
+begin
+  ControleTelas.chamaTela(btnClientes.Hint);
 end;
 
 procedure TfMenu.FormCreate(Sender: TObject);
@@ -46,8 +53,10 @@ begin
     Persistencia.qLoginID.AsInteger;
   Persistencia.qTelasLoginPossui.Open;
 
-  btnDisciplinas.Visible := Persistencia.qTelasLoginPossui.Locate('NOME',
-    btnDisciplinas.Hint, []);
+  btnClientes.Visible := Persistencia.qTelasLoginPossui.Locate('NOME',
+    btnClientes.Hint, []);
+  btnProdutos.Visible := Persistencia.qTelasLoginPossui.Locate('NOME',
+    btnProdutos.Hint, []);
   btnUsuarios.Visible := Persistencia.qTelasLoginPossui.Locate('NOME',
     btnUsuarios.Hint, []);
 end;
