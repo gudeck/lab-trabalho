@@ -9,15 +9,6 @@ uses
 type
   TPersistencia = class(TDataModule)
     Connection: TADOConnection;
-    qDisciplina: TADOQuery;
-    qDisciplinaID: TLargeintField;
-    qDisciplinaNOME: TStringField;
-    qDisciplinaDESCRICAO: TMemoField;
-    qDisciplinaMEDIA: TIntegerField;
-    qDisciplinaOPCIONAL: TBooleanField;
-    qDisciplinaDATA_CRIACAO: TDateTimeField;
-    qDocente: TADOQuery;
-    qAula: TADOQuery;
     qUsuario: TADOQuery;
     qTelasUsuarioNaoPossui: TADOQuery;
     qLogin: TADOQuery;
@@ -33,18 +24,10 @@ type
     qUsuarioID: TLargeintField;
     qUsuarioNOME: TStringField;
     qUsuarioSENHA: TStringField;
-    qAulaID: TLargeintField;
-    qAulaID_DISCIPLINA: TLargeintField;
-    dsoDocente: TDataSource;
-    qDocenteID: TLargeintField;
-    qDocenteNOME: TStringField;
-    qDisciplinaID_DOCENTE: TLargeintField;
     qTelasUsuarioNaoPossuiID: TLargeintField;
     qTelasUsuarioNaoPossuiNOME: TStringField;
     qUsuarioTelasID_USUARIO: TLargeintField;
     qUsuarioTelasID_TELA: TLargeintField;
-    qAulaNOME_TURMA: TStringField;
-    dsoAula: TDataSource;
     qTelasUsuarioPossui: TADOQuery;
     qTelasUsuarioPossuiID: TLargeintField;
     qTelasUsuarioPossuiNOME: TStringField;
@@ -52,10 +35,50 @@ type
     qUsuarioTelasEXCLUIR: TBooleanField;
     qUsuarioTelasIMPRIMIR: TBooleanField;
     qUsuarioTelasINSERIR: TBooleanField;
-    procedure qDisciplinaAfterInsert(DataSet: TDataSet);
+    qProduto: TADOQuery;
+    qProdutoidProduto: TLargeintField;
+    qProdutoproduto: TStringField;
+    qProdutovalor: TBCDField;
+    qProdutoqtdeEstoque: TIntegerField;
+    qProdutocodigobarras: TIntegerField;
+    qCliente: TADOQuery;
+    qClienteidCliente: TLargeintField;
+    qClientenomeCliente: TStringField;
+    qClientecnpj: TIntegerField;
+    qClientedtNascimento: TDateTimeField;
+    qClienteidCidade: TLargeintField;
+    qClienteendereco: TStringField;
+    qClientecep: TIntegerField;
+    qClientenumero: TIntegerField;
+    qClientecomplemento: TStringField;
+    qClienteemail: TStringField;
+    qPedido: TADOQuery;
+    qPedidoProduto: TADOQuery;
+    qPedidoidPedido: TLargeintField;
+    qPedidoidCliente: TLargeintField;
+    qPedidodtCadastro: TDateTimeField;
+    qPedidodtPrevistaEntrega: TDateTimeField;
+    qPedidoProdutoidPedido: TLargeintField;
+    qPedidoProdutoidProduto: TLargeintField;
+    qPedidoProdutoquantidade: TIntegerField;
+    qProdutosPedidoPossui: TADOQuery;
+    qProdutosPedidoNaoPossui: TADOQuery;
+    qProdutosPedidoNaoPossuiidProduto: TLargeintField;
+    qProdutosPedidoNaoPossuiproduto: TStringField;
+    qProdutosPedidoNaoPossuivalor: TBCDField;
+    qProdutosPedidoNaoPossuiqtdeEstoque: TIntegerField;
+    qProdutosPedidoNaoPossuicodigobarras: TIntegerField;
+    qProdutosPedidoPossuiidProduto: TLargeintField;
+    qProdutosPedidoPossuiproduto: TStringField;
+    qProdutosPedidoPossuivalor: TBCDField;
+    qProdutosPedidoPossuiqtdeEstoque: TIntegerField;
+    qProdutosPedidoPossuicodigobarras: TIntegerField;
+    dsoCliente: TDataSource;
+    dsoProdutosPedidoPossui: TDataSource;
+    dsoProdutosPedidoNaoPossui: TDataSource;
     procedure qUsuarioAfterScroll(DataSet: TDataSet);
-    procedure qDisciplinaBeforeDelete(DataSet: TDataSet);
-    procedure qDisciplinaAfterScroll(DataSet: TDataSet);
+    procedure qPedidoAfterScroll(DataSet: TDataSet);
+    procedure qPedidoBeforePost(DataSet: TDataSet);
 
   private
     { Private declarations }
@@ -71,25 +94,17 @@ implementation
 {%CLASSGROUP 'System.Classes.TPersistent'}
 {$R *.dfm}
 
-procedure TPersistencia.qDisciplinaAfterInsert(DataSet: TDataSet);
+procedure TPersistencia.qPedidoAfterScroll(DataSet: TDataSet);
 begin
-  qDisciplinaDATA_CRIACAO.AsDateTime := Now;
-  qDisciplinaOPCIONAL.AsBoolean := False;
-  qDisciplinaMEDIA.AsInteger := 60;
+  qProdutosPedidoPossui.Close;
+  qProdutosPedidoPossui.Parameters.ParamByName('idPedido').Value :=
+    qPedidoidPedido.Value;
+  qProdutosPedidoPossui.Open;
 end;
 
-procedure TPersistencia.qDisciplinaAfterScroll(DataSet: TDataSet);
+procedure TPersistencia.qPedidoBeforePost(DataSet: TDataSet);
 begin
-  qAula.Close;
-  qAula.Parameters.ParamByName('idDisciplina').Value := qDisciplinaID.AsInteger;
-  qAula.Open;
-end;
-
-procedure TPersistencia.qDisciplinaBeforeDelete(DataSet: TDataSet);
-begin
-  qAula.First;
-  while not qAula.Eof do
-    qAula.Delete;
+  Persistencia.qPedidodtCadastro.AsDateTime := Now;
 end;
 
 procedure TPersistencia.qUsuarioAfterScroll(DataSet: TDataSet);

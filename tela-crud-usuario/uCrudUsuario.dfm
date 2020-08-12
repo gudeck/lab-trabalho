@@ -28,7 +28,6 @@ inherited fCrudUsuario: TfCrudUsuario
   end
   inherited PageControl: TPageControl
     Height = 337
-    ActivePage = tabFiltros
     ExplicitHeight = 337
     inherited tabInformacoes: TTabSheet
       ExplicitHeight = 309
