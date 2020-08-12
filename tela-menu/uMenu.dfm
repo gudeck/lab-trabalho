@@ -6796,7 +6796,7 @@ object fMenu: TfMenu
     ExplicitWidth = 666
     ExplicitHeight = 888
   end
-  object btnUsuarios: TButton
+  object btnUsuario: TButton
     Left = 0
     Top = 0
     Width = 175
@@ -6810,9 +6810,9 @@ object fMenu: TfMenu
     Font.Style = []
     ParentFont = False
     TabOrder = 0
-    OnClick = btnUsuariosClick
+    OnClick = btnUsuarioClick
   end
-  object btnClientes: TButton
+  object btnCliente: TButton
     Left = 142
     Top = 46
     Width = 175
@@ -6820,9 +6820,9 @@ object fMenu: TfMenu
     Hint = 'fCrudCliente'
     Caption = 'Cadastro Cliente'
     TabOrder = 1
-    OnClick = btnClientesClick
+    OnClick = btnClienteClick
   end
-  object btnProdutos: TButton
+  object btnProduto: TButton
     Left = 0
     Top = 91
     Width = 175
@@ -6836,6 +6836,16 @@ object fMenu: TfMenu
     Font.Style = []
     ParentFont = False
     TabOrder = 2
-    OnClick = btnProdutosClick
+    OnClick = btnProdutoClick
+  end
+  object btnPedido: TButton
+    Left = 142
+    Top = 137
+    Width = 175
+    Height = 40
+    Hint = 'fCrudPedido'
+    Caption = 'Cadastro Pedido'
+    TabOrder = 3
+    OnClick = btnPedidoClick
   end
 end

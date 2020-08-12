@@ -10,7 +10,9 @@ uses
   uControleTelas in 'util\uControleTelas.pas',
   uAssociacaoTelas in 'tela-associacao-telas\uAssociacaoTelas.pas' {fAssociacaoTelas},
   uCrudProduto in 'tela-crud-produto\uCrudProduto.pas' {fCrudProduto},
-  uCrudCliente in 'tela-crud-cliente\uCrudCliente.pas' {fCrudCliente};
+  uCrudCliente in 'tela-crud-cliente\uCrudCliente.pas' {fCrudCliente},
+  uCrudPedido in 'tela-crud-pedido\uCrudPedido.pas' {fCrudPedido},
+  uAssociacaoProdutos in 'tela-associacao-produtos\uAssociacaoProdutos.pas' {fAssociacaoProdutos};
 
 {$R *.res}
 

@@ -10,15 +10,17 @@ uses
 
 type
   TfMenu = class(TForm)
-    btnUsuarios: TButton;
-    btnClientes: TButton;
+    btnUsuario: TButton;
+    btnCliente: TButton;
     Image1: TImage;
-    btnProdutos: TButton;
-    procedure btnUsuariosClick(Sender: TObject);
-    procedure btnClientesClick(Sender: TObject);
+    btnProduto: TButton;
+    btnPedido: TButton;
+    procedure btnUsuarioClick(Sender: TObject);
+    procedure btnClienteClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
-    procedure btnProdutosClick(Sender: TObject);
+    procedure btnProdutoClick(Sender: TObject);
+    procedure btnPedidoClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -32,19 +34,24 @@ implementation
 
 {$R *.dfm}
 
-procedure TfMenu.btnProdutosClick(Sender: TObject);
+procedure TfMenu.btnPedidoClick(Sender: TObject);
 begin
-  ControleTelas.chamaTela(btnProdutos.Hint);
+  ControleTelas.chamaTela(btnPedido.Hint);
 end;
 
-procedure TfMenu.btnUsuariosClick(Sender: TObject);
+procedure TfMenu.btnProdutoClick(Sender: TObject);
 begin
-  ControleTelas.chamaTela(btnUsuarios.Hint);
+  ControleTelas.chamaTela(btnProduto.Hint);
 end;
 
-procedure TfMenu.btnClientesClick(Sender: TObject);
+procedure TfMenu.btnUsuarioClick(Sender: TObject);
 begin
-  ControleTelas.chamaTela(btnClientes.Hint);
+  ControleTelas.chamaTela(btnUsuario.Hint);
+end;
+
+procedure TfMenu.btnClienteClick(Sender: TObject);
+begin
+  ControleTelas.chamaTela(btnCliente.Hint);
 end;
 
 procedure TfMenu.FormCreate(Sender: TObject);
@@ -53,12 +60,14 @@ begin
     Persistencia.qLoginID.AsInteger;
   Persistencia.qTelasLoginPossui.Open;
 
-  btnClientes.Visible := Persistencia.qTelasLoginPossui.Locate('NOME',
-    btnClientes.Hint, []);
-  btnProdutos.Visible := Persistencia.qTelasLoginPossui.Locate('NOME',
-    btnProdutos.Hint, []);
-  btnUsuarios.Visible := Persistencia.qTelasLoginPossui.Locate('NOME',
-    btnUsuarios.Hint, []);
+  btnCliente.Visible := Persistencia.qTelasLoginPossui.Locate('NOME',
+    btnCliente.Hint, []);
+  btnProduto.Visible := Persistencia.qTelasLoginPossui.Locate('NOME',
+    btnProduto.Hint, []);
+  btnUsuario.Visible := Persistencia.qTelasLoginPossui.Locate('NOME',
+    btnUsuario.Hint, []);
+  btnPedido.Visible := Persistencia.qTelasLoginPossui.Locate('NOME',
+    btnPedido.Hint, []);
 end;
 
 procedure TfMenu.FormDestroy(Sender: TObject);

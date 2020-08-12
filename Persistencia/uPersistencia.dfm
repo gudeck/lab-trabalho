@@ -1,7 +1,7 @@
 object Persistencia: TPersistencia
   OldCreateOrder = False
   Height = 622
-  Width = 837
+  Width = 741
   object Connection: TADOConnection
     Connected = True
     ConnectionString = 
@@ -12,8 +12,8 @@ object Persistencia: TPersistencia
       'lation when possible=False'
     LoginPrompt = False
     Provider = 'SQLOLEDB.1'
-    Left = 128
-    Top = 48
+    Left = 72
+    Top = 8
   end
   object qUsuario: TADOQuery
     Connection = Connection
@@ -22,8 +22,8 @@ object Persistencia: TPersistencia
     Parameters = <>
     SQL.Strings = (
       'SELECT * FROM LAB.USUARIO;')
-    Left = 128
-    Top = 192
+    Left = 72
+    Top = 152
     object qUsuarioID: TLargeintField
       FieldName = 'ID'
       ReadOnly = True
@@ -42,10 +42,8 @@ object Persistencia: TPersistencia
     Parameters = <
       item
         Name = 'idUsuario'
-        Attributes = [paSigned]
         DataType = ftLargeint
-        Precision = 19
-        Size = 8
+        Size = -1
         Value = Null
       end>
     SQL.Strings = (
@@ -55,8 +53,8 @@ object Persistencia: TPersistencia
       'FROM LAB.USUARIO_TELA SUT'
       'JOIN LAB.TELA ST ON (SUT.ID_TELA = ST.ID)'
       'WHERE SUT.ID_USUARIO = :idUsuario)')
-    Left = 128
-    Top = 288
+    Left = 72
+    Top = 248
     object qTelasUsuarioNaoPossuiID: TLargeintField
       FieldName = 'ID'
       ReadOnly = True
@@ -73,8 +71,8 @@ object Persistencia: TPersistencia
     SQL.Strings = (
       'SELECT *'
       'FROM LAB.USUARIO;')
-    Left = 128
-    Top = 96
+    Left = 72
+    Top = 56
     object qLoginID: TLargeintField
       FieldName = 'ID'
       ReadOnly = True
@@ -89,8 +87,8 @@ object Persistencia: TPersistencia
   end
   object dsoTelasUsuarioNaoPossui: TDataSource
     DataSet = qTelasUsuarioNaoPossui
-    Left = 280
-    Top = 288
+    Left = 224
+    Top = 248
   end
   object qUsuarioTelas: TADOQuery
     Connection = Connection
@@ -98,8 +96,8 @@ object Persistencia: TPersistencia
     Parameters = <>
     SQL.Strings = (
       'SELECT * FROM LAB.USUARIO_TELA;')
-    Left = 128
-    Top = 336
+    Left = 72
+    Top = 296
     object qUsuarioTelasID_USUARIO: TLargeintField
       FieldName = 'ID_USUARIO'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
@@ -133,8 +131,8 @@ object Persistencia: TPersistencia
   end
   object dsoTelasUsuarioPossui: TDataSource
     DataSet = qTelasUsuarioPossui
-    Left = 280
-    Top = 240
+    Left = 224
+    Top = 200
   end
   object qTelasLoginPossui: TADOQuery
     Connection = Connection
@@ -153,8 +151,8 @@ object Persistencia: TPersistencia
       'FROM LAB.USUARIO_TELA UT'
       'JOIN LAB.TELA T ON (UT.ID_TELA = T.ID)'
       'WHERE UT.ID_USUARIO = :idUsuario')
-    Left = 128
-    Top = 144
+    Left = 72
+    Top = 104
     object qTelasLoginPossuiID: TLargeintField
       FieldName = 'ID'
       ReadOnly = True
@@ -181,8 +179,8 @@ object Persistencia: TPersistencia
       'FROM LAB.USUARIO_TELA UT'
       'JOIN LAB.TELA T ON (UT.ID_TELA = T.ID)'
       'WHERE UT.ID_USUARIO = :idUsuario;')
-    Left = 128
-    Top = 240
+    Left = 72
+    Top = 200
     object qTelasUsuarioPossuiID: TLargeintField
       FieldName = 'ID'
       ReadOnly = True
@@ -198,8 +196,8 @@ object Persistencia: TPersistencia
     Parameters = <>
     SQL.Strings = (
       'SELECT * FROM LAB.Produtos')
-    Left = 392
-    Top = 96
+    Left = 384
+    Top = 56
     object qProdutoidProduto: TLargeintField
       FieldName = 'idProduto'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
@@ -235,8 +233,8 @@ object Persistencia: TPersistencia
     Parameters = <>
     SQL.Strings = (
       'SELECT * FROM LAB.Cliente')
-    Left = 392
-    Top = 144
+    Left = 384
+    Top = 104
     object qClienteidCliente: TLargeintField
       FieldName = 'idCliente'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
@@ -291,5 +289,152 @@ object Persistencia: TPersistencia
       Required = True
       Size = 80
     end
+  end
+  object qPedido: TADOQuery
+    Connection = Connection
+    CursorType = ctStatic
+    BeforePost = qPedidoBeforePost
+    AfterScroll = qPedidoAfterScroll
+    Parameters = <>
+    SQL.Strings = (
+      'SELECT * FROM LAB.Pedidos')
+    Left = 384
+    Top = 152
+    object qPedidoidPedido: TLargeintField
+      FieldName = 'idPedido'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      ReadOnly = True
+    end
+    object qPedidoidCliente: TLargeintField
+      FieldName = 'idCliente'
+      Required = True
+    end
+    object qPedidodtCadastro: TDateTimeField
+      FieldName = 'dtCadastro'
+      ProviderFlags = [pfInUpdate]
+      Required = True
+    end
+    object qPedidodtPrevistaEntrega: TDateTimeField
+      FieldName = 'dtPrevistaEntrega'
+      ProviderFlags = [pfInUpdate]
+      Required = True
+    end
+  end
+  object qPedidoProduto: TADOQuery
+    Connection = Connection
+    CursorType = ctStatic
+    Parameters = <>
+    SQL.Strings = (
+      'SELECT * FROM LAB.VendasProdutos')
+    Left = 384
+    Top = 296
+    object qPedidoProdutoidPedido: TLargeintField
+      FieldName = 'idPedido'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object qPedidoProdutoidProduto: TLargeintField
+      FieldName = 'idProduto'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object qPedidoProdutoquantidade: TIntegerField
+      FieldName = 'quantidade'
+      ProviderFlags = [pfInUpdate]
+      Required = True
+    end
+  end
+  object qProdutosPedidoPossui: TADOQuery
+    Connection = Connection
+    CursorType = ctStatic
+    Parameters = <
+      item
+        Name = 'idPedido'
+        Attributes = [paSigned]
+        DataType = ftLargeint
+        Precision = 19
+        Size = 8
+        Value = Null
+      end>
+    SQL.Strings = (
+      'SELECT P.*'
+      'FROM LAB.VendasProdutos VP'
+      'JOIN LAB.Produtos P ON (VP.idProduto = P.idProduto)'
+      'WHERE VP.idPedido = :idPedido')
+    Left = 384
+    Top = 200
+    object qProdutosPedidoPossuiidProduto: TLargeintField
+      FieldName = 'idProduto'
+      ReadOnly = True
+    end
+    object qProdutosPedidoPossuiproduto: TStringField
+      FieldName = 'produto'
+      Size = 80
+    end
+    object qProdutosPedidoPossuivalor: TBCDField
+      FieldName = 'valor'
+      Precision = 18
+      Size = 0
+    end
+    object qProdutosPedidoPossuiqtdeEstoque: TIntegerField
+      FieldName = 'qtdeEstoque'
+    end
+    object qProdutosPedidoPossuicodigobarras: TIntegerField
+      FieldName = 'codigobarras'
+    end
+  end
+  object qProdutosPedidoNaoPossui: TADOQuery
+    Connection = Connection
+    CursorType = ctStatic
+    Parameters = <
+      item
+        Name = 'idPedido'
+        DataType = ftLargeint
+        Size = -1
+        Value = Null
+      end>
+    SQL.Strings = (
+      'SELECT P.*'
+      'FROM LAB.Produtos P'
+      'WHERE idProduto NOT IN (SELECT SP.idProduto'
+      'FROM LAB.VendasProdutos SVP'
+      'JOIN LAB.Produtos SP ON (SVP.idProduto = SP.idProduto)'
+      'WHERE SVP.idPedido = :idPedido)')
+    Left = 384
+    Top = 248
+    object qProdutosPedidoNaoPossuiidProduto: TLargeintField
+      FieldName = 'idProduto'
+      ReadOnly = True
+    end
+    object qProdutosPedidoNaoPossuiproduto: TStringField
+      FieldName = 'produto'
+      Size = 80
+    end
+    object qProdutosPedidoNaoPossuivalor: TBCDField
+      FieldName = 'valor'
+      Precision = 18
+      Size = 0
+    end
+    object qProdutosPedidoNaoPossuiqtdeEstoque: TIntegerField
+      FieldName = 'qtdeEstoque'
+    end
+    object qProdutosPedidoNaoPossuicodigobarras: TIntegerField
+      FieldName = 'codigobarras'
+    end
+  end
+  object dsoCliente: TDataSource
+    DataSet = qCliente
+    Left = 552
+    Top = 104
+  end
+  object dsoProdutosPedidoPossui: TDataSource
+    DataSet = qProdutosPedidoPossui
+    Left = 552
+    Top = 200
+  end
+  object dsoProdutosPedidoNaoPossui: TDataSource
+    DataSet = qProdutosPedidoNaoPossui
+    Left = 552
+    Top = 248
   end
 end
