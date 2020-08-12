@@ -1,0 +1,107 @@
+create table LAB.Cliente
+(
+    idCliente    bigint identity
+        constraint Cliente_pk
+            primary key nonclustered,
+    nomeCliente  varchar(80) not null,
+    cnpj         int         not null,
+    dtNascimento datetime    not null,
+    idCidade     bigint      not null,
+    endereco     varchar(80) not null,
+    cep          int         not null,
+    numero       int         not null,
+    complemento  varchar(80) not null,
+    email        varchar(80) not null
+)
+go
+
+create table LAB.Pedidos
+(
+    idPedido          bigint identity
+        constraint Pedidos_pk
+            primary key nonclustered,
+    idCliente         bigint   not null
+        constraint Pedidos_Cliente_idCliente_fk
+            references LAB.Cliente,
+    dtCadastro        datetime not null,
+    dtPrevistaEntrega datetime not null
+)
+go
+
+create table LAB.Produtos
+(
+    idProduto    bigint identity
+        constraint Produtos_pk
+            primary key nonclustered,
+    produto      varchar(80) not null,
+    valor        numeric     not null,
+    qtdeEstoque  int         not null,
+    codigobarras int         not null
+)
+go
+
+create table LAB.TELA
+(
+    ID   bigint identity
+        constraint TELA_pk
+            primary key nonclustered,
+    NOME varchar(80)
+)
+go
+
+INSERT INTO SEMESTRE_SETE.LAB.TELA (NOME) VALUES (N'fCrudUsuario');
+INSERT INTO SEMESTRE_SETE.LAB.TELA (NOME) VALUES (N'fCrudProduto');
+INSERT INTO SEMESTRE_SETE.LAB.TELA (NOME) VALUES (N'fCrudCliente');
+INSERT INTO SEMESTRE_SETE.LAB.TELA (NOME) VALUES (N'fCrudPedido');
+
+create table LAB.USUARIO
+(
+    ID    bigint identity
+        constraint USUARIO_pk
+            primary key nonclustered,
+    NOME  varchar(14),
+    SENHA varchar(20)
+)
+go
+
+create unique index USUARIO_NOME_uindex
+    on LAB.USUARIO (NOME)
+go
+
+INSERT INTO SEMESTRE_SETE.LAB.USUARIO (NOME, SENHA) VALUES (N'', N'');
+
+create table LAB.USUARIO_TELA
+(
+    ID_USUARIO bigint        not null
+        constraint USUARIO_TELA_USUARIO_ID_fk
+            references LAB.USUARIO,
+    ID_TELA    bigint        not null
+        constraint USUARIO_TELA_TELA_ID_fk
+            references LAB.TELA,
+    ALTERAR    bit default 1 not null,
+    EXCLUIR    bit default 1 not null,
+    IMPRIMIR   bit default 1 not null,
+    INSERIR    bit default 1 not null,
+    constraint USUARIO_TELA_pk
+        primary key nonclustered (ID_USUARIO, ID_TELA)
+)
+go
+
+INSERT INTO SEMESTRE_SETE.LAB.USUARIO_TELA (ID_USUARIO, ID_TELA, ALTERAR, EXCLUIR, IMPRIMIR, INSERIR) VALUES (:idUsuario, :idTela1, 1, 1, 1, 1);
+INSERT INTO SEMESTRE_SETE.LAB.USUARIO_TELA (ID_USUARIO, ID_TELA, ALTERAR, EXCLUIR, IMPRIMIR, INSERIR) VALUES (:idUsuario, :idTela2, 1, 1, 1, 1);
+INSERT INTO SEMESTRE_SETE.LAB.USUARIO_TELA (ID_USUARIO, ID_TELA, ALTERAR, EXCLUIR, IMPRIMIR, INSERIR) VALUES (:idUsuario, :idTela3, 1, 1, 1, 1);
+INSERT INTO SEMESTRE_SETE.LAB.USUARIO_TELA (ID_USUARIO, ID_TELA, ALTERAR, EXCLUIR, IMPRIMIR, INSERIR) VALUES (:idUsuario, :idTela4, 1, 1, 1, 1);
+
+create table LAB.VendasProdutos
+(
+    idPedido   bigint not null
+        constraint VendasProdutos_Pedidos_idPedido_fk
+            references LAB.Pedidos,
+    idProduto  bigint not null
+        constraint VendasProdutos_Produtos_idProduto_fk
+            references LAB.Produtos,
+    quantidade int,
+    constraint VendasProdutos_pk
+        primary key nonclustered (idPedido, idProduto)
+)
+go
