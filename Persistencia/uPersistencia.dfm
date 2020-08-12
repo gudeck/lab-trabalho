@@ -208,6 +208,26 @@ object Persistencia: TPersistencia
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       Required = True
     end
+    object qUsuarioTelasALTERAR: TBooleanField
+      FieldName = 'ALTERAR'
+      ProviderFlags = [pfInUpdate]
+      Required = True
+    end
+    object qUsuarioTelasEXCLUIR: TBooleanField
+      FieldName = 'EXCLUIR'
+      ProviderFlags = [pfInUpdate]
+      Required = True
+    end
+    object qUsuarioTelasIMPRIMIR: TBooleanField
+      FieldName = 'IMPRIMIR'
+      ProviderFlags = [pfInUpdate]
+      Required = True
+    end
+    object qUsuarioTelasINSERIR: TBooleanField
+      FieldName = 'INSERIR'
+      ProviderFlags = [pfInUpdate]
+      Required = True
+    end
   end
   object dsoTelasUsuarioPossui: TDataSource
     DataSet = qTelasUsuarioPossui

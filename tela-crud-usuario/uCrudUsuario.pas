@@ -50,7 +50,6 @@ begin
   inherited;
   if not Persistencia.qTelasUsuarioPossui.IsEmpty then
   begin
-    Persistencia.qUsuarioTelas.Open;
     Persistencia.qUsuarioTelas.Edit;
 
     Persistencia.qUsuarioTelas.Locate('ID_USUARIO;ID_TELA',
@@ -58,7 +57,6 @@ begin
       Persistencia.qTelasUsuarioPossuiID.AsInteger]), []);
 
     Persistencia.qUsuarioTelas.Delete;
-    Persistencia.qUsuarioTelas.Close;
 
     Persistencia.qTelasUsuarioPossui.Close;
     Persistencia.qTelasUsuarioPossui.Open;
@@ -68,15 +66,8 @@ begin
 end;
 
 procedure TfCrudUsuario.FormCreate(Sender: TObject);
-var
-  associacaoDisponivel: Boolean;
 begin
   inherited;
-  associacaoDisponivel := Persistencia.qTelasLoginPossui.Locate('NOME',
-    btnAdicionar.Hint, []);
-  btnAdicionar.Visible := associacaoDisponivel;
-  btnRemover.Visible := associacaoDisponivel;
-
   Persistencia.qTelasUsuarioPossui.Open;
 end;
 

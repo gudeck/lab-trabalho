@@ -13,6 +13,11 @@ type
     DBGrid1: TDBGrid;
     Panel1: TPanel;
     btnSelecionar: TButton;
+    DBCheckBox1: TDBCheckBox;
+    DataSource1: TDataSource;
+    DBCheckBox2: TDBCheckBox;
+    DBCheckBox3: TDBCheckBox;
+    DBCheckBox4: TDBCheckBox;
     procedure btnSelecionarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
@@ -31,7 +36,6 @@ implementation
 
 procedure TfAssociacaoTelas.btnSelecionarClick(Sender: TObject);
 begin
-  Persistencia.qUsuarioTelas.Append;
   Persistencia.qUsuarioTelasID_USUARIO.AsInteger :=
     Persistencia.qUsuarioID.Value;
   Persistencia.qUsuarioTelasID_TELA.AsInteger :=
@@ -45,15 +49,14 @@ procedure TfAssociacaoTelas.FormCreate(Sender: TObject);
 begin
   Persistencia.qTelasUsuarioNaoPossui.Parameters.ParamByName('idUsuario').Value
     := Persistencia.qUsuarioID.Value;
-
   Persistencia.qTelasUsuarioNaoPossui.Open;
-  Persistencia.qUsuarioTelas.Open;
+
+  Persistencia.qUsuarioTelas.Append;
 end;
 
 procedure TfAssociacaoTelas.FormDestroy(Sender: TObject);
 begin
   Persistencia.qTelasUsuarioNaoPossui.Close;
-  Persistencia.qUsuarioTelas.Close;
 
   Persistencia.qTelasUsuarioPossui.Close;
   Persistencia.qTelasUsuarioPossui.Open;

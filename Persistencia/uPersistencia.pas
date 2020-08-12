@@ -48,6 +48,10 @@ type
     qTelasUsuarioPossui: TADOQuery;
     qTelasUsuarioPossuiID: TLargeintField;
     qTelasUsuarioPossuiNOME: TStringField;
+    qUsuarioTelasALTERAR: TBooleanField;
+    qUsuarioTelasEXCLUIR: TBooleanField;
+    qUsuarioTelasIMPRIMIR: TBooleanField;
+    qUsuarioTelasINSERIR: TBooleanField;
     procedure qDisciplinaAfterInsert(DataSet: TDataSet);
     procedure qUsuarioAfterScroll(DataSet: TDataSet);
     procedure qDisciplinaBeforeDelete(DataSet: TDataSet);

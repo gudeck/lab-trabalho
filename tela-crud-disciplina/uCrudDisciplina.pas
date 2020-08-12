@@ -16,8 +16,6 @@ type
     cbOpcional: TDBCheckBox;
     Label5: TLabel;
     edDataCriacao: TDBEdit;
-    cmbDocente: TDBLookupComboBox;
-    Label6: TLabel;
     gbInformacoesAulas: TGroupBox;
     DBGrid1: TDBGrid;
     sbtNovo: TSpeedButton;

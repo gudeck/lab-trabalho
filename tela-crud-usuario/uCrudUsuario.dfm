@@ -1,7 +1,6 @@
 inherited fCrudUsuario: TfCrudUsuario
   Caption = 'fCrudUsuario'
   ClientHeight = 409
-  OnDestroy = FormDestroy
   ExplicitHeight = 448
   PixelsPerInch = 96
   TextHeight = 13
@@ -21,7 +20,7 @@ inherited fCrudUsuario: TfCrudUsuario
       Height = 21
       Color = 11184381
       DataField = 'ID'
-      DataSource = DataSource
+      DataSource = dsoDados
       Enabled = False
       ReadOnly = True
       TabOrder = 0
@@ -29,6 +28,7 @@ inherited fCrudUsuario: TfCrudUsuario
   end
   inherited PageControl: TPageControl
     Height = 337
+    ActivePage = tabFiltros
     ExplicitHeight = 337
     inherited tabInformacoes: TTabSheet
       ExplicitHeight = 309
@@ -58,7 +58,7 @@ inherited fCrudUsuario: TfCrudUsuario
           Width = 135
           Height = 21
           DataField = 'NOME'
-          DataSource = DataSource
+          DataSource = dsoDados
           TabOrder = 0
         end
         object edSenha: TDBEdit
@@ -67,7 +67,7 @@ inherited fCrudUsuario: TfCrudUsuario
           Width = 135
           Height = 21
           DataField = 'SENHA'
-          DataSource = DataSource
+          DataSource = dsoDados
           TabOrder = 1
         end
       end
@@ -243,7 +243,7 @@ inherited fCrudUsuario: TfCrudUsuario
       end
     end
   end
-  inherited DataSource: TDataSource
+  inherited dsoDados: TDataSource
     DataSet = Persistencia.qUsuario
   end
 end

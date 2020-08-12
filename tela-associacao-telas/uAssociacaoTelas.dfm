@@ -51,12 +51,57 @@ object fAssociacaoTelas: TfAssociacaoTelas
     TabOrder = 1
     object btnSelecionar: TButton
       Left = 16
-      Top = 16
+      Top = 127
       Width = 75
       Height = 25
       Caption = 'Selecionar'
       TabOrder = 0
       OnClick = btnSelecionarClick
     end
+    object DBCheckBox1: TDBCheckBox
+      Left = 16
+      Top = 16
+      Width = 97
+      Height = 17
+      Caption = 'Alterar'
+      DataField = 'ALTERAR'
+      DataSource = DataSource1
+      TabOrder = 1
+    end
+    object DBCheckBox2: TDBCheckBox
+      Left = 16
+      Top = 39
+      Width = 97
+      Height = 17
+      Caption = 'Excluir'
+      DataField = 'EXCLUIR'
+      DataSource = DataSource1
+      TabOrder = 2
+    end
+    object DBCheckBox3: TDBCheckBox
+      Left = 16
+      Top = 63
+      Width = 97
+      Height = 17
+      Caption = 'Imprimir'
+      DataField = 'IMPRIMIR'
+      DataSource = DataSource1
+      TabOrder = 3
+    end
+    object DBCheckBox4: TDBCheckBox
+      Left = 16
+      Top = 87
+      Width = 97
+      Height = 17
+      Caption = 'Inserir'
+      DataField = 'INSERIR'
+      DataSource = DataSource1
+      TabOrder = 4
+    end
+  end
+  object DataSource1: TDataSource
+    DataSet = Persistencia.qUsuarioTelas
+    Left = 376
+    Top = 144
   end
 end

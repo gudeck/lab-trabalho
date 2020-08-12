@@ -2,7 +2,6 @@ inherited fCrudDisciplina: TfCrudDisciplina
   Caption = 'fCrudDisciplina'
   ClientHeight = 447
   ClientWidth = 394
-  OnDestroy = FormDestroy
   ExplicitWidth = 410
   ExplicitHeight = 486
   PixelsPerInch = 96
@@ -41,7 +40,7 @@ inherited fCrudDisciplina: TfCrudDisciplina
       Height = 21
       Color = 11184381
       DataField = 'ID'
-      DataSource = DataSource
+      DataSource = dsoDados
       Enabled = False
       ReadOnly = True
       TabOrder = 0
@@ -52,7 +51,7 @@ inherited fCrudDisciplina: TfCrudDisciplina
       Width = 295
       Height = 21
       DataField = 'NOME'
-      DataSource = DataSource
+      DataSource = dsoDados
       TabOrder = 1
     end
   end
@@ -86,13 +85,6 @@ inherited fCrudDisciplina: TfCrudDisciplina
           Caption = 'Criado em'
           FocusControl = edDataCriacao
         end
-        object Label6: TLabel
-          Left = 267
-          Top = 9
-          Width = 40
-          Height = 13
-          Caption = 'Docente'
-        end
         object Label4: TLabel
           Left = 12
           Top = 9
@@ -108,7 +100,7 @@ inherited fCrudDisciplina: TfCrudDisciplina
           Height = 76
           Anchors = [akLeft, akTop, akRight, akBottom]
           DataField = 'DESCRICAO'
-          DataSource = DataSource
+          DataSource = dsoDados
           TabOrder = 2
         end
         object cbOpcional: TDBCheckBox
@@ -118,7 +110,7 @@ inherited fCrudDisciplina: TfCrudDisciplina
           Height = 17
           Caption = 'Opcional'
           DataField = 'OPCIONAL'
-          DataSource = DataSource
+          DataSource = dsoDados
           TabOrder = 1
         end
         object edDataCriacao: TDBEdit
@@ -127,21 +119,9 @@ inherited fCrudDisciplina: TfCrudDisciplina
           Width = 113
           Height = 21
           DataField = 'DATA_CRIACAO'
-          DataSource = DataSource
+          DataSource = dsoDados
           MaxLength = 8
           TabOrder = 0
-        end
-        object cmbDocente: TDBLookupComboBox
-          Left = 267
-          Top = 25
-          Width = 107
-          Height = 21
-          Anchors = [akLeft, akTop, akRight]
-          DataField = 'ID'
-          DataSource = Persistencia.dsoDocente
-          ListField = 'NOME'
-          ListSource = Persistencia.dsoDocente
-          TabOrder = 3
         end
         object edMedia: TDBEdit
           Left = 12
@@ -149,8 +129,8 @@ inherited fCrudDisciplina: TfCrudDisciplina
           Width = 53
           Height = 21
           DataField = 'MEDIA'
-          DataSource = DataSource
-          TabOrder = 4
+          DataSource = dsoDados
+          TabOrder = 3
         end
       end
       object gbInformacoesAulas: TGroupBox
@@ -342,7 +322,11 @@ inherited fCrudDisciplina: TfCrudDisciplina
       end
     end
   end
-  inherited DataSource: TDataSource
+  inherited Imagens: TImageList
+    Left = 120
+  end
+  inherited dsoDados: TDataSource
     DataSet = Persistencia.qDisciplina
+    Left = 208
   end
 end
