@@ -156,6 +156,10 @@
             <Form>fCrudProduto</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="tela-crud-cliente\uCrudCliente.pas">
+            <Form>fCrudCliente</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

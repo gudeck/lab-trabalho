@@ -9,7 +9,8 @@ uses
   uCrudUsuario in 'tela-crud-usuario\uCrudUsuario.pas' {fCrudUsuario},
   uControleTelas in 'util\uControleTelas.pas',
   uAssociacaoTelas in 'tela-associacao-telas\uAssociacaoTelas.pas' {fAssociacaoTelas},
-  uCrudProduto in 'tela-crud-produto\uCrudProduto.pas' {fCrudProduto};
+  uCrudProduto in 'tela-crud-produto\uCrudProduto.pas' {fCrudProduto},
+  uCrudCliente in 'tela-crud-cliente\uCrudCliente.pas' {fCrudCliente};
 
 {$R *.res}
 

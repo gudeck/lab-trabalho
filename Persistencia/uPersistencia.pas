@@ -41,6 +41,17 @@ type
     qProdutovalor: TBCDField;
     qProdutoqtdeEstoque: TIntegerField;
     qProdutocodigobarras: TIntegerField;
+    qCliente: TADOQuery;
+    qClienteidCliente: TLargeintField;
+    qClientenomeCliente: TStringField;
+    qClientecnpj: TIntegerField;
+    qClientedtNascimento: TDateTimeField;
+    qClienteidCidade: TLargeintField;
+    qClienteendereco: TStringField;
+    qClientecep: TIntegerField;
+    qClientenumero: TIntegerField;
+    qClientecomplemento: TStringField;
+    qClienteemail: TStringField;
     procedure qUsuarioAfterScroll(DataSet: TDataSet);
 
   private

@@ -229,4 +229,67 @@ object Persistencia: TPersistencia
       Required = True
     end
   end
+  object qCliente: TADOQuery
+    Connection = Connection
+    CursorType = ctStatic
+    Parameters = <>
+    SQL.Strings = (
+      'SELECT * FROM LAB.Cliente')
+    Left = 392
+    Top = 144
+    object qClienteidCliente: TLargeintField
+      FieldName = 'idCliente'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      ReadOnly = True
+    end
+    object qClientenomeCliente: TStringField
+      FieldName = 'nomeCliente'
+      ProviderFlags = [pfInUpdate]
+      Required = True
+      Size = 80
+    end
+    object qClientecnpj: TIntegerField
+      FieldName = 'cnpj'
+      ProviderFlags = [pfInUpdate]
+      Required = True
+    end
+    object qClientedtNascimento: TDateTimeField
+      FieldName = 'dtNascimento'
+      ProviderFlags = [pfInUpdate]
+      Required = True
+    end
+    object qClienteidCidade: TLargeintField
+      FieldName = 'idCidade'
+      ProviderFlags = [pfInUpdate]
+      Required = True
+    end
+    object qClienteendereco: TStringField
+      FieldName = 'endereco'
+      ProviderFlags = [pfInUpdate]
+      Required = True
+      Size = 80
+    end
+    object qClientecep: TIntegerField
+      FieldName = 'cep'
+      ProviderFlags = [pfInUpdate]
+      Required = True
+    end
+    object qClientenumero: TIntegerField
+      FieldName = 'numero'
+      ProviderFlags = [pfInUpdate]
+      Required = True
+    end
+    object qClientecomplemento: TStringField
+      FieldName = 'complemento'
+      ProviderFlags = [pfInUpdate]
+      Required = True
+      Size = 80
+    end
+    object qClienteemail: TStringField
+      FieldName = 'email'
+      ProviderFlags = [pfInUpdate]
+      Required = True
+      Size = 80
+    end
+  end
 end
