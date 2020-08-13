@@ -19,8 +19,8 @@ type
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure btnSelecionarClick(Sender: TObject);
-    procedure AtualizarEstoque();
   private
+    procedure AtualizarEstoque;
     { Private declarations }
   public
     { Public declarations }

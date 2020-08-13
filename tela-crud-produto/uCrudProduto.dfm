@@ -8,15 +8,15 @@ inherited fCrudProduto: TfCrudProduto
   TextHeight = 13
   inherited Panel1: TPanel
     Width = 549
-    ExplicitWidth = 554
+    ExplicitWidth = 549
     inherited Botoes: TToolBar
       Left = 365
-      ExplicitLeft = 370
+      ExplicitLeft = 365
     end
   end
   inherited gbCabecalho: TGroupBox
     Width = 549
-    ExplicitWidth = 554
+    ExplicitWidth = 549
     object Label4: TLabel
       Left = 16
       Top = 7
@@ -59,18 +59,18 @@ inherited fCrudProduto: TfCrudProduto
   inherited PageControl: TPageControl
     Width = 549
     Height = 267
-    ExplicitWidth = 554
-    ExplicitHeight = 318
+    ExplicitWidth = 549
+    ExplicitHeight = 267
     inherited tabInformacoes: TTabSheet
       ExplicitLeft = 4
       ExplicitTop = 24
-      ExplicitWidth = 546
-      ExplicitHeight = 290
+      ExplicitWidth = 541
+      ExplicitHeight = 239
       inherited gbInformacoes: TGroupBox
         Width = 541
         Height = 239
-        ExplicitWidth = 546
-        ExplicitHeight = 290
+        ExplicitWidth = 541
+        ExplicitHeight = 239
         object Label1: TLabel
           Left = 12
           Top = 8
@@ -120,6 +120,7 @@ inherited fCrudProduto: TfCrudProduto
           Height = 21
           DataField = 'codigobarras'
           DataSource = dsoDados
+          MaxLength = 9
           TabOrder = 2
         end
       end
@@ -127,12 +128,11 @@ inherited fCrudProduto: TfCrudProduto
     inherited tabFiltros: TTabSheet
       ExplicitLeft = 4
       ExplicitTop = 24
-      ExplicitWidth = 546
-      ExplicitHeight = 290
+      ExplicitWidth = 541
+      ExplicitHeight = 239
       inherited gbFiltros: TGroupBox
         Width = 541
         Height = 5
-        ExplicitTop = -5
         ExplicitWidth = 541
         ExplicitHeight = 5
       end
@@ -144,8 +144,8 @@ inherited fCrudProduto: TfCrudProduto
       inherited StatusBar: TStatusBar
         Top = 220
         Width = 541
-        ExplicitTop = 271
-        ExplicitWidth = 546
+        ExplicitTop = 220
+        ExplicitWidth = 541
       end
     end
   end

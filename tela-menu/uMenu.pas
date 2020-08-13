@@ -15,12 +15,14 @@ type
     Image1: TImage;
     btnProduto: TButton;
     btnPedido: TButton;
+    btnEntradaEstoque: TButton;
     procedure btnUsuarioClick(Sender: TObject);
     procedure btnClienteClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure btnProdutoClick(Sender: TObject);
     procedure btnPedidoClick(Sender: TObject);
+    procedure btnEntradaEstoqueClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -49,6 +51,11 @@ begin
   ControleTelas.chamaTela(btnUsuario.Hint);
 end;
 
+procedure TfMenu.btnEntradaEstoqueClick(Sender: TObject);
+begin
+  ControleTelas.chamaTela(btnEntradaEstoque.Hint);
+end;
+
 procedure TfMenu.btnClienteClick(Sender: TObject);
 begin
   ControleTelas.chamaTela(btnCliente.Hint);
@@ -68,6 +75,8 @@ begin
     btnUsuario.Hint, []);
   btnPedido.Visible := Persistencia.qTelasLoginPossui.Locate('NOME',
     btnPedido.Hint, []);
+  btnEntradaEstoque.Visible := Persistencia.qTelasLoginPossui.Locate('NOME',
+    btnEntradaEstoque.Hint, []);
 end;
 
 procedure TfMenu.FormDestroy(Sender: TObject);

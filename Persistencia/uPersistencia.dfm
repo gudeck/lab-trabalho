@@ -437,4 +437,50 @@ object Persistencia: TPersistencia
     Left = 552
     Top = 248
   end
+  object qEntradaEstoque: TADOQuery
+    Connection = Connection
+    CursorType = ctStatic
+    Parameters = <>
+    SQL.Strings = (
+      'SELECT * FROM LAB.EntradasEstoque')
+    Left = 384
+    Top = 352
+  end
+  object dsEntradaEstoque: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    ProviderName = 'pEntradaEstoque'
+    Left = 544
+    Top = 384
+    object dsEntradaEstoqueidEntrada: TLargeintField
+      FieldName = 'idEntrada'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      ReadOnly = True
+    end
+    object dsEntradaEstoqueidProduto: TLargeintField
+      FieldName = 'idProduto'
+      ProviderFlags = [pfInUpdate]
+      Required = True
+    end
+    object dsEntradaEstoquedataEntrada: TDateTimeField
+      FieldName = 'dataEntrada'
+      ProviderFlags = [pfInUpdate]
+      Required = True
+    end
+    object dsEntradaEstoquequantidade: TIntegerField
+      FieldName = 'quantidade'
+      ProviderFlags = [pfInUpdate]
+      Required = True
+    end
+  end
+  object dsoEntradaEstoque: TDataSource
+    DataSet = dsEntradaEstoque
+    Left = 624
+    Top = 400
+  end
+  object pEntradaEstoque: TDataSetProvider
+    DataSet = qEntradaEstoque
+    Left = 464
+    Top = 368
+  end
 end

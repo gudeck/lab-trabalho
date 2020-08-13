@@ -76,6 +76,14 @@ type
     dsoCliente: TDataSource;
     dsoProdutosPedidoPossui: TDataSource;
     dsoProdutosPedidoNaoPossui: TDataSource;
+    qEntradaEstoque: TADOQuery;
+    dsEntradaEstoque: TClientDataSet;
+    dsEntradaEstoqueidEntrada: TLargeintField;
+    dsEntradaEstoqueidProduto: TLargeintField;
+    dsEntradaEstoquedataEntrada: TDateTimeField;
+    dsEntradaEstoquequantidade: TIntegerField;
+    dsoEntradaEstoque: TDataSource;
+    pEntradaEstoque: TDataSetProvider;
     procedure qUsuarioAfterScroll(DataSet: TDataSet);
     procedure qPedidoAfterScroll(DataSet: TDataSet);
     procedure qPedidoBeforePost(DataSet: TDataSet);

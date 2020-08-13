@@ -14,7 +14,6 @@ inherited fCrudPedido: TfCrudPedido
   end
   inherited gbCabecalho: TGroupBox
     Width = 485
-    ExplicitTop = 16
     ExplicitWidth = 485
     object Label1: TLabel
       Left = 16
@@ -76,7 +75,6 @@ inherited fCrudPedido: TfCrudPedido
   end
   inherited PageControl: TPageControl
     Width = 485
-    ActivePage = tabFiltros
     ExplicitWidth = 485
     inherited tabInformacoes: TTabSheet
       ExplicitLeft = 4

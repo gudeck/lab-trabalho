@@ -6848,4 +6848,14 @@ object fMenu: TfMenu
     TabOrder = 3
     OnClick = btnPedidoClick
   end
+  object btnEntradaEstoque: TButton
+    Left = 0
+    Top = 183
+    Width = 175
+    Height = 40
+    Hint = 'fEntradaEstoque'
+    Caption = 'Entrada Estoque'
+    TabOrder = 4
+    OnClick = btnEntradaEstoqueClick
+  end
 end

@@ -8,12 +8,15 @@ inherited fCrudCliente: TfCrudCliente
   TextHeight = 13
   inherited Panel1: TPanel
     Width = 548
+    ExplicitWidth = 548
     inherited Botoes: TToolBar
       Left = 364
+      ExplicitLeft = 364
     end
   end
   inherited gbCabecalho: TGroupBox
     Width = 548
+    ExplicitWidth = 548
     object Label1: TLabel
       Left = 16
       Top = 6
@@ -56,14 +59,18 @@ inherited fCrudCliente: TfCrudCliente
   inherited PageControl: TPageControl
     Width = 548
     Height = 239
+    ExplicitWidth = 548
+    ExplicitHeight = 239
     inherited tabInformacoes: TTabSheet
       ExplicitLeft = 4
       ExplicitTop = 24
-      ExplicitWidth = 464
-      ExplicitHeight = 142
+      ExplicitWidth = 540
+      ExplicitHeight = 211
       inherited gbInformacoes: TGroupBox
         Width = 540
         Height = 211
+        ExplicitWidth = 540
+        ExplicitHeight = 211
         object Label3: TLabel
           Left = 12
           Top = 3
@@ -205,13 +212,12 @@ inherited fCrudCliente: TfCrudCliente
     inherited tabFiltros: TTabSheet
       ExplicitLeft = 4
       ExplicitTop = 24
-      ExplicitWidth = 529
+      ExplicitWidth = 540
       ExplicitHeight = 211
       inherited gbFiltros: TGroupBox
         Width = 540
         Height = 3
-        ExplicitTop = -3
-        ExplicitWidth = 529
+        ExplicitWidth = 540
         ExplicitHeight = 3
       end
       inherited DBGrid: TDBGrid
@@ -223,7 +229,7 @@ inherited fCrudCliente: TfCrudCliente
         Top = 192
         Width = 540
         ExplicitTop = 192
-        ExplicitWidth = 529
+        ExplicitWidth = 540
       end
     end
   end
