@@ -135,10 +135,6 @@
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
-        <DCCReference Include="..\tela-base\uBase.pas">
-            <Form>fBase</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
         <DCCReference Include="tela-menu\uMenu.pas">
             <Form>fMenu</Form>
             <FormType>dfm</FormType>
@@ -160,16 +156,28 @@
             <Form>fCrudCliente</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="tela-crud-pedido\uCrudPedido.pas">
-            <Form>fCrudPedido</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
         <DCCReference Include="tela-associacao-produtos\uAssociacaoProdutos.pas">
             <Form>fAssociacaoProdutos</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="tela-entrada-estoque\uEntradaEstoque.pas">
             <Form>fEntradaEstoque</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="tela-crud-pedido\uCrudPedido.pas">
+            <Form>fCrudPedido</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="tela-crud-faturamento\uFaturamentoSelecaoCliente.pas">
+            <Form>fFaturamentoSelecaoCliente</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="tela-base\uBase.pas">
+            <Form>fBase</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="tela-crud-faturamento\uFaturamentoItens.pas">
+            <Form>fFaturamentoItens</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Release">

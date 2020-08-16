@@ -20,7 +20,6 @@ type
     procedure FormDestroy(Sender: TObject);
     procedure btnSelecionarClick(Sender: TObject);
   private
-    procedure AtualizarEstoque;
     { Private declarations }
   public
     { Public declarations }
@@ -33,15 +32,6 @@ implementation
 
 {$R *.dfm}
 
-procedure TfAssociacaoProdutos.AtualizarEstoque;
-begin
-  Persistencia.qProdutosPedidoNaoPossui.Edit;
-  Persistencia.qProdutosPedidoNaoPossuiqtdeEstoque.AsInteger :=
-    Persistencia.qProdutosPedidoNaoPossuiqtdeEstoque.Value -
-    Persistencia.qPedidoProdutoquantidade.Value;
-  Persistencia.qProdutosPedidoNaoPossui.Post;
-end;
-
 procedure TfAssociacaoProdutos.btnSelecionarClick(Sender: TObject);
 begin
   Persistencia.qPedidoProdutoidPedido.AsInteger :=
@@ -53,8 +43,6 @@ begin
     (Persistencia.qPedidoProdutoquantidade.Value <=
     Persistencia.qProdutosPedidoNaoPossuiqtdeEstoque.Value) then
   begin
-    AtualizarEstoque();
-
     Persistencia.qPedidoProduto.Post;
     Self.Close;
   end

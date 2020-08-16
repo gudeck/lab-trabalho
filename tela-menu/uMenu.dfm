@@ -6858,4 +6858,14 @@ object fMenu: TfMenu
     TabOrder = 4
     OnClick = btnEntradaEstoqueClick
   end
+  object btnFaturamento: TButton
+    Left = 142
+    Top = 229
+    Width = 175
+    Height = 40
+    Hint = 'fFaturamentoSelecaoCliente'
+    Caption = 'Faturamento'
+    TabOrder = 5
+    OnClick = btnFaturamentoClick
+  end
 end

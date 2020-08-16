@@ -25,7 +25,6 @@ type
     procedure FormDestroy(Sender: TObject);
     procedure btnAdicionarClick(Sender: TObject);
     procedure btnRemoverClick(Sender: TObject);
-    procedure AtualizarEstoque();
   private
     { Private declarations }
   public
@@ -38,20 +37,6 @@ var
 implementation
 
 {$R *.dfm}
-
-procedure TfCrudPedido.AtualizarEstoque;
-begin
-  Persistencia.qPedidoProduto.Locate('idPedido;idProduto',
-    VarArrayOf([Persistencia.qPedidoidPedido.AsInteger,
-    Persistencia.qProdutosPedidoPossuiidProduto.AsInteger]), []);
-
-  Persistencia.qProdutosPedidoPossui.Edit;
-  Persistencia.qProdutosPedidoPossuiqtdeEstoque.AsInteger :=
-    Persistencia.qProdutosPedidoPossuiqtdeEstoque.Value +
-    Persistencia.qPedidoProdutoquantidade.Value;
-  Persistencia.qProdutosPedidoPossui.Post;
-
-end;
 
 procedure TfCrudPedido.btnAdicionarClick(Sender: TObject);
 begin
@@ -68,7 +53,9 @@ begin
     Persistencia.qPedidoProduto.Open;
     Persistencia.qPedidoProduto.Edit;
 
-    AtualizarEstoque();
+    Persistencia.qPedidoProduto.Locate('idPedido;idProduto',
+      VarArrayOf([Persistencia.qPedidoidPedido.AsInteger,
+      Persistencia.qProdutosPedidoPossuiidProduto.AsInteger]), []);
 
     Persistencia.qPedidoProduto.Delete;
     Persistencia.qPedidoProduto.Close;

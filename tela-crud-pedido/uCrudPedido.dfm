@@ -77,10 +77,7 @@ inherited fCrudPedido: TfCrudPedido
     Width = 485
     ExplicitWidth = 485
     inherited tabInformacoes: TTabSheet
-      ExplicitLeft = 4
-      ExplicitTop = 24
       ExplicitWidth = 477
-      ExplicitHeight = 142
       inherited gbInformacoes: TGroupBox
         Width = 477
         Align = alTop
@@ -234,10 +231,7 @@ inherited fCrudPedido: TfCrudPedido
       end
     end
     inherited tabFiltros: TTabSheet
-      ExplicitLeft = 4
-      ExplicitTop = 24
       ExplicitWidth = 477
-      ExplicitHeight = 142
       inherited gbFiltros: TGroupBox
         Width = 477
         Height = 6

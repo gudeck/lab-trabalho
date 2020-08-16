@@ -444,14 +444,14 @@ object Persistencia: TPersistencia
     SQL.Strings = (
       'SELECT * FROM LAB.EntradasEstoque')
     Left = 384
-    Top = 352
+    Top = 344
   end
   object dsEntradaEstoque: TClientDataSet
     Aggregates = <>
     Params = <>
     ProviderName = 'pEntradaEstoque'
     Left = 544
-    Top = 384
+    Top = 376
     object dsEntradaEstoqueidEntrada: TLargeintField
       FieldName = 'idEntrada'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
@@ -476,11 +476,91 @@ object Persistencia: TPersistencia
   object dsoEntradaEstoque: TDataSource
     DataSet = dsEntradaEstoque
     Left = 624
-    Top = 400
+    Top = 392
   end
   object pEntradaEstoque: TDataSetProvider
     DataSet = qEntradaEstoque
     Left = 464
-    Top = 368
+    Top = 360
+  end
+  object qFaturamento: TADOQuery
+    Connection = Connection
+    CursorType = ctStatic
+    Parameters = <>
+    SQL.Strings = (
+      'SELECT * FROM LAB.Faturamento')
+    Left = 72
+    Top = 392
+    object qFaturamentoidFaturamento: TLargeintField
+      FieldName = 'idFaturamento'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      ReadOnly = True
+    end
+    object qFaturamentodataFaturamento: TDateTimeField
+      FieldName = 'dataFaturamento'
+      Required = True
+    end
+    object qFaturamentoidCliente: TLargeintField
+      FieldName = 'idCliente'
+      Required = True
+    end
+  end
+  object qProdutosNaoForamFaturados: TADOQuery
+    Connection = Connection
+    CursorType = ctStatic
+    Parameters = <
+      item
+        Name = 'idCliente'
+        Attributes = [paSigned]
+        DataType = ftLargeint
+        Precision = 19
+        Size = 8
+        Value = Null
+      end>
+    SQL.Strings = (
+      'SELECT VP.idPedido, VP.idProduto, Pr.produto, VP.quantidade'
+      'FROM LAB.VendasProdutos VP'
+      'FULL OUTER JOIN LAB.FaturamentoItem FI'
+      'ON VP.idPedido = FI.idPedido and VP.idProduto = FI.idProduto'
+      'INNER JOIN LAB.Pedidos Pe ON VP.idPedido = Pe.idPedido'
+      'INNER JOIN LAB.Cliente C ON Pe.idCliente = C.idCliente'
+      'INNER JOIN LAB.Produtos Pr ON VP.idProduto = Pr.idProduto'
+      
+        'WHERE (VP.idPedido IS NULL OR FI.idPedido IS NULL OR VP.idProdut' +
+        'o IS NULL OR FI.idProduto IS NULL)'
+      'AND C.idCliente = :idCliente')
+    Left = 72
+    Top = 440
+    object qProdutosNaoForamFaturadosidPedido: TLargeintField
+      FieldName = 'idPedido'
+    end
+    object qProdutosNaoForamFaturadosidProduto: TLargeintField
+      FieldName = 'idProduto'
+    end
+    object qProdutosNaoForamFaturadosproduto: TStringField
+      FieldName = 'produto'
+      Size = 80
+    end
+    object qProdutosNaoForamFaturadosquantidade: TIntegerField
+      FieldName = 'quantidade'
+    end
+  end
+  object qFaturamentoItem: TADOQuery
+    Connection = Connection
+    CursorType = ctStatic
+    Parameters = <>
+    SQL.Strings = (
+      'SELECT * FROM LAB.FaturamentoItem')
+    Left = 72
+    Top = 488
+    object qFaturamentoItemidFaturamento: TLargeintField
+      FieldName = 'idFaturamento'
+    end
+    object qFaturamentoItemidProduto: TLargeintField
+      FieldName = 'idProduto'
+    end
+    object qFaturamentoItemidPedido: TLargeintField
+      FieldName = 'idPedido'
+    end
   end
 end

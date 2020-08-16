@@ -16,6 +16,7 @@ type
     btnProduto: TButton;
     btnPedido: TButton;
     btnEntradaEstoque: TButton;
+    btnFaturamento: TButton;
     procedure btnUsuarioClick(Sender: TObject);
     procedure btnClienteClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -23,6 +24,7 @@ type
     procedure btnProdutoClick(Sender: TObject);
     procedure btnPedidoClick(Sender: TObject);
     procedure btnEntradaEstoqueClick(Sender: TObject);
+    procedure btnFaturamentoClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -56,6 +58,11 @@ begin
   ControleTelas.chamaTela(btnEntradaEstoque.Hint);
 end;
 
+procedure TfMenu.btnFaturamentoClick(Sender: TObject);
+begin
+  ControleTelas.chamaTela(btnFaturamento.Hint);
+end;
+
 procedure TfMenu.btnClienteClick(Sender: TObject);
 begin
   ControleTelas.chamaTela(btnCliente.Hint);
@@ -67,16 +74,18 @@ begin
     Persistencia.qLoginID.AsInteger;
   Persistencia.qTelasLoginPossui.Open;
 
+  btnUsuario.Visible := Persistencia.qTelasLoginPossui.Locate('NOME',
+    btnUsuario.Hint, []);
   btnCliente.Visible := Persistencia.qTelasLoginPossui.Locate('NOME',
     btnCliente.Hint, []);
   btnProduto.Visible := Persistencia.qTelasLoginPossui.Locate('NOME',
     btnProduto.Hint, []);
-  btnUsuario.Visible := Persistencia.qTelasLoginPossui.Locate('NOME',
-    btnUsuario.Hint, []);
   btnPedido.Visible := Persistencia.qTelasLoginPossui.Locate('NOME',
     btnPedido.Hint, []);
   btnEntradaEstoque.Visible := Persistencia.qTelasLoginPossui.Locate('NOME',
     btnEntradaEstoque.Hint, []);
+  btnFaturamento.Visible := Persistencia.qTelasLoginPossui.Locate('NOME',
+    btnFaturamento.Hint, []);
 end;
 
 procedure TfMenu.FormDestroy(Sender: TObject);
