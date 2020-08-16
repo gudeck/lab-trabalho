@@ -13,7 +13,6 @@ type
     btEntrar: TButton;
     edNome: TLabeledEdit;
     edSenha: TLabeledEdit;
-    Image1: TImage;
     procedure btEntrarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);

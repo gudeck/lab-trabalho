@@ -12,7 +12,6 @@ type
   TfMenu = class(TForm)
     btnUsuario: TButton;
     btnCliente: TButton;
-    Image1: TImage;
     btnProduto: TButton;
     btnPedido: TButton;
     btnEntradaEstoque: TButton;
