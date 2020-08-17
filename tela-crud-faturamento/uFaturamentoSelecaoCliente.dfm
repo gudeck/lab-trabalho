@@ -22,10 +22,6 @@ object fFaturamentoSelecaoCliente: TfFaturamentoSelecaoCliente
     Height = 183
     Align = alClient
     TabOrder = 0
-    ExplicitLeft = 128
-    ExplicitTop = 88
-    ExplicitWidth = 185
-    ExplicitHeight = 41
     object DBLookupComboBox1: TDBLookupComboBox
       Left = 24
       Top = 28

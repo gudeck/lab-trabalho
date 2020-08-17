@@ -15,7 +15,8 @@ uses
   uCrudPedido in 'tela-crud-pedido\uCrudPedido.pas' {fCrudPedido},
   uFaturamentoSelecaoCliente in 'tela-crud-faturamento\uFaturamentoSelecaoCliente.pas' {fFaturamentoSelecaoCliente},
   uBase in 'tela-base\uBase.pas' {fBase},
-  uFaturamentoItens in 'tela-crud-faturamento\uFaturamentoItens.pas' {fFaturamentoItens};
+  uFaturamentoItens in 'tela-crud-faturamento\uFaturamentoItens.pas' {fFaturamentoItens},
+  uRelatorios in 'tela-relatorios\uRelatorios.pas' {fRelatorios};
 
 {$R *.res}
 

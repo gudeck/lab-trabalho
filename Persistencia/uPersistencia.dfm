@@ -563,4 +563,73 @@ object Persistencia: TPersistencia
       FieldName = 'idPedido'
     end
   end
+  object qRelatorio05: TADOQuery
+    Active = True
+    Connection = Connection
+    CursorType = ctStatic
+    Parameters = <>
+    SQL.Strings = (
+      
+        'SELECT TV.idPedido, TOTAL_VENDIDO, TOTAL_FATURADO, (TOTAL_VENDID' +
+        'O - TOTAL_FATURADO) AS TOTAL_ABERTO'
+      
+        'FROM (SELECT PE.idPedido, SUM(VP.quantidade * PR.valor) AS TOTAL' +
+        '_VENDIDO'
+      '      FROM LAB.Pedidos PE'
+      
+        '               INNER JOIN LAB.VendasProdutos VP ON PE.idPedido =' +
+        ' VP.idPedido'
+      
+        '               INNER JOIN LAB.Produtos PR ON VP.idProduto = PR.i' +
+        'dProduto'
+      '      GROUP BY PE.idPedido'
+      '     ) TV'
+      
+        '         LEFT JOIN (SELECT FI.idPedido, SUM(VP.quantidade * PR.v' +
+        'alor) AS TOTAL_FATURADO'
+      '                    FROM LAB.Pedidos PE'
+      
+        '                             INNER JOIN LAB.VendasProdutos VP ON' +
+        ' PE.idPedido = VP.idPedido'
+      
+        '                             INNER JOIN LAB.Produtos PR ON VP.id' +
+        'Produto = PR.idProduto'
+      '                             INNER JOIN LAB.FaturamentoItem FI'
+      
+        '                                        ON VP.idPedido = FI.idPe' +
+        'dido and VP.idProduto = FI.idProduto'
+      '                    WHERE idFaturamento IS NOT NULL'
+      
+        '                    GROUP BY FI.idPedido) TF ON TF.idPedido = TV' +
+        '.idPedido')
+    Left = 272
+    Top = 568
+    object qRelatorio05idPedido: TLargeintField
+      FieldName = 'idPedido'
+      ReadOnly = True
+    end
+    object qRelatorio05TOTAL_VENDIDO: TFMTBCDField
+      FieldName = 'TOTAL_VENDIDO'
+      ReadOnly = True
+      Precision = 38
+      Size = 0
+    end
+    object qRelatorio05TOTAL_FATURADO: TFMTBCDField
+      FieldName = 'TOTAL_FATURADO'
+      ReadOnly = True
+      Precision = 38
+      Size = 0
+    end
+    object qRelatorio05TOTAL_ABERTO: TFMTBCDField
+      FieldName = 'TOTAL_ABERTO'
+      ReadOnly = True
+      Precision = 38
+      Size = 0
+    end
+  end
+  object dsoRelatorio05: TDataSource
+    DataSet = qRelatorio05
+    Left = 344
+    Top = 568
+  end
 end

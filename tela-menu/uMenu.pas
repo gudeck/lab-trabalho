@@ -16,6 +16,7 @@ type
     btnPedido: TButton;
     btnEntradaEstoque: TButton;
     btnFaturamento: TButton;
+    btnRelatorios: TButton;
     procedure btnUsuarioClick(Sender: TObject);
     procedure btnClienteClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -24,6 +25,7 @@ type
     procedure btnPedidoClick(Sender: TObject);
     procedure btnEntradaEstoqueClick(Sender: TObject);
     procedure btnFaturamentoClick(Sender: TObject);
+    procedure btnRelatoriosClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -50,6 +52,11 @@ end;
 procedure TfMenu.btnUsuarioClick(Sender: TObject);
 begin
   ControleTelas.chamaTela(btnUsuario.Hint);
+end;
+
+procedure TfMenu.btnRelatoriosClick(Sender: TObject);
+begin
+  ControleTelas.chamaTela(btnRelatorios.Hint);
 end;
 
 procedure TfMenu.btnEntradaEstoqueClick(Sender: TObject);
@@ -85,6 +92,8 @@ begin
     btnEntradaEstoque.Hint, []);
   btnFaturamento.Visible := Persistencia.qTelasLoginPossui.Locate('NOME',
     btnFaturamento.Hint, []);
+  btnRelatorios.Visible := Persistencia.qTelasLoginPossui.Locate('NOME',
+    btnRelatorios.Hint, []);
 end;
 
 procedure TfMenu.FormDestroy(Sender: TObject);

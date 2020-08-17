@@ -87,4 +87,14 @@ object fMenu: TfMenu
     TabOrder = 5
     OnClick = btnFaturamentoClick
   end
+  object btnRelatorios: TButton
+    Left = 0
+    Top = 275
+    Width = 175
+    Height = 40
+    Hint = 'fRelatorios'
+    Caption = 'Relat'#243'rios'
+    TabOrder = 6
+    OnClick = btnRelatoriosClick
+  end
 end

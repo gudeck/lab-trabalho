@@ -97,6 +97,12 @@ type
     qFaturamentoItemidFaturamento: TLargeintField;
     qFaturamentoItemidProduto: TLargeintField;
     qFaturamentoItemidPedido: TLargeintField;
+    qRelatorio05: TADOQuery;
+    qRelatorio05idPedido: TLargeintField;
+    qRelatorio05TOTAL_VENDIDO: TFMTBCDField;
+    qRelatorio05TOTAL_FATURADO: TFMTBCDField;
+    qRelatorio05TOTAL_ABERTO: TFMTBCDField;
+    dsoRelatorio05: TDataSource;
     procedure qUsuarioAfterScroll(DataSet: TDataSet);
     procedure qPedidoAfterScroll(DataSet: TDataSet);
     procedure qPedidoBeforePost(DataSet: TDataSet);

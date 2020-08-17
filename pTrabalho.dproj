@@ -180,6 +180,10 @@
             <Form>fFaturamentoItens</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="tela-relatorios\uRelatorios.pas">
+            <Form>fRelatorios</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
