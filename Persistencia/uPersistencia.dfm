@@ -564,7 +564,6 @@ object Persistencia: TPersistencia
     end
   end
   object qRelatorio05: TADOQuery
-    Active = True
     Connection = Connection
     CursorType = ctStatic
     Parameters = <>
@@ -631,5 +630,73 @@ object Persistencia: TPersistencia
     DataSet = qRelatorio05
     Left = 344
     Top = 568
+  end
+  object qRelatorio04: TADOQuery
+    Connection = Connection
+    CursorType = ctStatic
+    Parameters = <>
+    SQL.Strings = (
+      
+        'SELECT TV.idProduto, VALOR_TOTAL_VENDIDO, QUANTIDADE_VENDIDA, TO' +
+        'TAL_FATURADO'
+      'FROM (SELECT PR.idProduto,'
+      
+        '             SUM(VP.quantidade * PR.valor) AS VALOR_TOTAL_VENDID' +
+        'O,'
+      '             SUM(VP.quantidade)            AS QUANTIDADE_VENDIDA'
+      '      FROM LAB.Pedidos PE'
+      
+        '               INNER JOIN LAB.VendasProdutos VP ON PE.idPedido =' +
+        ' VP.idPedido'
+      
+        '               INNER JOIN LAB.Produtos PR ON VP.idProduto = PR.i' +
+        'dProduto'
+      '      GROUP BY PR.idProduto'
+      '     ) TV'
+      
+        '         LEFT JOIN (SELECT PR.idProduto, SUM(VP.quantidade * PR.' +
+        'valor) AS TOTAL_FATURADO'
+      '                    FROM LAB.Pedidos PE'
+      
+        '                             INNER JOIN LAB.VendasProdutos VP ON' +
+        ' PE.idPedido = VP.idPedido'
+      
+        '                             INNER JOIN LAB.Produtos PR ON VP.id' +
+        'Produto = PR.idProduto'
+      '                             INNER JOIN LAB.FaturamentoItem FI'
+      
+        '                                        ON VP.idPedido = FI.idPe' +
+        'dido and VP.idProduto = FI.idProduto'
+      '                    WHERE idFaturamento IS NOT NULL'
+      
+        '                    GROUP BY PR.idProduto) TF ON TF.idProduto = ' +
+        'TV.idProduto')
+    Left = 272
+    Top = 520
+    object qRelatorio04idProduto: TLargeintField
+      FieldName = 'idProduto'
+      ReadOnly = True
+    end
+    object qRelatorio04VALOR_TOTAL_VENDIDO: TFMTBCDField
+      FieldName = 'VALOR_TOTAL_VENDIDO'
+      ReadOnly = True
+      Precision = 38
+      Size = 2
+    end
+    object qRelatorio04QUANTIDADE_VENDIDA: TIntegerField
+      FieldName = 'QUANTIDADE_VENDIDA'
+      ReadOnly = True
+    end
+    object qRelatorio04TOTAL_FATURADO: TFMTBCDField
+      FieldName = 'TOTAL_FATURADO'
+      ReadOnly = True
+      Precision = 38
+      Size = 2
+    end
+  end
+  object dsoRelatorio04: TDataSource
+    DataSet = qRelatorio04
+    Left = 344
+    Top = 520
   end
 end

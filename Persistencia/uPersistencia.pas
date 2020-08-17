@@ -103,6 +103,12 @@ type
     qRelatorio05TOTAL_VENDIDO: TFMTBCDField;
     qRelatorio05TOTAL_FATURADO: TFMTBCDField;
     qRelatorio05TOTAL_ABERTO: TFMTBCDField;
+    qRelatorio04: TADOQuery;
+    dsoRelatorio04: TDataSource;
+    qRelatorio04idProduto: TLargeintField;
+    qRelatorio04VALOR_TOTAL_VENDIDO: TFMTBCDField;
+    qRelatorio04QUANTIDADE_VENDIDA: TIntegerField;
+    qRelatorio04TOTAL_FATURADO: TFMTBCDField;
     procedure qUsuarioAfterScroll(DataSet: TDataSet);
     procedure qPedidoAfterScroll(DataSet: TDataSet);
     procedure qPedidoBeforePost(DataSet: TDataSet);

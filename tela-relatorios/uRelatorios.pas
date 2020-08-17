@@ -13,7 +13,7 @@ type
   TfRelatorios = class(TForm)
     Button1: TButton;
     Button2: TButton;
-    Button3: TButton;
+    btnRelatorio04: TButton;
     btnRelatorio05: TButton;
     pplRelatorio05: TppDBPipeline;
     rpRelatorio05: TppReport;
@@ -39,6 +39,26 @@ type
     ppDBCalc3: TppDBCalc;
     ppLine1: TppLine;
     ppLine2: TppLine;
+    pplRelatorio04: TppDBPipeline;
+    rpRelatorio04: TppReport;
+    ppHeaderBand2: TppHeaderBand;
+    ppDetailBand2: TppDetailBand;
+    ppFooterBand2: TppFooterBand;
+    ppSummaryBand2: TppSummaryBand;
+    ppLabel11: TppLabel;
+    ppDBText9: TppDBText;
+    ppLabel7: TppLabel;
+    ppDBText5: TppDBText;
+    ppLabel8: TppLabel;
+    ppDBText6: TppDBText;
+    ppLabel9: TppLabel;
+    ppDBText7: TppDBText;
+    ppLine3: TppLine;
+    ppLine4: TppLine;
+    ppDBCalc4: TppDBCalc;
+    ppDBCalc5: TppDBCalc;
+    ppDBCalc6: TppDBCalc;
+    ppLabel10: TppLabel;
     procedure btnRelatorio05Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
