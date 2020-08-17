@@ -612,19 +612,19 @@ object Persistencia: TPersistencia
       FieldName = 'TOTAL_VENDIDO'
       ReadOnly = True
       Precision = 38
-      Size = 0
+      Size = 2
     end
     object qRelatorio05TOTAL_FATURADO: TFMTBCDField
       FieldName = 'TOTAL_FATURADO'
       ReadOnly = True
       Precision = 38
-      Size = 0
+      Size = 2
     end
     object qRelatorio05TOTAL_ABERTO: TFMTBCDField
       FieldName = 'TOTAL_ABERTO'
       ReadOnly = True
       Precision = 38
-      Size = 0
+      Size = 2
     end
   end
   object dsoRelatorio05: TDataSource

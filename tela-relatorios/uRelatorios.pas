@@ -38,6 +38,7 @@ type
     ppDBCalc2: TppDBCalc;
     ppDBCalc3: TppDBCalc;
     ppLine1: TppLine;
+    ppLine2: TppLine;
     procedure btnRelatorio05Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);

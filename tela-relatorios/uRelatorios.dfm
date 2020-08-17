@@ -322,6 +322,7 @@ object fRelatorios: TfRelatorios
         Border.mmPadding = 0
         DataField = 'TOTAL_VENDIDO'
         DataPipeline = pplRelatorio05
+        DisplayFormat = '#0,00;-#0,00'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Name = 'Arial'
@@ -344,6 +345,7 @@ object fRelatorios: TfRelatorios
         Border.mmPadding = 0
         DataField = 'TOTAL_FATURADO'
         DataPipeline = pplRelatorio05
+        DisplayFormat = '#0,00;-#0,00'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Name = 'Arial'
@@ -366,6 +368,7 @@ object fRelatorios: TfRelatorios
         Border.mmPadding = 0
         DataField = 'TOTAL_ABERTO'
         DataPipeline = pplRelatorio05
+        DisplayFormat = '#0,00;-#0,00'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Name = 'Arial'
@@ -379,6 +382,19 @@ object fRelatorios: TfRelatorios
         mmLeft = 147638
         mmTop = 0
         mmWidth = 49213
+        BandType = 4
+        LayerName = Foreground
+      end
+      object ppLine2: TppLine
+        DesignLayer = ppDesignLayer1
+        UserName = 'Line2'
+        Border.mmPadding = 0
+        Pen.Style = psDot
+        Weight = 0.750000000000000000
+        mmHeight = 265
+        mmLeft = -1323
+        mmTop = 4498
+        mmWidth = 196850
         BandType = 4
         LayerName = Foreground
       end
@@ -405,15 +421,15 @@ object fRelatorios: TfRelatorios
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 12
-        Font.Style = []
+        Font.Style = [fsBold]
         FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
         FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
-        mmHeight = 4763
-        mmLeft = 0
+        mmHeight = 5027
+        mmLeft = 17463
         mmTop = 0
-        mmWidth = 49213
+        mmWidth = 14022
         BandType = 7
         LayerName = Foreground
       end
@@ -427,8 +443,8 @@ object fRelatorios: TfRelatorios
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 12
-        Font.Style = []
-        TextAlignment = taRightJustified
+        Font.Style = [fsBold]
+        TextAlignment = taCentered
         Transparent = True
         DataPipelineName = 'pplRelatorio05'
         mmHeight = 4498
@@ -448,8 +464,8 @@ object fRelatorios: TfRelatorios
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 12
-        Font.Style = []
-        TextAlignment = taRightJustified
+        Font.Style = [fsBold]
+        TextAlignment = taCentered
         Transparent = True
         DataPipelineName = 'pplRelatorio05'
         mmHeight = 4498
@@ -469,8 +485,8 @@ object fRelatorios: TfRelatorios
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 12
-        Font.Style = []
-        TextAlignment = taRightJustified
+        Font.Style = [fsBold]
+        TextAlignment = taCentered
         Transparent = True
         DataPipelineName = 'pplRelatorio05'
         mmHeight = 4498
