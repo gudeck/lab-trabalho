@@ -808,4 +808,84 @@ object Persistencia: TPersistencia
     Left = 344
     Top = 472
   end
+  object qRelatorio02: TADOQuery
+    Connection = Connection
+    CursorType = ctStatic
+    Parameters = <>
+    SQL.Strings = (
+      'SELECT VENDA.idCliente,'
+      '       VENDA.nomeCliente,'
+      '       VENDA.idProduto,'
+      '       VENDA.produto,'
+      '       VENDA.valor,'
+      '       VENDA.quantidade as quantidade_vendida,'
+      '       FATURAMENTO.quantidade as quantidade_faturada'
+      
+        'FROM (SELECT C.idCliente, C.nomeCliente, PR.idProduto, PR.produt' +
+        'o, PR.valor, VP.idPedido, VP.quantidade'
+      '      FROM LAB.Cliente C'
+      
+        '               INNER JOIN LAB.Pedidos PE ON C.idCliente = PE.idC' +
+        'liente'
+      
+        '               INNER JOIN LAB.VendasProdutos VP ON PE.idPedido =' +
+        ' VP.idPedido'
+      
+        '               INNER JOIN LAB.Produtos PR ON VP.idProduto = PR.i' +
+        'dProduto'
+      '     ) VENDA'
+      
+        '         LEFT JOIN (SELECT C.idCliente, VP.idProduto, VP.idPedid' +
+        'o, VP.quantidade'
+      '                    FROM LAB.Cliente C'
+      
+        '                             INNER JOIN LAB.Pedidos PE ON C.idCl' +
+        'iente = PE.idCliente'
+      
+        '                             INNER JOIN LAB.VendasProdutos VP ON' +
+        ' PE.idPedido = VP.idPedido'
+      '                             INNER JOIN LAB.FaturamentoItem FI'
+      
+        '                                        ON VP.idPedido = FI.idPe' +
+        'dido and VP.idProduto = FI.idProduto) FATURAMENTO'
+      
+        '                   ON VENDA.idCliente = FATURAMENTO.idCliente AN' +
+        'D VENDA.idProduto = FATURAMENTO.idProduto AND'
+      '                      VENDA.idPedido = FATURAMENTO.idPedido'
+      'ORDER BY VENDA.idCliente')
+    Left = 272
+    Top = 424
+    object qRelatorio02idCliente: TLargeintField
+      FieldName = 'idCliente'
+      ReadOnly = True
+    end
+    object qRelatorio02nomeCliente: TStringField
+      FieldName = 'nomeCliente'
+      Size = 80
+    end
+    object qRelatorio02idProduto: TLargeintField
+      FieldName = 'idProduto'
+      ReadOnly = True
+    end
+    object qRelatorio02produto: TStringField
+      FieldName = 'produto'
+      Size = 80
+    end
+    object qRelatorio02valor: TBCDField
+      FieldName = 'valor'
+      Precision = 16
+      Size = 2
+    end
+    object qRelatorio02quantidade_vendida: TIntegerField
+      FieldName = 'quantidade_vendida'
+    end
+    object qRelatorio02quantidade_faturada: TIntegerField
+      FieldName = 'quantidade_faturada'
+    end
+  end
+  object dsoRelatorio02: TDataSource
+    DataSet = qRelatorio02
+    Left = 344
+    Top = 424
+  end
 end

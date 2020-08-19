@@ -522,7 +522,7 @@ object fRelatorios: TfRelatorios
       FieldName = 'idProduto'
       FieldLength = 0
       DataType = dtLargeInt
-      DisplayWidth = 0
+      DisplayWidth = 15
       Position = 0
     end
     object pplRelatorio04ppField2: TppField
@@ -1113,7 +1113,7 @@ object fRelatorios: TfRelatorios
       FieldName = 'idCidade'
       FieldLength = 0
       DataType = dtLargeInt
-      DisplayWidth = 0
+      DisplayWidth = 15
       Position = 0
     end
     object pplRelatorio03ppField2: TppField
@@ -1177,7 +1177,7 @@ object fRelatorios: TfRelatorios
     PrinterSetup.PaperSize = 9
     Template.FileName = 
       'D:\Users\guzuc\Documents\Embarcadero\Studio\Projects\lab-trabalh' +
-      'o\tela-relatorios\rRelatorio04.rtm'
+      'o\tela-relatorios\rRelatorio03.rtm'
     ArchiveFileName = '($MyDocuments)\ReportArchive.raf'
     DeviceType = 'Screen'
     DefaultFileDeviceType = 'PDF'
@@ -1692,6 +1692,650 @@ object fRelatorios: TfRelatorios
       end
     end
     object ppParameterList3: TppParameterList
+    end
+  end
+  object pplRelatorio02: TppDBPipeline
+    DataSource = Persistencia.dsoRelatorio02
+    UserName = 'lRelatorio02'
+    Left = 64
+    Top = 216
+    object pplRelatorio02ppField1: TppField
+      FieldAlias = 'idCliente'
+      FieldName = 'idCliente'
+      FieldLength = 0
+      DataType = dtLargeInt
+      DisplayWidth = 0
+      Position = 0
+    end
+    object pplRelatorio02ppField2: TppField
+      FieldAlias = 'nomeCliente'
+      FieldName = 'nomeCliente'
+      FieldLength = 80
+      DisplayWidth = 80
+      Position = 1
+    end
+    object pplRelatorio02ppField3: TppField
+      FieldAlias = 'idProduto'
+      FieldName = 'idProduto'
+      FieldLength = 0
+      DataType = dtLargeInt
+      DisplayWidth = 15
+      Position = 2
+    end
+    object pplRelatorio02ppField4: TppField
+      FieldAlias = 'produto'
+      FieldName = 'produto'
+      FieldLength = 80
+      DisplayWidth = 80
+      Position = 3
+    end
+    object pplRelatorio02ppField5: TppField
+      Alignment = taRightJustify
+      FieldAlias = 'valor'
+      FieldName = 'valor'
+      FieldLength = 2
+      DataType = dtDouble
+      DisplayWidth = 17
+      Position = 4
+    end
+    object pplRelatorio02ppField6: TppField
+      Alignment = taRightJustify
+      FieldAlias = 'quantidade_vendida'
+      FieldName = 'quantidade_vendida'
+      FieldLength = 0
+      DataType = dtInteger
+      DisplayWidth = 10
+      Position = 5
+    end
+    object pplRelatorio02ppField7: TppField
+      Alignment = taRightJustify
+      FieldAlias = 'quantidade_faturada'
+      FieldName = 'quantidade_faturada'
+      FieldLength = 0
+      DataType = dtInteger
+      DisplayWidth = 10
+      Position = 6
+    end
+  end
+  object rpRelatorio02: TppReport
+    AutoStop = False
+    DataPipeline = pplRelatorio02
+    PrinterSetup.BinName = 'Default'
+    PrinterSetup.DocumentName = 'Report'
+    PrinterSetup.PaperName = 'A4'
+    PrinterSetup.PrinterName = 'Default'
+    PrinterSetup.SaveDeviceSettings = False
+    PrinterSetup.mmMarginBottom = 6350
+    PrinterSetup.mmMarginLeft = 6350
+    PrinterSetup.mmMarginRight = 6350
+    PrinterSetup.mmMarginTop = 6350
+    PrinterSetup.mmPaperHeight = 297000
+    PrinterSetup.mmPaperWidth = 210000
+    PrinterSetup.PaperSize = 9
+    Template.FileName = 
+      'D:\Users\guzuc\Documents\Embarcadero\Studio\Projects\lab-trabalh' +
+      'o\tela-relatorios\rRelatorio02.rtm'
+    ArchiveFileName = '($MyDocuments)\ReportArchive.raf'
+    DeviceType = 'Screen'
+    DefaultFileDeviceType = 'PDF'
+    EmailSettings.ReportFormat = 'PDF'
+    LanguageID = 'Default'
+    OpenFile = False
+    OutlineSettings.CreateNode = True
+    OutlineSettings.CreatePageNodes = True
+    OutlineSettings.Enabled = True
+    OutlineSettings.Visible = True
+    ThumbnailSettings.Enabled = True
+    ThumbnailSettings.Visible = True
+    ThumbnailSettings.DeadSpace = 30
+    ThumbnailSettings.PageHighlight.Width = 3
+    ThumbnailSettings.ThumbnailSize = tsSmall
+    PDFSettings.EmbedFontOptions = [efUseSubset]
+    PDFSettings.EncryptSettings.AllowCopy = True
+    PDFSettings.EncryptSettings.AllowInteract = True
+    PDFSettings.EncryptSettings.AllowModify = True
+    PDFSettings.EncryptSettings.AllowPrint = True
+    PDFSettings.EncryptSettings.AllowExtract = True
+    PDFSettings.EncryptSettings.AllowAssemble = True
+    PDFSettings.EncryptSettings.AllowQualityPrint = True
+    PDFSettings.EncryptSettings.Enabled = False
+    PDFSettings.EncryptSettings.KeyLength = kl40Bit
+    PDFSettings.EncryptSettings.EncryptionType = etRC4
+    PDFSettings.FontEncoding = feAnsi
+    PDFSettings.ImageCompressionLevel = 25
+    PDFSettings.PDFAFormat = pafNone
+    PreviewFormSettings.PageBorder.mmPadding = 0
+    RTFSettings.DefaultFont.Charset = DEFAULT_CHARSET
+    RTFSettings.DefaultFont.Color = clWindowText
+    RTFSettings.DefaultFont.Height = -13
+    RTFSettings.DefaultFont.Name = 'Arial'
+    RTFSettings.DefaultFont.Style = []
+    TextFileName = '($MyDocuments)\Report.pdf'
+    TextSearchSettings.DefaultString = '<FindText>'
+    TextSearchSettings.Enabled = True
+    XLSSettings.AppName = 'ReportBuilder'
+    XLSSettings.Author = 'ReportBuilder'
+    XLSSettings.Subject = 'Report'
+    XLSSettings.Title = 'Report'
+    XLSSettings.WorksheetName = 'Report'
+    Left = 144
+    Top = 216
+    Version = '20.03'
+    mmColumnWidth = 0
+    DataPipelineName = 'pplRelatorio02'
+    object ppHeaderBand4: TppHeaderBand
+      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
+      mmBottomOffset = 0
+      mmHeight = 25400
+      mmPrintPosition = 0
+      object ppLabel23: TppLabel
+        DesignLayer = ppDesignLayer4
+        UserName = 'Label23'
+        Border.mmPadding = 0
+        Caption = 'Relat'#243'rio 02'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 20
+        Font.Style = [fsBold]
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
+        TextAlignment = taCentered
+        Transparent = True
+        mmHeight = 8467
+        mmLeft = 76200
+        mmTop = 2540
+        mmWidth = 41804
+        BandType = 0
+        LayerName = Foreground2
+      end
+      object ppLabel24: TppLabel
+        DesignLayer = ppDesignLayer4
+        UserName = 'Label24'
+        AutoSize = False
+        Border.mmPadding = 0
+        Caption = 'C'#243'd.'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Name = 'Arial'
+        Font.Size = 12
+        Font.Style = []
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
+        TextAlignment = taCentered
+        Transparent = True
+        VerticalAlignment = avCenter
+        mmHeight = 4763
+        mmLeft = 0
+        mmTop = 19050
+        mmWidth = 12435
+        BandType = 0
+        LayerName = Foreground2
+      end
+      object ppLine7: TppLine
+        DesignLayer = ppDesignLayer4
+        UserName = 'Line7'
+        Border.mmPadding = 0
+        Weight = 0.750000000000000000
+        mmHeight = 265
+        mmLeft = 0
+        mmTop = 23600
+        mmWidth = 196850
+        BandType = 0
+        LayerName = Foreground2
+      end
+      object ppLabel25: TppLabel
+        DesignLayer = ppDesignLayer4
+        UserName = 'Label25'
+        AutoSize = False
+        Border.mmPadding = 0
+        Caption = 'Nome'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Name = 'Arial'
+        Font.Size = 12
+        Font.Style = []
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
+        Transparent = True
+        VerticalAlignment = avCenter
+        mmHeight = 4763
+        mmLeft = 12700
+        mmTop = 19050
+        mmWidth = 36777
+        BandType = 0
+        LayerName = Foreground2
+      end
+      object ppLabel26: TppLabel
+        DesignLayer = ppDesignLayer4
+        UserName = 'Label26'
+        AutoSize = False
+        Border.mmPadding = 0
+        Caption = 'Valor Unit'#225'rio'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Name = 'Arial'
+        Font.Size = 12
+        Font.Style = []
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
+        TextAlignment = taCentered
+        Transparent = True
+        VerticalAlignment = avCenter
+        mmHeight = 4763
+        mmLeft = 49742
+        mmTop = 19050
+        mmWidth = 49213
+        BandType = 0
+        LayerName = Foreground2
+      end
+      object ppLabel27: TppLabel
+        DesignLayer = ppDesignLayer4
+        UserName = 'Label27'
+        AutoSize = False
+        Border.mmPadding = 0
+        Caption = 'Qtd. Vend.'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Name = 'Arial'
+        Font.Size = 12
+        Font.Style = []
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
+        TextAlignment = taCentered
+        Transparent = True
+        VerticalAlignment = avCenter
+        mmHeight = 4763
+        mmLeft = 99219
+        mmTop = 19050
+        mmWidth = 24606
+        BandType = 0
+        LayerName = Foreground2
+      end
+      object ppLabel28: TppLabel
+        DesignLayer = ppDesignLayer4
+        UserName = 'Label28'
+        AutoSize = False
+        Border.mmPadding = 0
+        Caption = 'Qtd. Fatu.'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Name = 'Arial'
+        Font.Size = 12
+        Font.Style = []
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
+        TextAlignment = taCentered
+        Transparent = True
+        VerticalAlignment = avCenter
+        mmHeight = 4763
+        mmLeft = 124354
+        mmTop = 19050
+        mmWidth = 24606
+        BandType = 0
+        LayerName = Foreground2
+      end
+    end
+    object ppDetailBand4: TppDetailBand
+      Background1.Brush.Style = bsClear
+      Background2.Brush.Style = bsClear
+      Border.mmPadding = 0
+      mmBottomOffset = 0
+      mmHeight = 5292
+      mmPrintPosition = 0
+      object ppDBText17: TppDBText
+        DesignLayer = ppDesignLayer4
+        UserName = 'DBText17'
+        Border.mmPadding = 0
+        DataField = 'idProduto'
+        DataPipeline = pplRelatorio02
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Name = 'Arial'
+        Font.Size = 12
+        Font.Style = []
+        TextAlignment = taCentered
+        Transparent = True
+        VerticalAlignment = avCenter
+        DataPipelineName = 'pplRelatorio02'
+        mmHeight = 4763
+        mmLeft = 0
+        mmTop = 0
+        mmWidth = 12435
+        BandType = 4
+        LayerName = Foreground2
+      end
+      object ppDBText18: TppDBText
+        DesignLayer = ppDesignLayer4
+        UserName = 'DBText18'
+        Border.mmPadding = 0
+        DataField = 'produto'
+        DataPipeline = pplRelatorio02
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Name = 'Arial'
+        Font.Size = 12
+        Font.Style = []
+        Transparent = True
+        VerticalAlignment = avCenter
+        DataPipelineName = 'pplRelatorio02'
+        mmHeight = 4763
+        mmLeft = 12700
+        mmTop = 0
+        mmWidth = 36777
+        BandType = 4
+        LayerName = Foreground2
+      end
+      object ppDBText19: TppDBText
+        DesignLayer = ppDesignLayer4
+        UserName = 'DBText19'
+        Border.mmPadding = 0
+        DataField = 'valor'
+        DataPipeline = pplRelatorio02
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Name = 'Arial'
+        Font.Size = 12
+        Font.Style = []
+        TextAlignment = taCentered
+        Transparent = True
+        VerticalAlignment = avCenter
+        DataPipelineName = 'pplRelatorio02'
+        mmHeight = 4763
+        mmLeft = 49742
+        mmTop = 0
+        mmWidth = 49213
+        BandType = 4
+        LayerName = Foreground2
+      end
+      object ppDBText20: TppDBText
+        DesignLayer = ppDesignLayer4
+        UserName = 'DBText20'
+        Border.mmPadding = 0
+        DataField = 'quantidade_vendida'
+        DataPipeline = pplRelatorio02
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Name = 'Arial'
+        Font.Size = 12
+        Font.Style = []
+        TextAlignment = taCentered
+        Transparent = True
+        VerticalAlignment = avCenter
+        DataPipelineName = 'pplRelatorio02'
+        mmHeight = 4763
+        mmLeft = 99219
+        mmTop = 0
+        mmWidth = 24606
+        BandType = 4
+        LayerName = Foreground2
+      end
+      object ppDBText21: TppDBText
+        DesignLayer = ppDesignLayer4
+        UserName = 'DBText21'
+        Border.mmPadding = 0
+        DataField = 'quantidade_faturada'
+        DataPipeline = pplRelatorio02
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Name = 'Arial'
+        Font.Size = 12
+        Font.Style = []
+        TextAlignment = taCentered
+        Transparent = True
+        VerticalAlignment = avCenter
+        DataPipelineName = 'pplRelatorio02'
+        mmHeight = 4763
+        mmLeft = 124354
+        mmTop = 0
+        mmWidth = 24606
+        BandType = 4
+        LayerName = Foreground2
+      end
+      object ppLine8: TppLine
+        DesignLayer = ppDesignLayer4
+        UserName = 'Line8'
+        Border.mmPadding = 0
+        Pen.Style = psDot
+        Weight = 0.750000000000000000
+        mmHeight = 265
+        mmLeft = 0
+        mmTop = 4550
+        mmWidth = 196850
+        BandType = 4
+        LayerName = Foreground2
+      end
+    end
+    object ppFooterBand4: TppFooterBand
+      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
+      mmBottomOffset = 0
+      mmHeight = 0
+      mmPrintPosition = 0
+    end
+    object ppSummaryBand4: TppSummaryBand
+      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
+      mmBottomOffset = 0
+      mmHeight = 10160
+      mmPrintPosition = 0
+      object ppDBCalc12: TppDBCalc
+        DesignLayer = ppDesignLayer4
+        UserName = 'DBCalc12'
+        Border.mmPadding = 0
+        DataField = 'quantidade_vendida'
+        DataPipeline = pplRelatorio02
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 12
+        Font.Style = [fsBold]
+        TextAlignment = taCentered
+        Transparent = True
+        DataPipelineName = 'pplRelatorio02'
+        mmHeight = 4498
+        mmLeft = 99219
+        mmTop = 2540
+        mmWidth = 24606
+        BandType = 7
+        LayerName = Foreground2
+      end
+      object ppDBCalc15: TppDBCalc
+        DesignLayer = ppDesignLayer4
+        UserName = 'DBCalc15'
+        Border.mmPadding = 0
+        DataField = 'quantidade_faturada'
+        DataPipeline = pplRelatorio02
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 12
+        Font.Style = [fsBold]
+        TextAlignment = taCentered
+        Transparent = True
+        DataPipelineName = 'pplRelatorio02'
+        mmHeight = 4498
+        mmLeft = 124354
+        mmTop = 2646
+        mmWidth = 24606
+        BandType = 7
+        LayerName = Foreground2
+      end
+      object ppLabel30: TppLabel
+        DesignLayer = ppDesignLayer4
+        UserName = 'Label30'
+        Border.mmPadding = 0
+        Caption = 'Totais:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 12
+        Font.Style = [fsBold]
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
+        TextAlignment = taCentered
+        Transparent = True
+        mmHeight = 5027
+        mmLeft = 17463
+        mmTop = 2646
+        mmWidth = 14022
+        BandType = 7
+        LayerName = Foreground2
+      end
+      object ppLine10: TppLine
+        DesignLayer = ppDesignLayer4
+        UserName = 'Line10'
+        Border.mmPadding = 0
+        Weight = 0.750000000000000000
+        mmHeight = 265
+        mmLeft = 0
+        mmTop = 0
+        mmWidth = 196850
+        BandType = 7
+        LayerName = Foreground2
+      end
+    end
+    object ppGroup1: TppGroup
+      BreakName = 'idCliente'
+      DataPipeline = pplRelatorio02
+      GroupFileSettings.NewFile = False
+      GroupFileSettings.EmailFile = False
+      KeepTogether = True
+      OutlineSettings.CreateNode = True
+      StartOnOddPage = False
+      UserName = 'Group1'
+      mmNewColumnThreshold = 0
+      mmNewPageThreshold = 0
+      DataPipelineName = 'pplRelatorio02'
+      NewFile = False
+      object ppGroupHeaderBand1: TppGroupHeaderBand
+        Background.Brush.Style = bsClear
+        Border.mmPadding = 0
+        mmBottomOffset = 0
+        mmHeight = 5821
+        mmPrintPosition = 0
+        object ppDBText22: TppDBText
+          DesignLayer = ppDesignLayer4
+          UserName = 'DBText22'
+          Border.mmPadding = 0
+          DataField = 'nomeCliente'
+          DataPipeline = pplRelatorio02
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Name = 'Arial'
+          Font.Size = 15
+          Font.Style = [fsBold]
+          Transparent = True
+          DataPipelineName = 'pplRelatorio02'
+          mmHeight = 5821
+          mmLeft = 0
+          mmTop = 0
+          mmWidth = 49213
+          BandType = 3
+          GroupNo = 0
+          LayerName = Foreground2
+        end
+        object ppLine9: TppLine
+          DesignLayer = ppDesignLayer4
+          UserName = 'Line9'
+          Border.mmPadding = 0
+          Pen.Style = psDot
+          Weight = 0.750000000000000000
+          mmHeight = 265
+          mmLeft = 0
+          mmTop = 5551
+          mmWidth = 196850
+          BandType = 3
+          GroupNo = 0
+          LayerName = Foreground2
+        end
+      end
+      object ppGroupFooterBand1: TppGroupFooterBand
+        Background.Brush.Style = bsClear
+        Border.mmPadding = 0
+        HideWhenOneDetail = False
+        mmBottomOffset = 0
+        mmHeight = 7620
+        mmPrintPosition = 0
+        object ppLabel29: TppLabel
+          DesignLayer = ppDesignLayer4
+          UserName = 'Label29'
+          Border.mmPadding = 0
+          Caption = 'Totais:'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Arial'
+          Font.Size = 12
+          Font.Style = [fsBold]
+          FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+          FormFieldSettings.FormFieldType = fftNone
+          TextAlignment = taCentered
+          Transparent = True
+          mmHeight = 5027
+          mmLeft = 17463
+          mmTop = 0
+          mmWidth = 14022
+          BandType = 5
+          GroupNo = 0
+          LayerName = Foreground2
+        end
+        object ppDBCalc13: TppDBCalc
+          DesignLayer = ppDesignLayer4
+          UserName = 'DBCalc13'
+          Border.mmPadding = 0
+          DataField = 'quantidade_vendida'
+          DataPipeline = pplRelatorio02
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Arial'
+          Font.Size = 12
+          Font.Style = [fsBold]
+          ResetGroup = ppGroup1
+          TextAlignment = taCentered
+          Transparent = True
+          DataPipelineName = 'pplRelatorio02'
+          mmHeight = 4498
+          mmLeft = 99219
+          mmTop = 0
+          mmWidth = 24606
+          BandType = 5
+          GroupNo = 0
+          LayerName = Foreground2
+        end
+        object ppDBCalc14: TppDBCalc
+          DesignLayer = ppDesignLayer4
+          UserName = 'DBCalc14'
+          Border.mmPadding = 0
+          DataField = 'quantidade_faturada'
+          DataPipeline = pplRelatorio02
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Arial'
+          Font.Size = 12
+          Font.Style = [fsBold]
+          ResetGroup = ppGroup1
+          TextAlignment = taCentered
+          Transparent = True
+          DataPipelineName = 'pplRelatorio02'
+          mmHeight = 4498
+          mmLeft = 124354
+          mmTop = 0
+          mmWidth = 24606
+          BandType = 5
+          GroupNo = 0
+          LayerName = Foreground2
+        end
+      end
+    end
+    object ppDesignLayers4: TppDesignLayers
+      object ppDesignLayer4: TppDesignLayer
+        UserName = 'Foreground2'
+        LayerType = ltBanded
+        Index = 0
+      end
+    end
+    object ppParameterList4: TppParameterList
     end
   end
 end

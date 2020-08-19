@@ -119,6 +119,15 @@ type
     qRelatorio04QUANTIDADE_VENDIDA: TIntegerField;
     qRelatorio04VALOR_TOTAL_FATURADO: TFMTBCDField;
     qRelatorio04QUANTIDADE_FATURADA: TIntegerField;
+    qRelatorio02: TADOQuery;
+    dsoRelatorio02: TDataSource;
+    qRelatorio02idCliente: TLargeintField;
+    qRelatorio02nomeCliente: TStringField;
+    qRelatorio02idProduto: TLargeintField;
+    qRelatorio02produto: TStringField;
+    qRelatorio02valor: TBCDField;
+    qRelatorio02quantidade_vendida: TIntegerField;
+    qRelatorio02quantidade_faturada: TIntegerField;
     procedure qUsuarioAfterScroll(DataSet: TDataSet);
     procedure qPedidoAfterScroll(DataSet: TDataSet);
     procedure qPedidoBeforePost(DataSet: TDataSet);
