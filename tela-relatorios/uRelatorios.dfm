@@ -189,9 +189,9 @@ object fRelatorios: TfRelatorios
         UserName = 'Line1'
         Border.mmPadding = 0
         Weight = 0.750000000000000000
-        mmHeight = 265
+        mmHeight = 795
         mmLeft = 0
-        mmTop = 24130
+        mmTop = 23548
         mmWidth = 196850
         BandType = 0
         LayerName = Foreground
@@ -294,7 +294,7 @@ object fRelatorios: TfRelatorios
       Background2.Brush.Style = bsClear
       Border.mmPadding = 0
       mmBottomOffset = 0
-      mmHeight = 5080
+      mmHeight = 4763
       mmPrintPosition = 0
       object ppDBText1: TppDBText
         DesignLayer = ppDesignLayer1
@@ -395,7 +395,7 @@ object fRelatorios: TfRelatorios
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
-        mmTop = 5080
+        mmTop = 4498
         mmWidth = 196850
         BandType = 4
         LayerName = Foreground
@@ -740,7 +740,7 @@ object fRelatorios: TfRelatorios
         Weight = 0.750000000000000000
         mmHeight = 794
         mmLeft = 0
-        mmTop = 24130
+        mmTop = 23548
         mmWidth = 196850
         BandType = 0
         LayerName = Foreground1
@@ -817,7 +817,7 @@ object fRelatorios: TfRelatorios
       Background2.Brush.Style = bsClear
       Border.mmPadding = 0
       mmBottomOffset = 0
-      mmHeight = 5080
+      mmHeight = 4763
       mmPrintPosition = 0
       object ppDBText9: TppDBText
         DesignLayer = ppDesignLayer2
@@ -915,9 +915,9 @@ object fRelatorios: TfRelatorios
         Border.mmPadding = 0
         Pen.Style = psDot
         Weight = 0.750000000000000000
-        mmHeight = 794
+        mmHeight = 264
         mmLeft = 0
-        mmTop = 5080
+        mmTop = 4498
         mmWidth = 196850
         BandType = 4
         LayerName = Foreground1
@@ -1308,7 +1308,7 @@ object fRelatorios: TfRelatorios
         Weight = 0.750000000000000000
         mmHeight = 794
         mmLeft = 0
-        mmTop = 24130
+        mmTop = 23548
         mmWidth = 196850
         BandType = 0
         LayerName = BandLayer3
@@ -1408,7 +1408,7 @@ object fRelatorios: TfRelatorios
       Background2.Brush.Style = bsClear
       Border.mmPadding = 0
       mmBottomOffset = 0
-      mmHeight = 5080
+      mmHeight = 4763
       mmPrintPosition = 0
       object ppDBText10: TppDBText
         DesignLayer = ppDesignLayer3
@@ -1484,9 +1484,9 @@ object fRelatorios: TfRelatorios
         Border.mmPadding = 0
         Pen.Style = psDot
         Weight = 0.750000000000000000
-        mmHeight = 794
+        mmHeight = 264
         mmLeft = 0
-        mmTop = 5080
+        mmTop = 4549
         mmWidth = 196850
         BandType = 4
         LayerName = BandLayer3
@@ -1704,7 +1704,7 @@ object fRelatorios: TfRelatorios
       FieldName = 'idCliente'
       FieldLength = 0
       DataType = dtLargeInt
-      DisplayWidth = 0
+      DisplayWidth = 15
       Position = 0
     end
     object pplRelatorio02ppField2: TppField
