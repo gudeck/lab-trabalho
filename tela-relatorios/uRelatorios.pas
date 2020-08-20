@@ -11,7 +11,7 @@ uses
 
 type
   TfRelatorios = class(TForm)
-    Button1: TButton;
+    btnRelatorio02: TButton;
     btnRelatorio03: TButton;
     btnRelatorio04: TButton;
     btnRelatorio05: TButton;
@@ -135,6 +135,7 @@ type
     procedure FormDestroy(Sender: TObject);
     procedure btnRelatorio04Click(Sender: TObject);
     procedure btnRelatorio03Click(Sender: TObject);
+    procedure btnRelatorio02Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -147,6 +148,11 @@ var
 implementation
 
 {$R *.dfm}
+
+procedure TfRelatorios.btnRelatorio02Click(Sender: TObject);
+begin
+  rpRelatorio02.Print;
+end;
 
 procedure TfRelatorios.btnRelatorio03Click(Sender: TObject);
 begin

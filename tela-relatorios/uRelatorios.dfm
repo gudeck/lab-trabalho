@@ -15,13 +15,14 @@ object fRelatorios: TfRelatorios
   OnDestroy = FormDestroy
   PixelsPerInch = 96
   TextHeight = 13
-  object Button1: TButton
+  object btnRelatorio02: TButton
     Left = 0
     Top = 0
     Width = 175
     Height = 40
-    Caption = 'Button1'
+    Caption = 'Relat'#243'rio 2'
     TabOrder = 0
+    OnClick = btnRelatorio02Click
   end
   object btnRelatorio03: TButton
     Left = 142
