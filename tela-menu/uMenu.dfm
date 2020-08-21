@@ -15,6 +15,31 @@ object fMenu: TfMenu
   OnDestroy = FormDestroy
   PixelsPerInch = 96
   TextHeight = 13
+  object Label1: TLabel
+    Left = 8
+    Top = 372
+    Width = 77
+    Height = 25
+    Caption = 'Vers'#227'o: '
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -21
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+  end
+  object lblVersao: TLabel
+    Left = 87
+    Top = 372
+    Width = 222
+    Height = 25
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -21
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+  end
   object btnUsuario: TButton
     Left = 0
     Top = 0

@@ -17,6 +17,8 @@ type
     btnEntradaEstoque: TButton;
     btnFaturamento: TButton;
     btnRelatorios: TButton;
+    Label1: TLabel;
+    lblVersao: TLabel;
     procedure btnUsuarioClick(Sender: TObject);
     procedure btnClienteClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -94,6 +96,8 @@ begin
     btnFaturamento.Hint, []);
   btnRelatorios.Visible := Persistencia.qTelasLoginPossui.Locate('NOME',
     btnRelatorios.Hint, []);
+
+  lblVersao.Caption := ParamStr(3);
 end;
 
 procedure TfMenu.FormDestroy(Sender: TObject);

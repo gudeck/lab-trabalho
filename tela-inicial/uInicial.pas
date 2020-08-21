@@ -38,6 +38,8 @@ begin
   else
   begin
     ControleTelas.chamaTela('fMenu');
+    edNome.Text := EmptyStr;
+    edSenha.Text := EmptyStr;
   end;
 
 end;
@@ -45,6 +47,12 @@ end;
 procedure TfTelaInicial.FormCreate(Sender: TObject);
 begin
   Persistencia.qLogin.Open;
+
+  edNome.Text := ParamStr(1);
+  edSenha.Text := ParamStr(2);
+
+  btEntrarClick(Sender);
+
 end;
 
 procedure TfTelaInicial.FormDestroy(Sender: TObject);
