@@ -86,7 +86,6 @@ type
     pEntradaEstoque: TDataSetProvider;
     qFaturamento: TADOQuery;
     qFaturamentoidFaturamento: TLargeintField;
-    qFaturamentodataFaturamento: TDateTimeField;
     qFaturamentoidCliente: TLargeintField;
     qProdutosNaoForamFaturados: TADOQuery;
     qProdutosNaoForamFaturadosidPedido: TLargeintField;
@@ -128,6 +127,7 @@ type
     qRelatorio02valor: TBCDField;
     qRelatorio02quantidade_vendida: TIntegerField;
     qRelatorio02quantidade_faturada: TIntegerField;
+    qFaturamentodataFaturamento: TWideStringField;
     procedure qUsuarioAfterScroll(DataSet: TDataSet);
     procedure qPedidoAfterScroll(DataSet: TDataSet);
     procedure qPedidoBeforePost(DataSet: TDataSet);

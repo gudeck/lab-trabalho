@@ -39,9 +39,9 @@ begin
   end
   else
   begin
-    Executavel := 'D:\Users\guzuc\Desktop\executavel-delphi\pTrabalho.exe';
+    Executavel := 'D:\Users\guzuc\Desktop\pTrabalho.exe';
     ExecutavelServidor :=
-      'D:\Users\guzuc\Desktop\atualizador-delphi\pTrabalho.exe';
+      'D:\Users\guzuc\Documents\Embarcadero\Studio\Projects\lab-trabalho\Win64\Debug\pTrabalho.exe';
 
     VersaoExecutavel := GetExeVersion(Executavel);
 

@@ -496,13 +496,13 @@ object Persistencia: TPersistencia
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       ReadOnly = True
     end
-    object qFaturamentodataFaturamento: TDateTimeField
-      FieldName = 'dataFaturamento'
-      Required = True
-    end
     object qFaturamentoidCliente: TLargeintField
       FieldName = 'idCliente'
       Required = True
+    end
+    object qFaturamentodataFaturamento: TWideStringField
+      FieldName = 'dataFaturamento'
+      Size = 10
     end
   end
   object qProdutosNaoForamFaturados: TADOQuery
